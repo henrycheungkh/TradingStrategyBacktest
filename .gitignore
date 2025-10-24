@@ -1,0 +1,8 @@
+
+# secrets
+InvestmentAnalytics/Batch/token.json
+Test/TestSendEmail*.py
+*.pem
+*.p12
+*.key
+*.pfx
