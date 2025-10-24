@@ -1,0 +1,642 @@
+Time,Country,Indicator,Actual,Previous,Consensus,Forecast
+01/11/21 04:00:00 PM,US,Consumer Inflation Expectations DEC,3%,2.96%, ,3%
+01/13/21 01:30:00 PM,US,Inflation Rate YoY DEC,1.4%,1.20%,1.3%,1.2%
+01/13/21 01:30:00 PM,US,Core Inflation Rate YoY DEC,1.6%,1.60%,1.6%,1.6%
+01/13/21 01:30:00 PM,US,Inflation Rate MoM DEC,0.4%,0.20%,0.4%,0.3%
+01/13/21 01:30:00 PM,US,Core Inflation Rate MoM DEC,0.1%,0.20%,0.10%,0.10%
+01/13/21 01:30:00 PM,US,CPI DEC,260.474,260.229,260.428,
+01/14/21 01:30:00 PM,US,Export Prices YoY DEC,0.2%,-1.10%, ,-0.7%
+01/14/21 01:30:00 PM,US,Import Prices YoY DEC,-0.3%,-1.00%, ,-0.8%
+01/14/21 01:30:00 PM,US,Import Prices MoM DEC,0.9%,0.20%,0.7%,0.5%
+01/14/21 01:30:00 PM,US,Export Prices MoM DEC,1.1%,0.70%,0.4%,0.3%
+01/15/21 01:30:00 PM,US,PPI MoM DEC,0.3%,0.10%,0.4%,0.2%
+01/15/21 01:30:00 PM,US,Core PPI MoM DEC,0.1%,0.10%,0.2%,0.1%
+01/15/21 01:30:00 PM,US,Core PPI YoY DEC,1.2%,1.40%,1.3%,1.3%
+01/15/21 01:30:00 PM,US,PPI YoY DEC,0.8%,0.80%,0.8%,0.6%
+01/15/21 03:00:00 PM,US,Michigan Inflation Expectations Prel JAN,3%,2.50%, ,2.1%
+01/15/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel JAN,2.7%,2.50%, ,2.3%
+01/28/21 01:30:00 PM,US,GDP Price Index QoQ Adv Q4,2%,3.30%,2.40%,
+01/28/21 01:30:00 PM,US,PCE Prices QoQ Adv Q4,1.5%,3.70%,2.3%,
+01/28/21 01:30:00 PM,US,Core PCE Prices QoQ Adv Q4,1.4%,3.40%,1.5%,
+01/29/21 01:30:00 PM,US,PCE Price Index MoM DEC,0.4%,0.00%, ,0.3%
+01/29/21 01:30:00 PM,US,PCE Price Index YoY DEC,1.3%,1.10%, ,1.1%
+01/29/21 01:30:00 PM,US,Core PCE Price Index MoM DEC,0.3%,0.00%,0.1%,0.2%
+01/29/21 01:30:00 PM,US,Core PCE Price Index YoY DEC,1.5%,1.40%,1.3%,1.4%
+01/29/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final JAN,2.7%,2.50%, ,2.7%
+01/29/21 03:00:00 PM,US,Michigan Inflation Expectations Final JAN,3%,2.50%, ,3%
+02/08/21 04:00:00 PM,US,Consumer Inflation Expectations JAN,3.05%,3.00%, ,3%
+02/10/21 01:30:00 PM,US,Inflation Rate YoY JAN,1.4%,1.40%,1.5%,1.4%
+02/10/21 01:30:00 PM,US,Core Inflation Rate YoY JAN,1.4%,1.60%,1.5%,1.6%
+02/10/21 01:30:00 PM,US,Core Inflation Rate MoM JAN,0%,0.00%,0.20%,0.10%
+02/10/21 01:30:00 PM,US,Inflation Rate MoM JAN,0.3%,0.20%,0.3%,0.2%
+02/10/21 01:30:00 PM,US,CPI JAN,261.582,260.474,261.79,
+02/12/21 03:00:00 PM,US,Michigan Inflation Expectations Prel FEB,3.3%,3.00%, ,3%
+02/12/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel FEB,2.7%,2.70%, ,2.7%
+02/17/21 01:30:00 PM,US,PPI MoM JAN,1.3%,0.30%,0.4%,0.3%
+02/17/21 01:30:00 PM,US,Core PPI MoM JAN,1.2%,0.10%,0.2%,0.2%
+02/17/21 01:30:00 PM,US,Core PPI YoY JAN,2%,1.20%,1.1%,1.3%
+02/17/21 01:30:00 PM,US,PPI YoY JAN,1.7%,0.80%,0.9%,0.8%
+02/18/21 01:30:00 PM,US,Import Prices YoY JAN,0.9%,-0.30%, ,0.2%
+02/18/21 01:30:00 PM,US,Export Prices YoY JAN,2.3%,0.40%,0.4%,0.3%
+02/18/21 01:30:00 PM,US,Export Prices MoM JAN,2.5%,1.30%,0.7%,0.7%
+02/18/21 01:30:00 PM,US,Import Prices MoM JAN,1.4%,1.00%,1%,0.8%
+02/25/21 01:30:00 PM,US,GDP Price Index QoQ 2nd Est Q4,2%,3.70%,2.00%,2.00%
+02/25/21 01:30:00 PM,US,PCE Prices QoQ 2nd Est Q4,1.6%,3.70%, ,1.5%
+02/25/21 01:30:00 PM,US,Core PCE Prices QoQ 2nd Est Q4,2.3%,3.40%, ,1.4%
+02/26/21 01:30:00 PM,US,PCE Price Index MoM JAN,0.3%,0.40%, ,0.5%
+02/26/21 01:30:00 PM,US,PCE Price Index YoY JAN,1.5%,1.30%, ,1.5%
+02/26/21 01:30:00 PM,US,Core PCE Price Index YoY JAN,1.5%,1.40%,1.4%,1.7%
+02/26/21 01:30:00 PM,US,Core PCE Price Index MoM JAN,0.3%,0.30%,0.2%,0.4%
+02/26/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final FEB,2.7%,2.70%,2.7%,2.7%
+02/26/21 03:00:00 PM,US,Michigan Inflation Expectations Final FEB,3.3%,3.00%,3.3%,3.3%
+03/08/21 04:00:00 PM,US,Consumer Inflation Expectations FEB,3.09%,3.05%, ,3%
+03/10/21 01:30:00 PM,US,Core Inflation Rate YoY FEB,1.3%,1.40%,1.4%,1.4%
+03/10/21 01:30:00 PM,US,Inflation Rate YoY FEB,1.7%,1.40%,1.7%,1.6%
+03/10/21 01:30:00 PM,US,Inflation Rate MoM FEB,0.4%,0.30%,0.4%,0.3%
+03/10/21 01:30:00 PM,US,Core Inflation Rate MoM FEB,0.1%,0.00%,0.20%,0.10%
+03/10/21 01:30:00 PM,US,CPI FEB,263.014,261.582,263.082,
+03/12/21 01:30:00 PM,US,PPI MoM FEB,0.5%,1.30%,0.5%,0.3%
+03/12/21 01:30:00 PM,US,Core PPI YoY FEB,2.5%,2.00%,2.6%,2.3%
+03/12/21 01:30:00 PM,US,Core PPI MoM FEB,0.2%,1.20%,0.2%,0.2%
+03/12/21 01:30:00 PM,US,PPI YoY FEB,2.8%,1.70%,2.7%,2.2%
+03/12/21 03:00:00 PM,US,Michigan Inflation Expectations Prel MAR,3.1%,3.30%, ,3.4%
+03/12/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel MAR,2.7%,2.70%, ,2.7%
+03/16/21 12:30:00 PM,US,Export Prices YoY FEB,5.2%,2.30%, ,2.2%
+03/16/21 12:30:00 PM,US,Import Prices YoY FEB,3%,1.00%, ,1%
+03/16/21 12:30:00 PM,US,Export Prices MoM FEB,1.6%,2.50%,0.9%,1%
+03/16/21 12:30:00 PM,US,Import Prices MoM FEB,1.3%,1.40%,1.2%,1.2%
+03/25/21 12:30:00 PM,US,GDP Price Index QoQ Final Q4,1.9%,3.70%,2.00%,2.00%
+03/25/21 12:30:00 PM,US,PCE Prices QoQ Final Q4,1.5%,3.70%,1.5%,1.6%
+03/25/21 12:30:00 PM,US,Core PCE Prices QoQ Final Q4,1.3%,3.40%,1.4%,2.3%
+03/26/21 12:30:00 PM,US,PCE Price Index MoM FEB,0.2%,0.30%, ,0.4%
+03/26/21 12:30:00 PM,US,PCE Price Index YoY FEB,1.6%,1.40%, ,1.7%
+03/26/21 12:30:00 PM,US,Core PCE Price Index MoM FEB,0.1%,0.20%,0.1%,0.2%
+03/26/21 12:30:00 PM,US,Core PCE Price Index YoY FEB,1.4%,1.50%,1.5%,1.4%
+03/26/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final MAR,2.8%,2.70%, ,2.7%
+03/26/21 02:00:00 PM,US,Michigan Inflation Expectations Final MAR,3.1%,3.30%, ,3.1%
+04/09/21 12:30:00 PM,US,PPI MoM MAR,1%,0.50%,0.5%,0.4%
+04/09/21 12:30:00 PM,US,Core PPI MoM MAR,0.7%,0.20%,0.2%,0.2%
+04/09/21 12:30:00 PM,US,Core PPI YoY MAR,3.1%,2.50%,2.7%,2.7%
+04/09/21 12:30:00 PM,US,PPI YoY MAR,4.2%,2.80%,3.8%,3.5%
+04/12/21 03:00:00 PM,US,Consumer Inflation Expectations MAR,3.2%,3.09%, ,3.1%
+04/13/21 12:30:00 PM,US,Core Inflation Rate YoY MAR,1.6%,1.30%,1.5%,1.6%
+04/13/21 12:30:00 PM,US,Inflation Rate YoY MAR,2.6%,1.70%,2.5%,2.6%
+04/13/21 12:30:00 PM,US,Inflation Rate MoM MAR,0.6%,0.40%,0.5%,0.6%
+04/13/21 12:30:00 PM,US,Core Inflation Rate MoM MAR,0.3%,0.10%,0.20%,0.30%
+04/13/21 12:30:00 PM,US,CPI MAR,264.877,263.014,264.69,
+04/14/21 12:30:00 PM,US,Import Prices YoY MAR,6.9%,3.00%, ,6.3%
+04/14/21 12:30:00 PM,US,Export Prices YoY MAR,9.1%,5.30%, ,7.6%
+04/14/21 12:30:00 PM,US,Import Prices MoM MAR,1.2%,1.30%,1%,0.7%
+04/14/21 12:30:00 PM,US,Export Prices MoM MAR,2.1%,1.60%,1%,0.8%
+04/16/21 02:00:00 PM,US,Michigan Inflation Expectations Prel APR,3.7%,3.10%, ,3.2%
+04/16/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel APR,2.7%,2.80%, ,2.8%
+04/29/21 12:30:00 PM,US,GDP Price Index QoQ Adv Q1,4.1%,1.90%,2.50%,2.80%
+04/29/21 12:30:00 PM,US,Core PCE Prices QoQ Adv Q1,2.3%,1.30%,2.4%,2.1%
+04/29/21 12:30:00 PM,US,PCE Prices QoQ Adv Q1,3.5%,1.50%, ,
+04/30/21 12:30:00 PM,US,PCE Price Index YoY MAR,2.3%,1.50%, ,1.9%
+04/30/21 12:30:00 PM,US,PCE Price Index MoM MAR,0.5%,0.20%, ,0.3%
+04/30/21 12:30:00 PM,US,Core PCE Price Index YoY MAR,1.8%,1.40%,1.8%,1.7%
+04/30/21 12:30:00 PM,US,Core PCE Price Index MoM MAR,0.4%,0.10%,0.3%,0.2%
+04/30/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final APR,2.7%,2.80%, ,2.7%
+04/30/21 02:00:00 PM,US,Michigan Inflation Expectations Final APR,3.4%,3.10%, ,3.7%
+05/10/21 03:00:00 PM,US,Consumer Inflation Expectations APR,3.4%,3.20%, ,3.3%
+05/12/21 12:30:00 PM,US,Inflation Rate YoY APR,4.2%,2.60%,3.6%,3.8%
+05/12/21 12:30:00 PM,US,Core Inflation Rate YoY APR,3%,1.60%,2.3%,2.2%
+05/12/21 12:30:00 PM,US,Inflation Rate MoM APR,0.8%,0.60%,0.2%,0.3%
+05/12/21 12:30:00 PM,US,Core Inflation Rate MoM APR,0.9%,0.30%,0.30%,0.20%
+05/12/21 12:30:00 PM,US,CPI APR,267.054,264.877,265.584,
+05/13/21 12:30:00 PM,US,PPI MoM APR,0.6%,1.00%,0.3%,0.5%
+05/13/21 12:30:00 PM,US,Core PPI YoY APR,4.1%,3.10%,3.7%,3.8%
+05/13/21 12:30:00 PM,US,Core PPI MoM APR,0.7%,0.70%,0.4%,0.3%
+05/13/21 12:30:00 PM,US,PPI YoY APR,6.2%,4.20%,5.9%,6.1%
+05/14/21 12:30:00 PM,US,Export Prices YoY APR,14.4%,9.50%, ,13.9%
+05/14/21 12:30:00 PM,US,Import Prices YoY APR,10.6%,7.00%, ,7.3%
+05/14/21 12:30:00 PM,US,Import Prices MoM APR,0.7%,1.40%,0.6%,0.7%
+05/14/21 12:30:00 PM,US,Export Prices MoM APR,0.8%,2.40%,0.6%,0.7%
+05/14/21 02:00:00 PM,US,Michigan Inflation Expectations Prel MAY,4.6%,3.40%, ,3.8%
+05/14/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel MAY,3.1%,2.70%, ,2.8%
+05/27/21 12:30:00 PM,US,GDP Price Index QoQ 2nd Est Q1,4.3%,1.90%,4.10%,4.10%
+05/27/21 12:30:00 PM,US,Core PCE Prices QoQ 2nd Est Q1,2.5%,1.30%,2.3%,2.3%
+05/27/21 12:30:00 PM,US,PCE Prices QoQ 2nd Est Q1,3.7%,1.50%,3.5%,3.5%
+05/28/21 12:30:00 PM,US,PCE Price Index MoM APR,0.6%,0.60%, ,0.7%
+05/28/21 12:30:00 PM,US,PCE Price Index YoY APR,3.6%,2.40%, ,3%
+05/28/21 12:30:00 PM,US,Core PCE Price Index MoM APR,0.7%,0.40%,0.6%,0.3%
+05/28/21 12:30:00 PM,US,Core PCE Price Index YoY APR,3.1%,1.90%,2.9%,2.6%
+05/28/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final MAY,3%,2.70%, ,3.1%
+05/28/21 02:00:00 PM,US,Michigan Inflation Expectations Final MAY,4.6%,3.40%, ,4.6%
+06/10/21 12:30:00 PM,US,Core Inflation Rate YoY MAY,3.8%,3.00%,3.4%,3.2%
+06/10/21 12:30:00 PM,US,Inflation Rate YoY MAY,5%,4.20%,4.7%,4.7%
+06/10/21 12:30:00 PM,US,Core Inflation Rate MoM MAY,0.7%,0.90%,0.40%,0.60%
+06/10/21 12:30:00 PM,US,Inflation Rate MoM MAY,0.6%,0.80%,0.4%,0.5%
+06/10/21 12:30:00 PM,US,CPI MAY,269.195,267.054,268.473,
+06/11/21 02:00:00 PM,US,Michigan Inflation Expectations Prel JUN,4%,4.60%, ,4.8%
+06/11/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel JUN,2.8%,3.00%, ,3.1%
+06/14/21 03:00:00 PM,US,Consumer Inflation Expectations MAY,4%,3.40%, ,3.8%
+06/15/21 12:30:00 PM,US,PPI MoM MAY,0.8%,0.60%,0.6%,0.7%
+06/15/21 12:30:00 PM,US,Core PPI MoM MAY,0.7%,0.70%,0.5%,0.7%
+06/15/21 12:30:00 PM,US,Core PPI YoY MAY,4.8%,4.10%,4.8%,4.9%
+06/15/21 12:30:00 PM,US,PPI YoY MAY,6.6%,6.20%,6.3%,6.4%
+06/16/21 12:30:00 PM,US,Import Prices YoY MAY,11.3%,10.80%, ,10.7%
+06/16/21 12:30:00 PM,US,Export Prices YoY MAY,17.4%,14.40%, ,15.2%
+06/16/21 12:30:00 PM,US,Import Prices MoM MAY,1.1%,0.80%,0.8%,0.8%
+06/16/21 12:30:00 PM,US,Export Prices MoM MAY,2.2%,1.10%,0.8%,0.7%
+06/24/21 12:30:00 PM,US,GDP Price Index QoQ Final Q1,4.3%,1.90%,4.30%,4.30%
+06/24/21 12:30:00 PM,US,Core PCE Prices QoQ Final Q1,2.5%,1.30%,2.5%,2.5%
+06/24/21 12:30:00 PM,US,PCE Prices QoQ Final Q1,3.7%,1.50%,3.7%,3.7%
+06/25/21 12:30:00 PM,US,PCE Price Index YoY MAY,3.9%,3.60%, ,4.2%
+06/25/21 12:30:00 PM,US,PCE Price Index MoM MAY,0.4%,0.60%, ,0.8%
+06/25/21 12:30:00 PM,US,Core PCE Price Index YoY MAY,3.4%,3.10%,3.4%,3.5%
+06/25/21 12:30:00 PM,US,Core PCE Price Index MoM MAY,0.5%,0.70%,0.6%,0.6%
+06/25/21 02:00:00 PM,US,Michigan Inflation Expectations Final JUN,4.2%,4.60%, ,4%
+06/25/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final JUN,2.8%,3.00%, ,2.8%
+07/12/21 03:00:00 PM,US,Consumer Inflation Expectations JUN,4.8%,4.00%, ,4.1%
+07/13/21 12:30:00 PM,US,Inflation Rate YoY JUN,5.4%,5.00%,4.9%,4.9%
+07/13/21 12:30:00 PM,US,Core Inflation Rate YoY JUN,4.5%,3.80%,4%,3.9%
+07/13/21 12:30:00 PM,US,Core Inflation Rate MoM JUN,0.9%,0.70%,0.40%,0.40%
+07/13/21 12:30:00 PM,US,Inflation Rate MoM JUN,0.9%,0.60%,0.5%,0.5%
+07/13/21 12:30:00 PM,US,CPI JUN,271.696,269.195,270.638,
+07/14/21 12:30:00 PM,US,PPI MoM JUN,1%,0.80%,0.6%,0.6%
+07/14/21 12:30:00 PM,US,Core PPI YoY JUN,5.6%,4.80%,5.1%,4.9%
+07/14/21 12:30:00 PM,US,Core PPI MoM JUN,1%,0.70%,0.5%,0.5%
+07/14/21 12:30:00 PM,US,PPI YoY JUN,7.3%,6.60%,6.8%,6.8%
+07/15/21 12:30:00 PM,US,Import Prices YoY JUN,11.2%,11.60%, ,11%
+07/15/21 12:30:00 PM,US,Export Prices YoY JUN,16.8%,17.50%, ,17.6%
+07/15/21 12:30:00 PM,US,Import Prices MoM JUN,1%,1.40%,1.2%,0.9%
+07/15/21 12:30:00 PM,US,Export Prices MoM JUN,1.2%,2.20%,1.2%,1.5%
+07/16/21 02:00:00 PM,US,Michigan Inflation Expectations Prel JUL,4.8%,4.20%, ,4.3%
+07/16/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel JUL,2.9%,2.80%, ,2.6%
+07/29/21 12:30:00 PM,US,GDP Price Index QoQ Adv Q2,6.1%,4.30%,5.40%,4.60%
+07/29/21 12:30:00 PM,US,PCE Prices QoQ Adv Q2,6.4%,3.80%, ,4.2%
+07/29/21 12:30:00 PM,US,Core PCE Prices QoQ Adv Q2,6.1%,2.70%,5.9%,2.9%
+07/30/21 12:30:00 PM,US,PCE Price Index MoM JUN,0.5%,0.50%, ,0.8%
+07/30/21 12:30:00 PM,US,PCE Price Index YoY JUN,4%,4.00%, ,4.2%
+07/30/21 12:30:00 PM,US,Core PCE Price Index YoY JUN,3.5%,3.40%,3.7%,3.7%
+07/30/21 12:30:00 PM,US,Core PCE Price Index MoM JUN,0.4%,0.50%,0.6%,0.6%
+07/30/21 02:00:00 PM,US,Michigan Inflation Expectations Final JUL,4.7%,4.20%, ,4.8%
+07/30/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final JUL,2.8%,2.80%, ,2.9%
+08/09/21 03:00:00 PM,US,Consumer Inflation Expectations JUL,4.8%,4.80%, ,4.7%
+08/11/21 12:30:00 PM,US,Core Inflation Rate YoY JUL,4.3%,4.50%,4.3%,4.4%
+08/11/21 12:30:00 PM,US,Inflation Rate YoY JUL,5.4%,5.40%,5.3%,5.4%
+08/11/21 12:30:00 PM,US,Core Inflation Rate MoM JUL,0.3%,0.90%,0.40%,0.50%
+08/11/21 12:30:00 PM,US,Inflation Rate MoM JUL,0.5%,0.90%,0.5%,0.6%
+08/11/21 12:30:00 PM,US,CPI JUL,273.003,271.696,272.866,
+08/12/21 12:30:00 PM,US,PPI MoM JUL,1%,1.00%,0.6%,0.7%
+08/12/21 12:30:00 PM,US,Core PPI MoM JUL,1%,1.00%,0.5%,0.6%
+08/12/21 12:30:00 PM,US,Core PPI YoY JUL,6.2%,5.60%,5.6%,5.8%
+08/12/21 12:30:00 PM,US,PPI YoY JUL,7.8%,7.30%,7.3%,7.5%
+08/13/21 12:30:00 PM,US,Export Prices YoY JUL,17.2%,16.90%, ,16.7%
+08/13/21 12:30:00 PM,US,Import Prices YoY JUL,10.2%,11.30%, ,10.6%
+08/13/21 12:30:00 PM,US,Import Prices MoM JUL,0.3%,1.10%,0.6%,0.7%
+08/13/21 12:30:00 PM,US,Export Prices MoM JUL,1.3%,1.20%,0.8%,0.9%
+08/13/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel AUG,3%,2.80%, ,
+08/13/21 02:00:00 PM,US,Michigan Inflation Expectations Prel AUG,4.6%,4.70%, ,
+08/26/21 12:30:00 PM,US,GDP Price Index QoQ 2nd Est Q2,6.2%,4.30%,6.00%,6.10%
+08/26/21 12:30:00 PM,US,PCE Prices QoQ 2nd Est Q2,6.5%,3.80%, ,6.4%
+08/26/21 12:30:00 PM,US,Core PCE Prices QoQ 2nd Est Q2,6.1%,2.70%,6.1%,6.1%
+08/27/21 12:30:00 PM,US,PCE Price Index YoY JUL,4.2%,4.00%, ,4.1%
+08/27/21 12:30:00 PM,US,PCE Price Index MoM JUL,0.4%,0.50%, ,0.4%
+08/27/21 12:30:00 PM,US,Core PCE Price Index YoY JUL,3.6%,3.60%,3.6%,3.5%
+08/27/21 12:30:00 PM,US,Core PCE Price Index MoM JUL,0.3%,0.50%,0.3%,0.3%
+08/27/21 02:00:00 PM,US,Michigan Inflation Expectations Final AUG,4.6%,4.70%, ,4.6%
+08/27/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final AUG,2.9%,2.80%, ,3%
+09/10/21 12:30:00 PM,US,PPI MoM AUG,0.7%,1.00%,0.6%,0.7%
+09/10/21 12:30:00 PM,US,Core PPI YoY AUG,6.7%,6.20%,6.6%,6.7%
+09/10/21 12:30:00 PM,US,Core PPI MoM AUG,0.6%,1.00%,0.5%,0.6%
+09/10/21 12:30:00 PM,US,PPI YoY AUG,8.3%,7.80%,8.2%,8.3%
+09/13/21 03:00:00 PM,US,Consumer Inflation Expectations AUG,5.2%,4.80%, ,4.9%
+09/14/21 12:30:00 PM,US,Inflation Rate YoY AUG,5.3%,5.40%,5.3%,5.3%
+09/14/21 12:30:00 PM,US,Core Inflation Rate YoY AUG,4%,4.30%,4.2%,4.3%
+09/14/21 12:30:00 PM,US,Core Inflation Rate MoM AUG,0.1%,0.30%,0.30%,0.30%
+09/14/21 12:30:00 PM,US,Inflation Rate MoM AUG,0.3%,0.50%,0.4%,0.4%
+09/14/21 12:30:00 PM,US,CPI AUG,273.567,273.003,273.788,
+09/15/21 12:30:00 PM,US,Export Prices YoY AUG,16.8%,17.00%, ,17.5%
+09/15/21 12:30:00 PM,US,Import Prices YoY AUG,9%,10.30%, ,9.7%
+09/15/21 12:30:00 PM,US,Import Prices MoM AUG,-0.3%,0.40%,0.3%,0.3%
+09/15/21 12:30:00 PM,US,Export Prices MoM AUG,0.4%,1.10%,0.4%,0.9%
+09/17/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel SEP,2.9%,2.90%, ,2.8%
+09/17/21 02:00:00 PM,US,Michigan Inflation Expectations Prel SEP,4.7%,4.60%, ,4.6%
+09/30/21 12:30:00 PM,US,GDP Price Index QoQ Final Q2,6.2%,4.30%,6.10%,6.20%
+09/30/21 12:30:00 PM,US,PCE Prices QoQ Final Q2,6.5%,3.80%,6.5%,6.5%
+09/30/21 12:30:00 PM,US,Core PCE Prices QoQ Final Q2,6.1%,2.70%,6.1%,6.1%
+10/01/21 12:30:00 PM,US,PCE Price Index MoM AUG,0.4%,0.40%, ,0.3%
+10/01/21 12:30:00 PM,US,PCE Price Index YoY AUG,4.3%,4.20%, ,4.2%
+10/01/21 12:30:00 PM,US,Core PCE Price Index YoY AUG,3.6%,3.60%,3.6%,3.6%
+10/01/21 12:30:00 PM,US,Core PCE Price Index MoM AUG,0.3%,0.30%,0.2%,0.2%
+10/01/21 02:00:00 PM,US,Michigan Inflation Expectations Final SEP,4.6%,4.60%,4.7%,4.7%
+10/01/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final SEP,3%,2.90%,2.9%,2.9%
+10/12/21 03:00:00 PM,US,Consumer Inflation Expectations SEP,5.3%,5.20%, ,5.3%
+10/13/21 12:30:00 PM,US,Core Inflation Rate YoY SEP,4%,4.00%,4%,4%
+10/13/21 12:30:00 PM,US,Inflation Rate YoY SEP,5.4%,5.30%,5.3%,5.3%
+10/13/21 12:30:00 PM,US,Core Inflation Rate MoM SEP,0.2%,0.10%,0.20%,0.20%
+10/13/21 12:30:00 PM,US,Inflation Rate MoM SEP,0.4%,0.30%,0.3%,0.3%
+10/13/21 12:30:00 PM,US,CPI SEP,274.31,273.567,274.144,
+10/14/21 12:30:00 PM,US,PPI MoM SEP,0.5%,0.70%,0.6%,0.5%
+10/14/21 12:30:00 PM,US,Core PPI MoM SEP,0.2%,0.60%,0.5%,0.4%
+10/14/21 12:30:00 PM,US,Core PPI YoY SEP,6.8%,6.70%,7.1%,6.7%
+10/14/21 12:30:00 PM,US,PPI YoY SEP,8.6%,8.30%,8.7%,8.5%
+10/15/21 12:30:00 PM,US,Export Prices MoM SEP,0.1%,0.40%,0.6%,0.5%
+10/15/21 12:30:00 PM,US,Import Prices MoM SEP,0.4%,-0.30%,0.6%,0.6%
+10/15/21 12:30:00 PM,US,Export Prices YoY SEP,16.3%,16.80%, ,16.7%
+10/15/21 12:30:00 PM,US,Import Prices YoY SEP,9.2%,8.90%, ,9.5%
+10/15/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel OCT,2.8%,3.00%, ,3%
+10/15/21 02:00:00 PM,US,Michigan Inflation Expectations Prel OCT,4.8%,4.60%, ,4.7%
+10/28/21 12:30:00 PM,US,GDP Price Index QoQ Adv Q3,5.7%,6.20%,5.50%,6.30%
+10/28/21 12:30:00 PM,US,Core PCE Prices QoQ Adv Q3,4.5%,6.10%,4.5%,4.5%
+10/28/21 12:30:00 PM,US,PCE Prices QoQ Adv Q3,5.3%,6.50%, ,4.2%
+10/29/21 12:30:00 PM,US,PCE Price Index YoY SEP,4.4%,4.20%, ,4.4%
+10/29/21 12:30:00 PM,US,PCE Price Index MoM SEP,0.3%,0.30%, ,0.5%
+10/29/21 12:30:00 PM,US,Core PCE Price Index MoM SEP,0.2%,0.30%,0.2%,0.2%
+10/29/21 12:30:00 PM,US,Core PCE Price Index YoY SEP,3.6%,3.60%,3.7%,3.7%
+10/29/21 02:00:00 PM,US,Michigan Inflation Expectations Final OCT,4.8%,4.60%, ,4.8%
+10/29/21 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final OCT,2.9%,3.00%, ,2.8%
+11/08/21 04:00:00 PM,US,Consumer Inflation Expectations OCT,5.7%,5.30%, ,5.4%
+11/09/21 01:30:00 PM,US,PPI MoM OCT,0.6%,0.50%,0.6%,0.6%
+11/09/21 01:30:00 PM,US,Core PPI MoM OCT,0.4%,0.20%,0.5%,0.4%
+11/09/21 01:30:00 PM,US,PPI YoY OCT,8.6%,8.60%,8.7%,8.7%
+11/09/21 01:30:00 PM,US,Core PPI YoY OCT,6.8%,6.80%,6.8%,6.8%
+11/10/21 01:30:00 PM,US,Inflation Rate YoY OCT,6.2%,5.40%,5.8%,5.7%
+11/10/21 01:30:00 PM,US,Core Inflation Rate YoY OCT,4.6%,4.00%,4.3%,4.1%
+11/10/21 01:30:00 PM,US,Inflation Rate MoM OCT,0.9%,0.40%,0.6%,0.5%
+11/10/21 01:30:00 PM,US,Core Inflation Rate MoM OCT,0.6%,0.20%,0.40%,0.30%
+11/10/21 01:30:00 PM,US,CPI OCT,276.589,274.31,275.764,
+11/12/21 03:00:00 PM,US,Michigan Inflation Expectations Prel NOV,4.9%,4.80%, ,4.9%
+11/12/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel NOV,2.9%,2.90%, ,2.9%
+11/16/21 01:30:00 PM,US,Export Prices MoM OCT,1.5%,0.40%,0.9%,0.7%
+11/16/21 01:30:00 PM,US,Import Prices MoM OCT,1.2%,0.40%,1%,0.8%
+11/16/21 01:30:00 PM,US,Export Prices YoY OCT,18.0%,16.50%, ,18%
+11/16/21 01:30:00 PM,US,Import Prices YoY OCT,10.7%,9.30%, ,10.6%
+11/24/21 01:30:00 PM,US,GDP Price Index QoQ 2nd Est Q3,5.9%,6.20%,5.70%,5.70%
+11/24/21 01:30:00 PM,US,Core PCE Prices QoQ 2nd Est Q3,4.5%,6.10%,4.5%,4.5%
+11/24/21 01:30:00 PM,US,PCE Prices QoQ 2nd Est Q3,5.3%,6.50%,5.3%,5.3%
+11/24/21 03:00:00 PM,US,PCE Price Index MoM OCT,0.6%,0.40%, ,0.6%
+11/24/21 03:00:00 PM,US,PCE Price Index YoY OCT,5%,4.40%, ,4.9%
+11/24/21 03:00:00 PM,US,Core PCE Price Index MoM OCT,0.4%,0.20%,0.4%,0.2%
+11/24/21 03:00:00 PM,US,Core PCE Price Index YoY OCT,4.1%,3.70%,4.1%,4%
+11/24/21 03:00:00 PM,US,Michigan Inflation Expectations Final NOV,4.9%,4.80%, ,4.9%
+11/24/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final NOV,3%,2.90%, ,2.9%
+12/10/21 01:30:00 PM,US,Inflation Rate YoY NOV,6.8%,6.20%,6.8%,6.9%
+12/10/21 01:30:00 PM,US,Core Inflation Rate YoY NOV,4.9%,4.60%,4.9%,4.9%
+12/10/21 01:30:00 PM,US,Core Inflation Rate MoM NOV,0.5%,0.60%,0.50%,0.50%
+12/10/21 01:30:00 PM,US,Inflation Rate MoM NOV,0.8%,0.90%,0.7%,0.8%
+12/10/21 01:30:00 PM,US,CPI NOV,277.948,276.589,278.114,
+12/10/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel DEC,3%,3.00%, ,3.1%
+12/10/21 03:00:00 PM,US,Michigan Inflation Expectations Prel DEC,4.9%,4.90%, ,5%
+12/13/21 04:00:00 PM,US,Consumer Inflation Expectations NOV,6%,5.70%, ,6%
+12/14/21 01:30:00 PM,US,PPI MoM NOV,0.8%,0.60%,0.5%,0.5%
+12/14/21 01:30:00 PM,US,Core PPI MoM NOV,0.7%,0.40%,0.4%,0.3%
+12/14/21 01:30:00 PM,US,PPI YoY NOV,9.6%,8.60%,9.2%,9.2%
+12/14/21 01:30:00 PM,US,Core PPI YoY NOV,7.7%,6.90%,7.2%,7.2%
+12/15/21 01:30:00 PM,US,Import Prices MoM NOV,0.7%,1.50%,0.7%,0.9%
+12/15/21 01:30:00 PM,US,Export Prices MoM NOV,1.0%,1.60%,0.5%,0.7%
+12/15/21 01:30:00 PM,US,Export Prices YoY NOV,18.2%,18.00%, ,17.9%
+12/15/21 01:30:00 PM,US,Import Prices YoY NOV,11.7%,11.00%, ,11.6%
+12/22/21 01:30:00 PM,US,GDP Price Index QoQ Final Q3,5.9%,6.20%,5.90%,5.90%
+12/22/21 01:30:00 PM,US,Core PCE Prices QoQ Final Q3,4.6%,6.10%,4.5%,4.5%
+12/22/21 01:30:00 PM,US,PCE Prices QoQ Final Q3,5.3%,6.50%,5.3%,5.3%
+12/23/21 01:30:00 PM,US,PCE Price Index MoM NOV,0.6%,0.70%, ,0.4%
+12/23/21 01:30:00 PM,US,PCE Price Index YoY NOV,5.7%,5.10%, ,5.5%
+12/23/21 01:30:00 PM,US,Core PCE Price Index MoM NOV,0.5%,0.50%,0.4%,0.2%
+12/23/21 01:30:00 PM,US,Core PCE Price Index YoY NOV,4.7%,4.20%,4.5%,4.3%
+12/23/21 03:00:00 PM,US,Michigan Inflation Expectations Final DEC,4.8%,4.90%, ,4.9%
+12/23/21 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final DEC,2.9%,3.00%, ,3%
+01/10/22 04:00:00 PM,US,Consumer Inflation Expectations DEC,6%,6.00%, ,6.1%
+01/12/22 01:30:00 PM,US,Core Inflation Rate YoY DEC,5.5%,4.90%,5.4%,5.4%
+01/12/22 01:30:00 PM,US,Inflation Rate YoY DEC,7%,6.80%,7%,7.1%
+01/12/22 01:30:00 PM,US,Core Inflation Rate MoM DEC,0.6%,0.50%,0.50%,0.50%
+01/12/22 01:30:00 PM,US,Inflation Rate MoM DEC,0.5%,0.80%,0.4%,0.5%
+01/12/22 01:30:00 PM,US,CPI DEC,278.802,277.948,278.738,
+01/13/22 01:30:00 PM,US,PPI MoM DEC,0.2%,1.00%,0.4%,0.4%
+01/13/22 01:30:00 PM,US,Core PPI MoM DEC,0.5%,0.90%,0.5%,0.5%
+01/13/22 01:30:00 PM,US,Core PPI YoY DEC,8.3%,7.90%,8%,7.8%
+01/13/22 01:30:00 PM,US,PPI YoY DEC,9.7%,9.80%,9.8%,9.8%
+01/14/22 01:30:00 PM,US,Import Prices MoM DEC,-0.2%,0.70%,0.3%,0.5%
+01/14/22 01:30:00 PM,US,Export Prices MoM DEC,-1.8%,0.80%,0.3%,0.5%
+01/14/22 01:30:00 PM,US,Export Prices YoY DEC,14.7%,18.20%, ,18.6%
+01/14/22 01:30:00 PM,US,Import Prices YoY DEC,10.4%,11.70%, ,10.5%
+01/14/22 03:00:00 PM,US,Michigan Inflation Expectations Prel JAN,4.9%,4.80%, ,4.9%
+01/14/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel JAN,3.1%,2.90%, ,2.9%
+01/27/22 01:30:00 PM,US,GDP Price Index QoQ Adv Q4,7%,5.90%,6.00%,6.00%
+01/27/22 01:30:00 PM,US,PCE Prices QoQ Adv Q4,6.5%,5.30%, ,5.4%
+01/27/22 01:30:00 PM,US,Core PCE Prices QoQ Adv Q4,4.9%,4.60%,4.9%,4.8%
+01/28/22 01:30:00 PM,US,PCE Price Index MoM DEC,0.4%,0.60%, ,0.4%
+01/28/22 01:30:00 PM,US,PCE Price Index YoY DEC,5.8%,5.70%, ,5.9%
+01/28/22 01:30:00 PM,US,Core PCE Price Index MoM DEC,0.5%,0.50%,0.5%,0.6%
+01/28/22 01:30:00 PM,US,Core PCE Price Index YoY DEC,4.9%,4.70%,4.8%,4.8%
+01/28/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final JAN,3.1%,2.90%, ,3.1%
+01/28/22 03:00:00 PM,US,Michigan Inflation Expectations Final JAN,4.9%,4.80%, ,4.9%
+02/10/22 01:30:00 PM,US,Inflation Rate YoY JAN,7.5%,7.00%,7.3%,7.1%
+02/10/22 01:30:00 PM,US,Core Inflation Rate YoY JAN,6%,5.50%,5.9%,5.7%
+02/10/22 01:30:00 PM,US,CPI JAN,281.148,278.802,280.389,
+02/10/22 01:30:00 PM,US,Core Inflation Rate MoM JAN,0.6%,0.60%,0.50%,0.60%
+02/10/22 01:30:00 PM,US,Inflation Rate MoM JAN,0.6%,0.60%,0.5%,0.3%
+02/11/22 03:00:00 PM,US,Michigan Inflation Expectations Prel FEB,5%,4.90%, ,4.9%
+02/11/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel FEB,3.1%,3.10%, ,3.1%
+02/14/22 04:00:00 PM,US,Consumer Inflation Expectations JAN,5.8%,6.00%, ,6.3%
+02/15/22 01:30:00 PM,US,PPI MoM JAN,1%,0.40%,0.5%,0.4%
+02/15/22 01:30:00 PM,US,Core PPI MoM JAN,0.8%,0.60%,0.5%,0.5%
+02/15/22 01:30:00 PM,US,Core PPI YoY JAN,8.3%,8.50%,7.9%,8.5%
+02/15/22 01:30:00 PM,US,PPI YoY JAN,9.7%,9.80%,9.1%,10%
+02/16/22 01:30:00 PM,US,Export Prices MoM JAN,2.9%,-1.60%,1.3%,1%
+02/16/22 01:30:00 PM,US,Import Prices MoM JAN,2%,-0.40%,1.3%,1.5%
+02/16/22 01:30:00 PM,US,Import Prices YoY JAN,10.8%,10.20%, ,10.9%
+02/16/22 01:30:00 PM,US,Export Prices YoY JAN,15.1%,14.70%, ,15.1%
+02/24/22 01:30:00 PM,US,GDP Price Index QoQ 2nd Est Q4,7.2%,5.90%,6.90%,7.00%
+02/24/22 01:30:00 PM,US,PCE Prices QoQ 2nd Est Q4,6.3%,5.30%,6.4%,6.5%
+02/24/22 01:30:00 PM,US,Core PCE Prices QoQ 2nd Est Q4,5%,4.60%,4.9%,4.9%
+02/25/22 01:30:00 PM,US,PCE Price Index MoM JAN,0.6%,0.50%, ,0.2%
+02/25/22 01:30:00 PM,US,PCE Price Index YoY JAN,6.1%,5.80%, ,5.9%
+02/25/22 01:30:00 PM,US,Core PCE Price Index YoY JAN,5.2%,4.90%,5.1%,5%
+02/25/22 01:30:00 PM,US,Core PCE Price Index MoM JAN,0.5%,0.50%,0.5%,0.5%
+02/25/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final FEB,3%,3.10%, ,3.1%
+02/25/22 03:00:00 PM,US,Michigan Inflation Expectations Final FEB,4.9%,4.90%, ,5%
+03/10/22 01:30:00 PM,US,Core Inflation Rate YoY FEB,6.4%,6.00%,6.4%,6.4%
+03/10/22 01:30:00 PM,US,Inflation Rate YoY FEB,7.9%,7.50%,7.9%,7.9%
+03/10/22 01:30:00 PM,US,Inflation Rate MoM FEB,0.8%,0.60%,0.8%,0.8%
+03/10/22 01:30:00 PM,US,Core Inflation Rate MoM FEB,0.5%,0.60%,0.50%,0.70%
+03/10/22 01:30:00 PM,US,CPI FEB,283.716,281.148,283.663,
+03/11/22 03:00:00 PM,US,Michigan Inflation Expectations Prel MAR,5.4%,4.90%, ,5%
+03/11/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel MAR,3%,3.00%, ,3%
+03/14/22 03:00:00 PM,US,Consumer Inflation Expectations FEB,6%,5.80%, ,5.9%
+03/15/22 12:30:00 PM,US,PPI MoM FEB,0.8%,1.20%,0.9%,1.1%
+03/15/22 12:30:00 PM,US,Core PPI MoM FEB,0.2%,1.00%,0.6%,0.9%
+03/15/22 12:30:00 PM,US,Core PPI YoY FEB,8.4%,8.50%,8.7%,8.5%
+03/15/22 12:30:00 PM,US,PPI YoY FEB,10%,10.00%,10%,10%
+03/16/22 12:30:00 PM,US,Export Prices MoM FEB,3%,2.80%,1.6%,2%
+03/16/22 12:30:00 PM,US,Import Prices MoM FEB,1.4%,1.90%,1.5%,2.1%
+03/16/22 12:30:00 PM,US,Export Prices YoY FEB,16.6%,15.00%, ,16%
+03/16/22 12:30:00 PM,US,Import Prices YoY FEB,10.9%,10.70%, ,12%
+03/25/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final MAR,3%,3.00%, ,3%
+03/25/22 02:00:00 PM,US,Michigan Inflation Expectations Final MAR,5.4%,4.90%, ,5.4%
+03/30/22 12:30:00 PM,US,GDP Price Index QoQ Final Q4,7.1%,5.90%,7.20%,7.20%
+03/30/22 12:30:00 PM,US,PCE Prices QoQ Final Q4,6.4%,5.30%,6.3%,6.3%
+03/30/22 12:30:00 PM,US,Core PCE Prices QoQ Final Q4,5%,4.60%,5%,5%
+03/31/22 12:30:00 PM,US,PCE Price Index MoM FEB,0.6%,0.50%, ,0.8%
+03/31/22 12:30:00 PM,US,PCE Price Index YoY FEB,6.4%,6.00%, ,6.5%
+03/31/22 12:30:00 PM,US,Core PCE Price Index YoY FEB,5.4%,5.20%,5.5%,5.6%
+03/31/22 12:30:00 PM,US,Core PCE Price Index MoM FEB,0.4%,0.50%,0.4%,0.6%
+04/11/22 03:00:00 PM,US,Consumer Inflation Expectations MAR,6.6%,6.00%, ,6.2%
+04/12/22 12:30:00 PM,US,Core Inflation Rate YoY MAR,6.5%,6.40%,6.6%,6.7%
+04/12/22 12:30:00 PM,US,Inflation Rate YoY MAR,8.5%,7.90%,8.4%,8.3%
+04/12/22 12:30:00 PM,US,CPI MAR,287.504,283.716,287.41,
+04/12/22 12:30:00 PM,US,Inflation Rate MoM MAR,1.2%,0.80%,1.2%,1%
+04/12/22 12:30:00 PM,US,Core Inflation Rate MoM MAR,0.3%,0.50%,0.50%,0.60%
+04/13/22 12:30:00 PM,US,PPI MoM MAR,1.4%,0.90%,1.1%,1%
+04/13/22 12:30:00 PM,US,Core PPI MoM MAR,1%,0.40%,0.5%,0.3%
+04/13/22 12:30:00 PM,US,Core PPI YoY MAR,9.2%,8.70%,8.4%,8.8%
+04/13/22 12:30:00 PM,US,PPI YoY MAR,11.2%,10.30%,10.6%,11%
+04/14/22 12:30:00 PM,US,Import Prices MoM MAR,2.6%,1.60%,2.3%,2.1%
+04/14/22 12:30:00 PM,US,Export Prices MoM MAR,4.5%,3.00%,2.2%,3.1%
+04/14/22 12:30:00 PM,US,Import Prices YoY MAR,12.5%,10.90%, ,11.1%
+04/14/22 12:30:00 PM,US,Export Prices YoY MAR,18.8%,16.60%, ,16.8%
+04/14/22 02:00:00 PM,US,Michigan Inflation Expectations Prel APR,5.4%,5.40%, ,5.5%
+04/14/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel APR,3%,3.00%, ,3%
+04/28/22 12:30:00 PM,US,GDP Price Index QoQ Adv Q1,8%,7.10%,7.30%,7.30%
+04/28/22 12:30:00 PM,US,Core PCE Prices QoQ Adv Q1,5.2%,5.00%,5.4%,5.8%
+04/28/22 12:30:00 PM,US,PCE Prices QoQ Adv Q1,7%,6.40%, ,6.9%
+04/29/22 12:30:00 PM,US,PCE Price Index YoY MAR,6.6%,6.30%, ,6.8%
+04/29/22 12:30:00 PM,US,PCE Price Index MoM MAR,0.9%,0.50%, ,0.5%
+04/29/22 12:30:00 PM,US,Core PCE Price Index YoY MAR,5.2%,5.30%,5.3%,5.5%
+04/29/22 12:30:00 PM,US,Core PCE Price Index MoM MAR,0.3%,0.30%,0.3%,0.3%
+04/29/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final APR,3%,3.00%, ,3%
+04/29/22 02:00:00 PM,US,Michigan Inflation Expectations Final APR,5.4%,5.40%, ,5.4%
+05/09/22 03:00:00 PM,US,Consumer Inflation Expectations APR,6.3%,6.60%, ,6.8%
+05/11/22 12:30:00 PM,US,Inflation Rate YoY APR,8.3%,8.50%,8.1%,8.2%
+05/11/22 12:30:00 PM,US,Core Inflation Rate YoY APR,6.2%,6.50%,6%,6.2%
+05/11/22 12:30:00 PM,US,Inflation Rate MoM APR,0.3%,1.20%,0.2%,0.3%
+05/11/22 12:30:00 PM,US,Core Inflation Rate MoM APR,0.6%,0.30%,0.40%,0.50%
+05/11/22 12:30:00 PM,US,CPI APR,289.109,287.504,288.654,
+05/12/22 12:30:00 PM,US,PPI MoM APR,0.5%,1.60%,0.5%,0.5%
+05/12/22 12:30:00 PM,US,Core PPI MoM APR,0.4%,1.20%,0.6%,0.6%
+05/12/22 12:30:00 PM,US,PPI YoY APR,11%,11.50%,10.7%,11%
+05/12/22 12:30:00 PM,US,Core PPI YoY APR,8.8%,9.60%,8.9%,9.1%
+05/13/22 12:30:00 PM,US,Import Prices MoM APR,0%,2.90%,0.6%,0.7%
+05/13/22 12:30:00 PM,US,Export Prices MoM APR,0.6%,4.10%,0.7%,1.1%
+05/13/22 12:30:00 PM,US,Export Prices YoY APR,18%,18.60%, ,20%
+05/13/22 12:30:00 PM,US,Import Prices YoY APR,12%,13.00%, ,14%
+05/13/22 02:00:00 PM,US,Michigan Inflation Expectations Prel MAY,5.4%,5.40%, ,5.7%
+05/13/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel MAY,3%,3.00%, ,3.1%
+05/26/22 12:30:00 PM,US,GDP Price Index QoQ 2nd Est Q1,8.1%,7.10%,8.00%,8.00%
+05/26/22 12:30:00 PM,US,Core PCE Prices QoQ 2nd Est Q1,5.1%,5.00%,5.2%,5.2%
+05/26/22 12:30:00 PM,US,PCE Prices QoQ 2nd Est Q1,7%,6.40%, ,7%
+05/27/22 12:30:00 PM,US,PCE Price Index MoM APR,0.2%,0.90%, ,0.3%
+05/27/22 12:30:00 PM,US,PCE Price Index YoY APR,6.3%,6.60%, ,6.4%
+05/27/22 12:30:00 PM,US,Core PCE Price Index MoM APR,0.3%,0.30%,0.3%,0.5%
+05/27/22 12:30:00 PM,US,Core PCE Price Index YoY APR,4.9%,5.20%,4.9%,5%
+05/27/22 02:00:00 PM,US,Michigan Inflation Expectations Final MAY,5.3%,5.40%, ,5.4%
+05/27/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final MAY,3%,3.00%, ,3%
+06/10/22 12:30:00 PM,US,Core Inflation Rate YoY MAY,6%,6.20%,5.9%,6%
+06/10/22 12:30:00 PM,US,Inflation Rate YoY MAY,8.6%,8.30%,8.3%,8.3%
+06/10/22 12:30:00 PM,US,Core Inflation Rate MoM MAY,0.6%,0.60%,0.50%,0.80%
+06/10/22 12:30:00 PM,US,Inflation Rate MoM MAY,1%,0.30%,0.7%,0.6%
+06/10/22 12:30:00 PM,US,CPI MAY,292.296,289.109,291.661,
+06/10/22 02:00:00 PM,US,Michigan Inflation Expectations Prel JUN,5.4%,5.30%, ,5.3%
+06/10/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel JUN,3.3%,3.00%, ,3%
+06/13/22 03:00:00 PM,US,Consumer Inflation Expectations MAY,6.6%,6.30%, ,6.2%
+06/14/22 12:30:00 PM,US,PPI MoM MAY,0.8%,0.40%,0.8%,0.7%
+06/14/22 12:30:00 PM,US,Core PPI MoM MAY,0.5%,0.20%,0.6%,0.5%
+06/14/22 12:30:00 PM,US,Core PPI YoY MAY,8.3%,8.60%,8.6%,8.8%
+06/14/22 12:30:00 PM,US,PPI YoY MAY,10.8%,10.90%,10.9%,11%
+06/15/22 12:30:00 PM,US,Import Prices MoM MAY,0.6%,0.40%,1.1%,1%
+06/15/22 12:30:00 PM,US,Export Prices MoM MAY,2.8%,0.80%,1.3%,1%
+06/15/22 12:30:00 PM,US,Import Prices YoY MAY,11.7%,12.00%, ,11.9%
+06/15/22 12:30:00 PM,US,Export Prices YoY MAY,18.9%,18.00%, ,18.3%
+06/24/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final JUN,3.1%,3.00%, ,3.3%
+06/24/22 02:00:00 PM,US,Michigan Inflation Expectations Final JUN,5.3%,5.30%, ,5.4%
+06/29/22 12:30:00 PM,US,GDP Price Index QoQ Final Q1,8.3%,7.10%,8.10%,8.10%
+06/29/22 12:30:00 PM,US,Core PCE Prices QoQ Final Q1,5.2%,5.00%,5.1%,5.1%
+06/29/22 12:30:00 PM,US,PCE Prices QoQ Final Q1,7.1%,6.40%,7%,7%
+06/30/22 12:30:00 PM,US,PCE Price Index YoY MAY,6.3%,6.30%, ,6.7%
+06/30/22 12:30:00 PM,US,PCE Price Index MoM MAY,0.6%,0.20%, ,0.9%
+06/30/22 12:30:00 PM,US,Core PCE Price Index YoY MAY,4.7%,4.90%,4.8%,4.8%
+06/30/22 12:30:00 PM,US,Core PCE Price Index MoM MAY,0.3%,0.30%,0.4%,0.3%
+07/12/22 03:00:00 PM,US,Consumer Inflation Expectations JUN,6.8%,6.60%, ,6.6%
+07/13/22 12:30:00 PM,US,Inflation Rate YoY JUN,9.1%,8.60%,8.8%,8.8%
+07/13/22 12:30:00 PM,US,Core Inflation Rate YoY JUN,5.9%,6.00%,5.7%,5.8%
+07/13/22 12:30:00 PM,US,Core Inflation Rate MoM JUN,0.7%,0.60%,0.60%,0.50%
+07/13/22 12:30:00 PM,US,Inflation Rate MoM JUN,1.3%,1.00%,1.1%,1.1%
+07/13/22 12:30:00 PM,US,CPI JUN,296.311,292.296,295.7,294.6
+07/14/22 12:30:00 PM,US,PPI MoM JUN,1.1%,0.90%,0.8%,0.9%
+07/14/22 12:30:00 PM,US,Core PPI MoM JUN,0.4%,0.60%,0.5%,0.4%
+07/14/22 12:30:00 PM,US,PPI YoY JUN,11.3%,10.90%,10.7%,10.9%
+07/14/22 12:30:00 PM,US,Core PPI YoY JUN,8.2%,8.30%,8.1%,8.3%
+07/15/22 12:30:00 PM,US,Import Prices MoM JUN,0.2%,0.50%,0.7%,0.8%
+07/15/22 12:30:00 PM,US,Export Prices MoM JUN,0.7%,2.90%,1.2%,1.1%
+07/15/22 12:30:00 PM,US,Import Prices YoY JUN,10.7%,11.60%, ,12.1%
+07/15/22 12:30:00 PM,US,Export Prices YoY JUN,18.2%,18.70%, ,19.6%
+07/15/22 02:00:00 PM,US,Michigan Inflation Expectations Prel JUL,5.2%,5.30%, ,5.3%
+07/15/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel JUL,2.8%,3.10%, ,3.2%
+07/28/22 12:30:00 PM,US,GDP Price Index QoQ Adv Q2,8.9%,8.30%,7.90%,7.50%
+07/28/22 12:30:00 PM,US,PCE Prices QoQ Adv Q2,7.1%,7.10%, ,6%
+07/28/22 12:30:00 PM,US,Core PCE Prices QoQ Adv Q2,4.4%,5.20%,4.5%,4.5%
+07/29/22 12:30:00 PM,US,PCE Price Index MoM JUN,1%,0.60%, ,0.9%
+07/29/22 12:30:00 PM,US,PCE Price Index YoY JUN,6.8%,6.30%, ,6.7%
+07/29/22 12:30:00 PM,US,Core PCE Price Index YoY JUN,4.8%,4.70%,4.7%,4.9%
+07/29/22 12:30:00 PM,US,Core PCE Price Index MoM JUN,0.6%,0.30%,0.5%,0.6%
+07/29/22 02:00:00 PM,US,Michigan Inflation Expectations Final JUL,5.2%,5.30%, ,5.2%
+07/29/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final JUL,2.9%,3.10%, ,2.8%
+08/08/22 03:00:00 PM,US,Consumer Inflation Expectations JUL,6.2%,6.80%, ,6.7%
+08/10/22 12:30:00 PM,US,Core Inflation Rate YoY JUL,5.9%,5.90%,6.1%,5.9%
+08/10/22 12:30:00 PM,US,Inflation Rate YoY JUL,8.5%,9.10%,8.7%,9.1%
+08/10/22 12:30:00 PM,US,Core Inflation Rate MoM JUL,0.3%,0.70%,0.50%,0.40%
+08/10/22 12:30:00 PM,US,Inflation Rate MoM JUL,0%,1.30%,0.2%,0.4%
+08/10/22 12:30:00 PM,US,CPI JUL,296.276,296.311,296.669,297.8
+08/11/22 12:30:00 PM,US,PPI MoM JUL,-0.5%,1.00%,0.2%,0.4%
+08/11/22 12:30:00 PM,US,Core PPI MoM JUL,0.2%,0.40%,0.4%,0.5%
+08/11/22 12:30:00 PM,US,Core PPI YoY JUL,7.6%,8.20%,7.6%,8.1%
+08/11/22 12:30:00 PM,US,PPI YoY JUL,9.8%,11.30%,10.4%,10.9%
+08/12/22 12:30:00 PM,US,Import Prices MoM JUL,-1.4%,0.30%,-1%,-1.2%
+08/12/22 12:30:00 PM,US,Export Prices MoM JUL,-3.3%,0.70%,-1.1%,0.1%
+08/12/22 12:30:00 PM,US,Export Prices YoY JUL,13.1%,18.20%, ,17.1%
+08/12/22 12:30:00 PM,US,Import Prices YoY JUL,8.8%,10.70%, ,8.8%
+08/12/22 02:00:00 PM,US,Michigan Inflation Expectations Prel AUG,5%,5.20%, ,5.1%
+08/12/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel AUG,3%,2.90%, ,2.8%
+08/25/22 12:30:00 PM,US,GDP Price Index QoQ 2nd Est Q2,9%,8.30%,8.70%,8.90%
+08/25/22 12:30:00 PM,US,PCE Prices QoQ 2nd Est Q2,7.1%,7.10%,7.1%,7.1%
+08/25/22 12:30:00 PM,US,Core PCE Prices QoQ 2nd Est Q2,4.4%,5.20%,4.4%,4.4%
+08/26/22 12:30:00 PM,US,PCE Price Index YoY JUL,6.3%,6.80%, ,6.2%
+08/26/22 12:30:00 PM,US,PCE Price Index MoM JUL,-0.1%,1.00%, ,-0.1%
+08/26/22 12:30:00 PM,US,Core PCE Price Index YoY JUL,4.6%,4.80%,4.7%,4.3%
+08/26/22 12:30:00 PM,US,Core PCE Price Index MoM JUL,0.1%,0.60%,0.3%,0.3%
+08/26/22 02:00:00 PM,US,Michigan Inflation Expectations Final AUG,4.8%,5.20%, ,5%
+08/26/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final AUG,2.9%,2.90%, ,3%
+09/12/22 03:00:00 PM,US,Consumer Inflation Expectations AUG,5.7%,6.20%, ,6.1%
+09/13/22 12:30:00 PM,US,Inflation Rate YoY AUG,8.3%,8.50%,8.1%,8.1%
+09/13/22 12:30:00 PM,US,Core Inflation Rate YoY AUG,6.3%,5.90%,6.1%,5.9%
+09/13/22 12:30:00 PM,US,Core Inflation Rate MoM AUG,0.6%,0.30%,0.30%,0.40%
+09/13/22 12:30:00 PM,US,Inflation Rate MoM AUG,0.1%,0.00%,-0.1%,-0.2%
+09/13/22 12:30:00 PM,US,CPI AUG,296.171,296.276,295.53,295.7
+09/14/22 12:30:00 PM,US,PPI MoM AUG,-0.1%,-0.40%,-0.1%,0.1%
+09/14/22 12:30:00 PM,US,Core PPI MoM AUG,0.4%,0.30%,0.3%,0.3%
+09/14/22 12:30:00 PM,US,Core PPI YoY AUG,7.3%,7.60%,7.1%,7.1%
+09/14/22 12:30:00 PM,US,PPI YoY AUG,8.7%,9.80%,8.8%,8.9%
+09/15/22 12:30:00 PM,US,Import Prices MoM AUG,-1%,-1.50%,-1.2%,-1.1%
+09/15/22 12:30:00 PM,US,Export Prices MoM AUG,-1.6%,-3.70%,-1.2%,-0.4%
+09/15/22 12:30:00 PM,US,Export Prices YoY AUG,10.8%,12.90%, ,14%
+09/15/22 12:30:00 PM,US,Import Prices YoY AUG,7.8%,8.80%, ,7%
+09/16/22 02:00:00 PM,US,Michigan Inflation Expectations Prel SEP,4.6%,4.80%, ,4.7%
+09/16/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel SEP,2.8%,2.90%, ,2.9%
+09/29/22 12:30:00 PM,US,GDP Price Index QoQ Final Q2,9.1%,8.30%,8.90%,9.00%
+09/29/22 12:30:00 PM,US,PCE Prices QoQ Final Q2,7.3%,7.50%, ,7.1%
+09/29/22 12:30:00 PM,US,Core PCE Prices QoQ Final Q2,4.7%,5.60%,4.4%,4.4%
+09/30/22 12:30:00 PM,US,PCE Price Index MoM AUG,0.3%,-0.10%, ,0.1%
+09/30/22 12:30:00 PM,US,PCE Price Index YoY AUG,6.2%,6.40%, ,6.2%
+09/30/22 12:30:00 PM,US,Core PCE Price Index YoY AUG,4.9%,4.70%,4.7%,4.7%
+09/30/22 12:30:00 PM,US,Core PCE Price Index MoM AUG,0.6%,0.00%,0.5%,0.4%
+09/30/22 02:00:00 PM,US,Michigan Inflation Expectations Final SEP,4.7%,4.80%, ,4.6%
+09/30/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final SEP,2.7%,2.90%, ,2.8%
+10/11/22 03:00:00 PM,US,Consumer Inflation Expectations SEP,5.4%,5.70%, ,5.5%
+10/12/22 12:30:00 PM,US,PPI MoM SEP,0.4%,-0.20%,0.2%,0%
+10/12/22 12:30:00 PM,US,Core PPI MoM SEP,0.3%,0.30%,0.3%,0.3%
+10/12/22 12:30:00 PM,US,Core PPI YoY SEP,7.2%,7.20%,7.3%,7.2%
+10/12/22 12:30:00 PM,US,PPI YoY SEP,8.5%,8.70%,8.4%,8.4%
+10/13/22 12:30:00 PM,US,Core Inflation Rate YoY SEP,6.6%,6.30%,6.5%,6.4%
+10/13/22 12:30:00 PM,US,Inflation Rate YoY SEP,8.2%,8.30%,8.1%,8.2%
+10/13/22 12:30:00 PM,US,Core Inflation Rate MoM SEP,0.6%,0.60%,0.50%,0.50%
+10/13/22 12:30:00 PM,US,Inflation Rate MoM SEP,0.4%,0.10%,0.2%,0.3%
+10/13/22 12:30:00 PM,US,CPI SEP,296.808,296.171,296.43,297.1
+10/14/22 12:30:00 PM,US,Import Prices MoM SEP,-1.2%,-1.10%,-1.1%,-1.3%
+10/14/22 12:30:00 PM,US,Export Prices MoM SEP,-0.8%,-1.70%,-1%,0.8%
+10/14/22 12:30:00 PM,US,Import Prices YoY SEP,6%,7.80%, ,6.1%
+10/14/22 12:30:00 PM,US,Export Prices YoY SEP,9.5%,10.70%, ,9.2%
+10/14/22 02:00:00 PM,US,Michigan Inflation Expectations Prel OCT,5.1%,4.70%, ,4.7%
+10/14/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel OCT,2.9%,2.70%, ,2.7%
+10/27/22 12:30:00 PM,US,GDP Price Index QoQ Adv Q3,4.1%,9.10%,5.30%,8.30%
+10/27/22 12:30:00 PM,US,Core PCE Prices QoQ Adv Q3,4.5%,4.70%,4.5%,4.5%
+10/27/22 12:30:00 PM,US,PCE Prices QoQ Adv Q3,4.2%,7.30%, ,10.5%
+10/28/22 12:30:00 PM,US,PCE Price Index YoY SEP,6.2%,6.20%, ,6.1%
+10/28/22 12:30:00 PM,US,PCE Price Index MoM SEP,0.3%,0.30%, ,0.2%
+10/28/22 12:30:00 PM,US,Core PCE Price Index MoM SEP,0.5%,0.50%,0.5%,0.4%
+10/28/22 12:30:00 PM,US,Core PCE Price Index YoY SEP,5.1%,4.90%,5.2%,5%
+10/28/22 02:00:00 PM,US,Michigan Inflation Expectations Final OCT,5%,4.70%, ,5.1%
+10/28/22 02:00:00 PM,US,Michigan 5 Year Inflation Expectations Final OCT,2.9%,2.70%, ,2.9%
+11/10/22 01:30:00 PM,US,Inflation Rate YoY OCT,7.7%,8.20%,8%,8.1%
+11/10/22 01:30:00 PM,US,Core Inflation Rate YoY OCT,6.3%,6.60%,6.5%,6.7%
+11/10/22 01:30:00 PM,US,Inflation Rate MoM OCT,0.4%,0.40%,0.6%,0.5%
+11/10/22 01:30:00 PM,US,Core Inflation Rate MoM OCT,0.3%,0.60%,0.50%,0.70%
+11/10/22 01:30:00 PM,US,CPI OCT,298.012,296.808,298.583,299
+11/11/22 03:00:00 PM,US,Michigan Inflation Expectations Prel NOV,5.1%,5.00%, ,5.1%
+11/11/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel NOV,3%,2.90%, ,2.9%
+11/14/22 04:00:00 PM,US,Consumer Inflation Expectations OCT,5.9%,5.40%, ,5.3%
+11/15/22 01:30:00 PM,US,PPI MoM OCT,0.2%,0.20%,0.4%,0.3%
+11/15/22 01:30:00 PM,US,Core PPI MoM OCT,0%,0.20%,0.3%,0.3%
+11/15/22 01:30:00 PM,US,PPI YoY OCT,8%,8.40%,8.3%,8.2%
+11/15/22 01:30:00 PM,US,Core PPI YoY OCT,6.7%,7.10%,7.2%,7.1%
+11/16/22 01:30:00 PM,US,Export Prices MoM OCT,-0.3%,-1.50%,-0.4%,-0.2%
+11/16/22 01:30:00 PM,US,Import Prices MoM OCT,-0.2%,-1.10%,-0.4%,-0.4%
+11/16/22 01:30:00 PM,US,Export Prices YoY OCT,6.9%,9.20%, ,7.3%
+11/16/22 01:30:00 PM,US,Import Prices YoY OCT,4.2%,6.00%, ,4%
+11/23/22 03:00:00 PM,US,Michigan Inflation Expectations Final NOV,4.9%,5.00%, ,5.1%
+11/23/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final NOV,3%,2.90%, ,3%
+11/30/22 01:30:00 PM,US,GDP Price Index QoQ 2nd Est Q3,4.3%,9.00%,4.10%,4.10%
+11/30/22 01:30:00 PM,US,Core PCE Prices QoQ 2nd Est Q3,4.6%,4.70%,4.5%,4.5%
+11/30/22 01:30:00 PM,US,PCE Prices QoQ 2nd Est Q3,4.3%,7.30%, ,4.2%
+12/01/22 01:30:00 PM,US,PCE Price Index MoM OCT,0.3%,0.30%, ,0.3%
+12/01/22 01:30:00 PM,US,PCE Price Index YoY OCT,6%,6.30%, ,5.9%
+12/01/22 01:30:00 PM,US,Core PCE Price Index MoM OCT,0.2%,0.50%,0.3%,0.5%
+12/01/22 01:30:00 PM,US,Core PCE Price Index YoY OCT,5%,5.20%,5%,4.9%
+12/09/22 01:30:00 PM,US,PPI MoM NOV,0.3%,0.30%,0.2%,0.3%
+12/09/22 01:30:00 PM,US,Core PPI MoM NOV,0.4%,0.10%,0.2%,0.1%
+12/09/22 01:30:00 PM,US,Core PPI YoY NOV,6.2%,6.70%,5.9%,6.1%
+12/09/22 01:30:00 PM,US,PPI YoY NOV,7.4%,8.10%,7.2%,7.3%
+12/09/22 03:00:00 PM,US,Michigan Inflation Expectations Prel DEC,4.6%,4.90%, ,4.8%
+12/09/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel DEC,3%,3.00%, ,2.9%
+12/12/22 04:00:00 PM,US,Consumer Inflation Expectations NOV,5.2%,5.90%, ,5.8%
+12/13/22 01:30:00 PM,US,Core Inflation Rate YoY NOV,6%,6.30%,6.1%,6.2%
+12/13/22 01:30:00 PM,US,Inflation Rate YoY NOV,7.1%,7.70%,7.3%,7.6%
+12/13/22 01:30:00 PM,US,CPI NOV,297.711,298.012,298.045,299
+12/13/22 01:30:00 PM,US,Inflation Rate MoM NOV,0.1%,0.40%,0.3%,0.5%
+12/13/22 01:30:00 PM,US,Core Inflation Rate MoM NOV,0.2%,0.30%,0.30%,0.40%
+12/14/22 01:30:00 PM,US,Export Prices MoM NOV,-0.3%,-0.40%,-0.4%,-0.4%
+12/14/22 01:30:00 PM,US,Import Prices MoM NOV,-0.6%,-0.40%,-0.5%,-0.4%
+12/14/22 01:30:00 PM,US,Import Prices YoY NOV,2.7%,4.10%, ,3.9%
+12/14/22 01:30:00 PM,US,Export Prices YoY NOV,6.3%,7.40%, ,5.4%
+12/22/22 01:30:00 PM,US,GDP Price Index QoQ Final Q3,4.4%,9.00%,4.30%,4.30%
+12/22/22 01:30:00 PM,US,Core PCE Prices QoQ Final Q3,4.7%,4.70%,4.6%,4.6%
+12/22/22 01:30:00 PM,US,PCE Prices QoQ Final Q3,4.3%,7.30%, ,4.3%
+12/23/22 01:30:00 PM,US,PCE Price Index YoY NOV,5.5%,6.10%, ,5.5%
+12/23/22 01:30:00 PM,US,PCE Price Index MoM NOV,0.1%,0.40%, ,0.2%
+12/23/22 01:30:00 PM,US,Core PCE Price Index YoY NOV,4.7%,5.00%,4.7%,4.7%
+12/23/22 01:30:00 PM,US,Core PCE Price Index MoM NOV,0.2%,0.30%,0.2%,0.2%
+12/23/22 03:00:00 PM,US,Michigan Inflation Expectations Final DEC,4.4%,4.90%, ,4.6%
+12/23/22 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final DEC,2.9%,3.00%, ,3%
+01/09/23 04:00:00 PM,US,Consumer Inflation Expectations DEC,5%,5.20%, ,5.2%
+01/12/23 01:30:00 PM,US,Inflation Rate YoY DEC,6.5%,7.10%,6.5%,6.7%
+01/12/23 01:30:00 PM,US,Core Inflation Rate YoY DEC,5.7%,6.00%,5.7%,5.8%
+01/12/23 01:30:00 PM,US,Inflation Rate MoM DEC,-0.1%,0.10%,0%,-0.1%
+01/12/23 01:30:00 PM,US,Core Inflation Rate MoM DEC,0.3%,0.20%,0.30%,0.20%
+01/12/23 01:30:00 PM,US,CPI DEC,296.797,297.711,296.701,298
+01/13/23 01:30:00 PM,US,Import Prices MoM DEC,0.4%,-0.70%,-0.9%,-0.6%
+01/13/23 01:30:00 PM,US,Export Prices MoM DEC,-2.6%,-0.40%,-0.5%,-0.5%
+01/13/23 01:30:00 PM,US,Export Prices YoY DEC,5%,6.10%, ,5.6%
+01/13/23 01:30:00 PM,US,Import Prices YoY DEC,3.5%,2.70%, ,2.1%
+01/13/23 03:00:00 PM,US,Michigan Inflation Expectations Prel JAN,4%,4.40%, ,4.4%
+01/13/23 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel JAN,3%,2.90%, ,2.9%
+01/18/23 01:30:00 PM,US,PPI MoM DEC,-0.5%,0.20%,-0.1%,-0.1%
+01/18/23 01:30:00 PM,US,Core PPI MoM DEC,0.1%,0.20%,0.1%,0.2%
+01/18/23 01:30:00 PM,US,Core PPI YoY DEC,5.5%,6.20%,5.7%,5.9%
+01/18/23 01:30:00 PM,US,PPI YoY DEC,6.2%,7.30%,6.8%,6.9%
+01/26/23 01:30:00 PM,US,GDP Price Index QoQ Adv Q4,3.5%,4.40%,3.30%,3.10%
+01/26/23 01:30:00 PM,US,PCE Prices QoQ Adv Q4,3.2%,4.30%, ,3.1%
+01/26/23 01:30:00 PM,US,Core PCE Prices QoQ Adv Q4,3.9%,4.70%,4%,3.9%
+01/27/23 01:30:00 PM,US,Core PCE Price Index MoM DEC,0.3%,0.20%,0.3%,0.1%
+01/27/23 01:30:00 PM,US,PCE Price Index YoY DEC,5%,5.50%, ,5.1%
+01/27/23 01:30:00 PM,US,PCE Price Index MoM DEC,0.1%,0.10%, ,0.1%
+01/27/23 01:30:00 PM,US,Core PCE Price Index YoY DEC,4.4%,4.70%,4.4%,4.6%
+01/27/23 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Final JAN,2.9%,2.90%, ,3%
+01/27/23 03:00:00 PM,US,Michigan Inflation Expectations Final JAN,3.9%,4.40%, ,4%
+02/10/23 03:00:00 PM,US,Michigan 5 Year Inflation Expectations Prel FEB,2.9%,2.90%, ,2.8%
+02/10/23 03:00:00 PM,US,Michigan Inflation Expectations Prel FEB,4.2%,3.90%, ,3.8%
+02/13/23 04:00:00 PM,US,Consumer Inflation Expectations JAN,5%,5.00%, ,4.7%
+02/14/23 01:30:00 PM,US,Core Inflation Rate YoY JAN,5.6%,5.70%,5.5%,5.4%
+02/14/23 01:30:00 PM,US,Inflation Rate YoY JAN,6.4%,6.50%,6.2%,6.3%
+02/14/23 01:30:00 PM,US,Inflation Rate MoM JAN,0.5%,0.10%,0.5%,0.4%
+02/14/23 01:30:00 PM,US,CPI JAN,299.17,296.797,298.66,298
+02/14/23 01:30:00 PM,US,Core Inflation Rate MoM JAN,0.4%,0.40%,0.40%,0.30%
+02/16/23 01:30:00 PM,US,PPI MoM JAN,0.7%,-0.20%,0.4%,0.2%
+02/16/23 01:30:00 PM,US,Core PPI MoM JAN,0.5%,0.30%,0.3%,0.2%
+02/16/23 01:30:00 PM,US,Core PPI YoY JAN,5.4%,5.80%,4.9%,5.1%
+02/16/23 01:30:00 PM,US,PPI YoY JAN,6%,6.50%,5.4%,5.6%
+02/17/23 01:30:00 PM,US,Export Prices MoM JAN,0.8%,-3.20%,-0.2%,-1.2%
+02/17/23 01:30:00 PM,US,Import Prices MoM JAN,-0.2%,-0.10%,-0.2%,0.3%
+02/17/23 01:30:00 PM,US,Import Prices YoY JAN,0.8%,3.00%, ,1.8%
+02/17/23 01:30:00 PM,US,Export Prices YoY JAN,2.3%,4.30%, ,3%

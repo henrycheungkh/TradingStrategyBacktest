@@ -1,0 +1,1 @@
+%TradeAnalysis_mysql% -u %TradeAnalysis_DBUser% %1 < %2

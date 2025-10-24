@@ -1,0 +1,134 @@
+Trade Analysis Project Installation Guide
+
+
+1. Application to be installed
+Core
+- XAMPP
+  https://www.apachefriends.org/download.html
+- Python (usually by Anaconda)
+  https://www.anaconda.com/products/individual
+- Python Driver for MySQL
+  https://www.mysql.com/products/connector/
+- IB Python API
+  https://interactivebrokers.github.io/
+  https://stackoverflow.com/questions/48470613/adding-the-ibapi-library-to-pythonpath-module-in-spyder-python-3-6
+  to test
+    from ibapi.client import EClient
+
+Optional
+- Mega Upload (For file synchronisation, or else if you have concern, I can send you updated file from time to time)
+  https://mega.nz/
+  Login: henry.cheungkh@gmail.com
+  Password: Trade1Analysis2For3Real4
+- 7Zip
+  https://www.7-zip.org/download.html
+- Proton VPN (or any other VPN, for more stable Yahoo prices download)
+  https://protonvpn.com/download
+
+
+2. Python Package installation
+
+Core
+
+pip install pymysql
+pip install yfinance
+pip install yahoo_fin
+pip install yahoo_earnings_calendar
+pip install requests_html
+
+pip install tensorflow
+
+Optional
+
+pip install GoogleNews
+pip install newspaper3k
+
+- CUDA
+
+https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#installing-cuda-development-tools
+
+install Visual Studio
+
+pip install pycuda
+
+Probably more, but I cannot remember them all.  Let's first try to run, and if there is an error, let me know and we can see which one is missing.
+
+3. Folder synchronisation with / download from Mega Upload
+
+TradeAnalysis
+DBDumpZip
+
+4. Set Environment Variable
+
+- Add below python library paths to PATH
+
+D:\Anaconda3
+D:\Anaconda3\scripts
+D:\Anaconda3\Library\bin
+
+- Example of Powershell script for setting Environment Variable for Hong Kong local time zone, as below.  Paths should be changed accordingly
+
+[Environment]::SetEnvironmentVariable("binance_api", 'MxhM2bypVXV34tiHZhkCmc97qQUxGJPAbjbfw3oosyAepEHUJc0fzB18FSDrJhF7', 'User')
+[Environment]::SetEnvironmentVariable("binance_secret", 'SZyPBEXAxdkKYSMi5RgWFNiq5AzShTd55pZfpzmidYCdWUkBCHs5OeAoM8Dn3IMs', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_7zip", 'D:\Program Files\7-Zip\7z', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBDumpPath", 'D:\Shared\TAHistoricalData\DBDump\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBDumpZipPath", 'D:\Shared\TAHistoricalData\DBDump\DBDumpZip\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBDumpZipSuffix", 'Henry', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBHost", 'localhost', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBPort", '3306', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBPassword", 'None', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBUser", 'root', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DownloadFileBuffer", 'D:\Shared\TAHistoricalData\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DownloadFuturesFileBuffer", 'D:\Shared\TAHistoricalData\FuturesHistoricalDataBackup\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_LocalTimezone", 'Asia/Shanghai', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_mysql", 'D:\xampp\mysql\bin\mysql', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_mysqldump", 'D:\xampp\mysql\bin\mysqldump', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_ProjectPath", 'D:\PythonProjects\TradeAnalysis\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_PythonPath", 'D:\Anaconda3\python.exe', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_USGapperScanEndTime", '10:00', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_CCompilerPath", 'D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\bin\Hostx64\x64', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_CUDAThreadCount", '8192', 'User')
+
+
+--  Beast X25
+
+- Add below python library paths to PATH
+
+C:\Users\henry\anaconda3
+C:\Users\henry\anaconda3\scripts
+C:\Users\henry\anaconda3\Library\bin
+
+- Powershell script for setting Environment Variable for Hong Kong local time zone, as below.  Paths should be changed accordingly
+
+[Environment]::SetEnvironmentVariable("TradeAnalysis_7zip", 'C:\Program Files\7-Zip\7z', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBDumpPath", 'C:\TAHistoricalData\DBDump\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBDumpZipPath", 'C:\TAHistoricalData\DBDumpZip\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBDumpZipSuffix", 'Henry', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBHost", 'localhost', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBPort", '3306', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBPassword", 'None', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DBUser", 'root', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DownloadFileBuffer", 'C:\TAHistoricalData\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_DownloadFuturesFileBuffer", 'C:\TAHistoricalData\FuturesHistoricalDataBackup\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_LocalTimezone", 'Europe/London', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_mysql", 'C:\xampp\mysql\bin\mysql', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_mysqldump", 'C:\xampp\mysql\bin\mysqldump', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_ProjectPath", 'C:\PythonProjects\TradeAnalysis\', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_PythonPath", 'C:\Users\henry\anaconda3\python.exe', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_USGapperScanEndTime", '10:00', 'User')
+[Environment]::SetEnvironmentVariable("TradeAnalysis_CCompilerPath", 'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\bin\Hostx64\x64', 'User')
+
+
+
+
+5. Create Database
+
+CREATE DATABASE IF NOT EXISTS finance;
+CREATE DATABASE IF NOT EXISTS finance_fdata_fut_hist;
+CREATE DATABASE IF NOT EXISTS finance_fdata_price_1min;
+CREATE DATABASE IF NOT EXISTS finance_fdata_price_1min_fx;
+CREATE DATABASE IF NOT EXISTS finance_fdata_price_30min_ib;
+
+then create database structure and load data by "DBDump Restore for Installation.bat"
+
+

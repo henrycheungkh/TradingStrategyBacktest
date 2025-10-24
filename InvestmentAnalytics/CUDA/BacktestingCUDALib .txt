@@ -1,0 +1,355 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jul 29 14:15:19 2021
+
+@author: Henry Cheung
+"""
+
+import pycuda.driver as cuda
+import pycuda.autoinit
+from pycuda.compiler import SourceModule
+import math
+import pandas as pd
+import scipy.stats
+import InvestmentAnalytics.CUDA.CUDAPathSetting
+
+import numpy as np
+
+GPU_CORE_BLOCK_SIZE = 32*32
+
+# STANDARD_BACKTEST_RESULT_COLUMNS = ['number of trades', 'average return per trade', 'stdev of point return per trade', 'max drawdown', 'max drawup', 'win percentage', 'long ratio', 't-score']
+
+def CUDABacktestingRapidCalibrationSummary(long_short_flag_matrix, entry_price_matrix, exit_price_matrix, date_id_matrix, BacktestTradeCountLabel, TimeIDMapping, Scenario_IDMapping, RapidCalibrationTopScenarioSelectedCount, RapidCalibrationFrequencyTag):
+    STANDARD_BACKTEST_RESULT_COLUMNS = ['ticker id', 'calib trade obs count', 'number of trades', 'average return per trade', 'stdev of point return per trade', 'max drawdown', 'max drawup', 'win percentage', 'long ratio', 't-score']
+    BACKTEST_SUMMARY_COLUMN_COUNT = len(STANDARD_BACKTEST_RESULT_COLUMNS)
+    ErrorCode = 0
+    
+    BacktestPeriod = list(BacktestTradeCountLabel)
+    BacktestPeriod.remove(0)
+    BacktestPeriodArray = np.asarray(BacktestPeriod)
+    BacktestPeriodArray = BacktestPeriodArray.astype(np.int32)
+    
+    
+    print('BacktestTradeCountLabel in dict before cutting is')
+    print(BacktestTradeCountLabel)
+    BacktestTradeCountLabel = list(BacktestTradeCountLabel.keys())
+    print('BacktestTradeCountLabel in list before cutting is')
+    print(BacktestTradeCountLabel)
+    # BacktestTradeCountLabel = BacktestTradeCountLabel[1:len(BacktestTradeCountLabel)-1]
+    # del BacktestTradeCountLabel[0]
+    BacktestTradeCountLabel.remove(0)
+    print('BacktestTradeCountLabel after cutting is')
+    print(BacktestTradeCountLabel)
+    BacktestPeriodCount = len(BacktestTradeCountLabel)
+    scenario_size = len(long_short_flag_matrix)
+    trade_id_size = len(long_short_flag_matrix[0])
+    print('in CUDABacktestingRapidCalibrationSummary, TimdIDMapping is')
+    print(TimeIDMapping)
+    print('in CUDABacktestingRapidCalibrationSummary, Scenario_IDMapping is')
+    print(Scenario_IDMapping)
+    
+    date_id_list = TimeIDMapping[['date id']].drop_duplicates()
+    ticker_id_list = Scenario_IDMapping[['ticker id']].drop_duplicates()
+    
+    gpu_core_block_count = math.ceil(scenario_size/GPU_CORE_BLOCK_SIZE)
+    # pending_zeros_trade_id_columns = np.zeros((GPU_CORE_BLOCK_SIZE*gpu_core_block_count - scenario_size, trade_id_size))
+
+    # a = np.concatenate((long_short_flag_matrix, pending_zeros))
+    # b = np.concatenate((entry_price_matrix, pending_zeros))
+    # c = np.concatenate((exit_price_matrix, pending_zeros))
+    # d = np.concatenate((date_id_matrix, pending_zeros))
+    
+    e = np.zeros((BacktestPeriodCount * scenario_size, len(date_id_list)))
+
+
+    long_short_flag_matrix = long_short_flag_matrix.copy(order="C")
+    entry_price_matrix = entry_price_matrix.copy(order="C")
+    exit_price_matrix = exit_price_matrix.copy(order="C")
+    date_id_matrix = date_id_matrix.copy(order="C")
+
+    a_gpu = cuda.mem_alloc(long_short_flag_matrix.nbytes)
+    b_gpu = cuda.mem_alloc(entry_price_matrix.nbytes)
+    c_gpu = cuda.mem_alloc(exit_price_matrix.nbytes)
+    d_gpu = cuda.mem_alloc(date_id_matrix.nbytes)
+    e_gpu = cuda.mem_alloc(e.nbytes)
+    f_gpu = cuda.mem_alloc(BacktestPeriodArray.nbytes)
+    
+    cuda.memcpy_htod(a_gpu, long_short_flag_matrix)
+    cuda.memcpy_htod(b_gpu, entry_price_matrix)
+    cuda.memcpy_htod(c_gpu, exit_price_matrix)
+    cuda.memcpy_htod(d_gpu, date_id_matrix)
+    cuda.memcpy_htod(e_gpu, e)
+    cuda.memcpy_htod(f_gpu, BacktestPeriodArray))
+
+    mod = SourceModule("""
+      #include <cmath> 
+    
+        __global__ void backtest_rapid_calibration_sharpe_ratio(int trade_id_size, int GPU_CORE_BLOCK_SIZE, int gpu_core_block_count, int scenario_size, int backtest_period_count, int BACKTEST_SUMMARY_COLUMN_COUNT, int date_id_count, int ticker_id_count, int ErrorCode, float *long_short_flag, float *entry_price, float *exit_price, float *date_id, float *sharpe_ratio, int *trade_obs_count)
+        {
+          int trade_obs_count_index, scenario_index, next_date_id_to_scan, input_data_index, found_trade_id_count, trade_id_of_trade_before_date;
+          float mean, stdev;
+          for (int gpu_core_block_index = 0; gpu_core_block_index < gpu_core_block_count; gpu_core_block_index++) {
+            scenario_index = gpu_core_block_index * GPU_CORE_BLOCK_SIZE + threadIdx.y;
+            if (scenario_index < scenario_size) {
+            
+              for (int trade_obs_count_index = 0; trade_obs_count_index<backtest_period_count; trade_obs_count_index++) {
+                float pnl[trade_obs_count[trade_obs_count_index]];
+                next_date_id_to_scan = 0;
+                for (int date_id_index = 0; date_id_index < date_id_count; date_id_index++) {
+                  if (date_id_index >= next_date_id_to_scan) {
+
+                    for (int trade_id_index = trade_id_size-1; trade_id_index >= 0; trade_id_index--) {
+                      input_data_index = scenario_index * trade_id_size + trade_id_index;
+                      if (date_id[input_data_index] <  date_id_index) {
+                      trade_id_of_trade_before_date = trade_id_index;
+                        break;
+                      }
+                    }
+                    
+                      
+                    found_trade_id_count = 0;
+                    for (int obs_trade_id_index = trade_id_of_trade_before_date; obs_trade_id_index > 0  ; obs_trade_id_index-- ) {
+                      input_data_index = scenario_index * trade_id_size + obs_trade_id_index;
+                      if (long_short_flag[input_data_index] != 0) {
+                        pnl[found_trade_id_count] = long_short_flag[input_data_index] * (exit_price[input_data_index] - entry_price[input_data_index]);
+                        found_trade_id_count++;
+                        if (found_trade_id_count >= trade_obs_count[trade_obs_count_index]) {
+                          break;
+                        }
+                      }
+                    }
+
+                    mean = 0;
+                    stdev = 0;
+                    if (found_trade_id_count >= trade_obs_count[trade_obs_count_index]) {
+                      
+                      for (int i = 0; i<found_trade_id_count; i++) {
+                        mean = mean + pnl[i];
+                      }
+                      mean = mean / found_trade_id_count;
+                      for (int i = 0; i<found_trade_id_count; i++) {
+                        stdev = stdev + pow(pnl[i] - mean, 2);
+                      }
+                      stdev = pow(stdev / found_trade_id_count, 0.5);
+                      if (stdev == 0) {
+                        stdev = 100000;
+                      }
+                    }
+                    if (input_data_index < date_id_count) {
+                      if (date_id[input_data_index+1] > 0) {
+                        next_date_id_to_scan = date_id[input_data_index+1] + 1;
+                      }
+                    }
+                  }
+                  sharpe_ratio[(trade_obs_count_index * scenario_size + scenario_index) * date_id_count + date_id_index] = mean / stdev;
+                }
+              }
+              
+            }
+              
+          }
+        }
+      """)      
+    
+    func = mod.get_function("backtest_rapid_calibration_sharpe_ratio")
+    func(np.int32(trade_id_size), np.int32(GPU_CORE_BLOCK_SIZE), np.int32(gpu_core_block_count), np.int32(scenario_size), np.int32(BacktestPeriodCount), np.int32(BACKTEST_SUMMARY_COLUMN_COUNT), np.int32(len(date_id_list)), np.int32(len(ticker_id_list)), np.int32(ErrorCode), a_gpu, b_gpu, c_gpu, d_gpu, e_gpu, f_gpu, block=(1,GPU_CORE_BLOCK_SIZE,1))
+
+    Sharpe_Ratio = np.empty_like(e)
+    cuda.memcpy_dtoh(Sharpe_Ratio, e_gpu)
+
+    a_out = np.zeros((len(ticker_id_list) * BacktestPeriodCount, BACKTEST_SUMMARY_COLUMN_COUNT))
+    a_out_gpu = cuda.mem_alloc(a_out.nbytes)
+    cuda.memcpy_htod(a_out_gpu, a_out)
+
+    gpu_core_block_count = math.ceil(len(date_id_list)/GPU_CORE_BLOCK_SIZE)
+
+    mod2 = SourceModule("""
+      #include <cmath> 
+    
+        __global__ void backtest_rapid_calibration(int trade_id_size, int GPU_CORE_BLOCK_SIZE, int gpu_core_block_count, int scenario_size, int backtest_period_count, int BACKTEST_SUMMARY_COLUMN_COUNT, int date_id_count, int ticker_id_count, int ErrorCode, float *long_short_flag, float *entry_price, float *exit_price, float *date_id, float *sharpe_ratio, int *trade_obs_count, float *backtest_summary)
+        {
+          for (int gpu_core_block_index = 0; gpu_core_block_index < gpu_core_block_count; gpu_core_block_index++) {
+            date_index = gpu_core_block_index * GPU_CORE_BLOCK_SIZE + threadIdx.y;
+            if (date_index < date_id_count) {
+            }
+            
+          }
+        }
+      """)      
+
+    func = mod2.get_function("backtest_rapid_calibration")
+    func(np.int32(trade_id_size), np.int32(GPU_CORE_BLOCK_SIZE), np.int32(gpu_core_block_count), np.int32(scenario_size), np.int32(BacktestPeriodCount), np.int32(BACKTEST_SUMMARY_COLUMN_COUNT), np.int32(len(date_id_list)), np.int32(len(ticker_id_list)), np.int32(ErrorCode), a_gpu, b_gpu, c_gpu, d_gpu, e_gpu, f_gpu, a_out_gpu, block=(1,GPU_CORE_BLOCK_SIZE,1))
+
+    Backtest_summary = np.empty_like(a_out)
+    cuda.memcpy_dtoh(Backtest_summary, a_out_gpu)
+
+
+    return None
+
+def CUDABacktestingSummary(long_short_flag_matrix, entry_price_matrix, exit_price_matrix, BacktestTradeCountLabel, GeneratePnlMatrix = False):
+    
+# =IF(A2=0;"";A2*(H2-F2))
+# =IF(A2=0;"";(Q2-$Q$1)^2)    
+    
+    # BACKTEST_SUMMARY_COLUMN_COUNT = 8
+    STANDARD_BACKTEST_RESULT_COLUMNS = ['number of trades', 'average return per trade', 'stdev of point return per trade', 'max drawdown', 'max drawup', 'win percentage', 'long ratio', 't-score']
+    BACKTEST_SUMMARY_COLUMN_COUNT = len(STANDARD_BACKTEST_RESULT_COLUMNS)
+    ErrorCode = 0
+    
+    BacktestPeriodCount = len(BacktestTradeCountLabel)
+    BacktestPeriod = list(BacktestTradeCountLabel)
+    BacktestPeriodArray = np.asarray(BacktestPeriod)
+    
+    scenario_size = len(long_short_flag_matrix)
+    trade_id_size = len(long_short_flag_matrix[0])
+    print('in CUDABacktestingSummary, scenario_size = ' + str(scenario_size) + ' and trade_id_size = ' + str(trade_id_size))
+    print('long_short_flag_matrix is')
+    print(long_short_flag_matrix)
+    
+    BacktestPeriodArray[0] = trade_id_size
+    BacktestPeriodArray = BacktestPeriodArray.astype(np.int32)
+    
+    gpu_core_block_count = math.ceil(scenario_size/GPU_CORE_BLOCK_SIZE)
+    
+    # pending_zeros = np.zeros((GPU_CORE_BLOCK_SIZE*gpu_core_block_count - scenario_size, trade_id_size))
+    # a = np.concatenate((long_short_flag_matrix, pending_zeros))
+    # b = np.concatenate((entry_price_matrix, pending_zeros))
+    # c = np.concatenate((exit_price_matrix, pending_zeros))
+    
+    a = long_short_flag_matrix
+    b = entry_price_matrix
+    c = exit_price_matrix
+    
+    a = a.copy(order="C")
+    b = b.copy(order="C")
+    c = c.copy(order="C")
+    
+    a_out = np.zeros((scenario_size * BacktestPeriodCount, BACKTEST_SUMMARY_COLUMN_COUNT))
+    #number of trades, average return per trade, stdev of point return per trade, max drawdown, max drawup, win percentage, long ratio, t-score, p-value
+    if GeneratePnlMatrix:
+        b_out = np.zeros((scenario_size, trade_id_size))
+        generate_pnl_matrix_flag = 1
+    else:
+        b_out = np.zeros((1, trade_id_size))
+        generate_pnl_matrix_flag = 0
+
+
+    a = a.astype(np.float32)
+    b = b.astype(np.float32)
+    c = c.astype(np.float32)
+    a_out = a_out.astype(np.float32)
+    b_out = b_out.astype(np.float32)
+    
+    a_gpu = cuda.mem_alloc(a.nbytes)
+    b_gpu = cuda.mem_alloc(b.nbytes)
+    c_gpu = cuda.mem_alloc(c.nbytes)
+    d_gpu = cuda.mem_alloc(BacktestPeriodArray.nbytes)
+    a_out_gpu = cuda.mem_alloc(a_out.nbytes)
+    b_out_gpu = cuda.mem_alloc(b_out.nbytes)
+    
+    cuda.memcpy_htod(a_gpu, a)
+    cuda.memcpy_htod(b_gpu, b)
+    cuda.memcpy_htod(c_gpu, c)
+    cuda.memcpy_htod(d_gpu, BacktestPeriodArray)
+    cuda.memcpy_htod(a_out_gpu, a_out)
+    cuda.memcpy_htod(b_out_gpu, b_out)
+      
+    mod = SourceModule("""
+      #include <cmath> 
+    
+        __global__ void backtest_summary(int trade_id_size, int GPU_CORE_BLOCK_SIZE, int gpu_core_block_count, int scenario_size, int backtest_period_count, int BACKTEST_SUMMARY_COLUMN_COUNT, int generate_pnl_matrix_flag, int ErrorCode, float *long_short_flag, float *entry_price, float *exit_price, int *end_trade_id, float *backtest_summary, float *pnl_matrix)
+//    func(np.int32(trade_id_size), np.int32(GPU_CORE_BLOCK_SIZE), np.int32(gpu_core_block_count), np.int32(scenario_size), np.int32(BacktestPeriodCount), np.int32(BACKTEST_SUMMARY_COLUMN_COUNT), np.int32(generate_pnl_matrix_flag), np.int32(ErrorCode), a_gpu, b_gpu, c_gpu, d_gpu, a_out_gpu, b_out_gpu, block=(1,GPU_CORE_BLOCK_SIZE,1))
+        {
+          ErrorCode = 0;
+          int x, data_index_offset, backtest_summary_offset;
+          float point_pnl, prior_accumul_pnl_high, prior_accumul_pnl_low, accumul_pnl;
+
+            for (int k = 0; k < gpu_core_block_count; k++) {
+              x = k * GPU_CORE_BLOCK_SIZE + threadIdx.y;
+              if (x < scenario_size) {
+                for (int backtest_period_index = 0; backtest_period_index < backtest_period_count; backtest_period_index++) {
+                  backtest_summary_offset = (backtest_period_index * scenario_size + x) * BACKTEST_SUMMARY_COLUMN_COUNT;
+                  prior_accumul_pnl_high = 0;
+                  prior_accumul_pnl_low = 0;
+                  accumul_pnl = 0;
+                  for (int y = 0; y < end_trade_id[backtest_period_index]; y++) {
+                    data_index_offset = x * trade_id_size + y;
+                    if (abs(long_short_flag[data_index_offset]) != 0) {
+                      point_pnl = long_short_flag[data_index_offset] * (exit_price[data_index_offset] - entry_price[data_index_offset]);
+                      accumul_pnl = accumul_pnl + point_pnl;
+                      if (accumul_pnl > prior_accumul_pnl_high) {
+                        prior_accumul_pnl_high = accumul_pnl;
+                      }
+                      if (accumul_pnl - prior_accumul_pnl_high < backtest_summary[backtest_summary_offset + 3]) {
+                        backtest_summary[backtest_summary_offset + 3] = accumul_pnl - prior_accumul_pnl_high;
+                      }
+                      if (accumul_pnl < prior_accumul_pnl_low) {
+                        prior_accumul_pnl_low = accumul_pnl;
+                      }
+                      if (accumul_pnl - prior_accumul_pnl_low > backtest_summary[backtest_summary_offset + 4]) {
+                        backtest_summary[backtest_summary_offset + 4] = accumul_pnl - prior_accumul_pnl_low;
+                      }
+                      backtest_summary[backtest_summary_offset] = backtest_summary[backtest_summary_offset] + abs(long_short_flag[data_index_offset]);
+                      if (long_short_flag[data_index_offset] > 0) {
+                        backtest_summary[backtest_summary_offset + 6] = backtest_summary[backtest_summary_offset + 6] + long_short_flag[data_index_offset];
+                      }
+                      backtest_summary[backtest_summary_offset + 1] = backtest_summary[backtest_summary_offset + 1] + point_pnl;
+                      if (point_pnl > 0) {
+                        backtest_summary[backtest_summary_offset + 5] = backtest_summary[backtest_summary_offset + 5] + abs(long_short_flag[data_index_offset]);
+                      }
+                    }
+                  }
+                  backtest_summary[backtest_summary_offset + 1] = backtest_summary[backtest_summary_offset + 1] / backtest_summary[backtest_summary_offset];
+                  backtest_summary[backtest_summary_offset + 5] = backtest_summary[backtest_summary_offset + 5] / backtest_summary[backtest_summary_offset];
+                  backtest_summary[backtest_summary_offset + 6] = backtest_summary[backtest_summary_offset + 6] / backtest_summary[backtest_summary_offset];
+
+                  backtest_summary[backtest_summary_offset + 2] = 0;
+                  backtest_summary[backtest_summary_offset + 7] = 0;
+                  backtest_summary[backtest_summary_offset + 7] = end_trade_id[backtest_period_index];
+                  for (int y = 0; y < end_trade_id[backtest_period_index]; y++) {
+                    data_index_offset = x * trade_id_size + y;
+                    if (abs(long_short_flag[data_index_offset]) != 0) {
+                      backtest_summary[backtest_summary_offset + 2] = backtest_summary[backtest_summary_offset + 2] + pow((long_short_flag[data_index_offset] * (exit_price[data_index_offset] - entry_price[data_index_offset])) - backtest_summary[backtest_summary_offset + 1], 2);
+                    }
+                  }
+                  if(backtest_summary[backtest_summary_offset] > 0) {
+                    backtest_summary[backtest_summary_offset + 2] = pow(backtest_summary[backtest_summary_offset + 2] / backtest_summary[backtest_summary_offset], 0.5);
+                  }
+
+                  if (backtest_summary[backtest_summary_offset] >= 3) {
+                    backtest_summary[backtest_summary_offset + 7] = backtest_summary[backtest_summary_offset + 1] * pow(backtest_summary[backtest_summary_offset], 0.5) / backtest_summary[backtest_summary_offset + 2];
+                  }
+                  //number of trades, average return per trade, stdev of point return per trade, max drawdown, max drawup, win percentage, long ratio, t-score
+                }
+              }
+            }
+        }
+      """)      
+    
+    func = mod.get_function("backtest_summary")
+    func(np.int32(trade_id_size), np.int32(GPU_CORE_BLOCK_SIZE), np.int32(gpu_core_block_count), np.int32(scenario_size), np.int32(BacktestPeriodCount), np.int32(BACKTEST_SUMMARY_COLUMN_COUNT), np.int32(generate_pnl_matrix_flag), np.int32(ErrorCode), a_gpu, b_gpu, c_gpu, d_gpu, a_out_gpu, b_out_gpu, block=(1,GPU_CORE_BLOCK_SIZE,1))
+    
+    backtest_summary = np.empty_like(a_out)
+    cuda.memcpy_dtoh(backtest_summary, a_out_gpu)
+    
+    
+    backtest_summary_df = pd.DataFrame()
+    
+    for BacktestPeriodIndex in range(BacktestPeriodCount):
+        backtest_summary_subset = backtest_summary[BacktestPeriodIndex*scenario_size:(BacktestPeriodIndex+1)*scenario_size]
+        backtest_summary_subset_df = pd.DataFrame(data=backtest_summary_subset, columns=STANDARD_BACKTEST_RESULT_COLUMNS)
+        backtest_summary_subset_df['p-value'] = scipy.stats.t.sf(abs(backtest_summary_subset_df['t-score']), df=backtest_summary_subset_df['number of trades'] - 1)
+        backtest_summary_subset_df['p-value-z-score'] = scipy.stats.norm.sf(abs(backtest_summary_subset_df['average return per trade']/backtest_summary_subset_df['stdev of point return per trade']))
+        backtest_summary_subset_df['scenario id'] = backtest_summary_subset_df.index
+        backtest_summary_subset_df['backtest period'] = BacktestTradeCountLabel[BacktestPeriod[BacktestPeriodIndex]]
+        backtest_summary_df = backtest_summary_df.append(backtest_summary_subset_df)
+#number of trades, average return per trade, stdev of point return per trade, max drawdown, win percentage, long ratio
+
+    if GeneratePnlMatrix:
+        pnl_matrix = np.empty_like(b_out)
+        cuda.memcpy_dtoh(pnl_matrix, b_out_gpu)
+    else:
+        pnl_matrix = None
+    
+    return backtest_summary_df, pnl_matrix
+

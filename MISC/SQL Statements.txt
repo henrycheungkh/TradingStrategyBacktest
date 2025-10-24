@@ -1,0 +1,33 @@
+-- Check for ticker without price recently
+
+SELECT ticker, max(Datetime) AS MAX_Datetime FROM `fdata_price_dayend` GROUP BY ticker HAVING max(Datetime) < '2021-01-15' ORDER BY max(Datetime) asc
+
+-- Check XLON Tickers to Fill HL
+
+SELECT AA.* FROM
+(SELECT A.* FROM (SELECT * FROM `fdata_tickers` WHERE Market = 'XLON') A LEFT JOIN (SELECT * FROM `fdata_tickers_altid` WHERE AltID_Type = 'HL') B ON A.`Ticker` = B.`Ticker` WHERE B.`Ticker` IS NULL) AA INNER JOIN (SELECT * FROM `fdata_price_dayend` WHERE Datetime = '2021-03-26') BB ON AA.Ticker = BB.ticker
+
+
+SELECT AA.* FROM
+(SELECT A.* FROM (SELECT * FROM `fdata_tickers` WHERE Market = 'XLON') A LEFT JOIN (SELECT * FROM `fdata_tickers_altid` WHERE AltID_Type = 'HL') B ON A.`Ticker` = B.`Ticker` WHERE B.`Ticker` IS NULL) AA INNER JOIN (SELECT Ticker FROM `fdata_price_1min` WHERE Datetime > '2021-04-12' GROUP BY Ticker) BB ON AA.Ticker = BB.ticker
+
+
+-- Check HL News for broker round up
+
+SELECT *, length(News) FROM `fdata_news` WHERE `Headline` LIKE '%broker round-up%' order by length(News) DESC
+
+
+
+--- Others
+
+SELECT AA.ticker, AA.`Adj Close` FROM (SELECT ticker, `Adj Close` from (SELECT A.* FROM `fdata_price_dayend` A INNER JOIN `fdata_tickers` B ON A.ticker = B.Ticker WHERE B.Market = 'XUSA' AND A.Datetime > '2021-03-25') AA GROUP BY ticker) AA INNER JOIN (SELECT ZB.Ticker, ZB.Value FROM (SELECT Ticker, Max(CaptureDate) AS MAX_CaptureDate FROM `fdata_yahoo_fundamental` WHERE Name = 'marketCap' GROUP BY Ticker) ZA INNER JOIN (SELECT * FROM `fdata_yahoo_fundamental` WHERE Name = 'marketCap') ZB ON ZA.Ticker = ZB.Ticker and ZA.MAX_CaptureDate = ZB.CaptureDate) BB ON AA.ticker = BB.Ticker WHERE BB.Value > 1000000000
+
+
+
+SELECT AA.ticker FROM (SELECT ticker, `Adj Close` from (SELECT A.* FROM `fdata_price_dayend` A INNER JOIN `fdata_tickers` B ON A.ticker = B.Ticker WHERE B.Market = 'XUSA' AND A.Datetime > '2021-03-25') AA GROUP BY ticker) AA LEFT JOIN (SELECT ZB.Ticker, ZB.Value FROM (SELECT Ticker, Max(CaptureDate) AS MAX_CaptureDate FROM `fdata_yahoo_fundamental` WHERE Name = 'marketCap' GROUP BY Ticker) ZA INNER JOIN (SELECT * FROM `fdata_yahoo_fundamental` WHERE Name = 'marketCap') ZB ON ZA.Ticker = ZB.Ticker and ZA.MAX_CaptureDate = ZB.CaptureDate) BB ON AA.ticker = BB.Ticker WHERE BB.Value IS NULL
+
+
+SELECT ticker, `Adj Close` from (SELECT A.* FROM `fdata_price_dayend` A LEFT JOIN `fdata_tickers` B ON A.ticker = B.Ticker WHERE B.Market = 'XUSA' AND A.Datetime = '2021-03-25') AA GROUP BY ticker
+
+
+SELECT A.Ticker FROM (SELECT Ticker FROM `fdata_yahoo_fundamental` GROUP BY Ticker) A INNER JOIN (SELECT * FROM `fdata_tickers` WHERE Market = 'XUSA') B ON A.Ticker = B.Ticker

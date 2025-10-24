@@ -1,0 +1,20 @@
+//@version=2
+strategy ("MA Crossover Strategy", overlay = true)
+start = timestamp(2020,1,1,0,0)
+end = timestamp(2021,12,17,0,0)
+ema1 = ema(close, 20)
+ema2 = ema(close, 50)
+plot (ema1, title = "EMA20", color = blue)
+plot (ema2, title = "EMA50", color = green)
+
+//strategy
+LongEntry = crossover (ema1, ema2)
+LongExit = crossover (ema2, ema1)
+ShortEntry = crossover (ema2, ema1)
+ShortExit = crossover (ema1, ema2)
+
+if time >= start and time < end
+    strategy.entry ("Long", strategy.long, 1, when = LongEntry)
+    strategy.close ("Long", when = LongExit)
+    strategy.entry ("Short", strategy.short, 1, when = ShortEntry)
+    strategy.close ("Short", when = ShortExit)

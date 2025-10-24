@@ -1,0 +1,9 @@
+Futures
+10 sec  Done
+1 min  Done
+5 min  Done
+
+Stock
+1 min  Done
+30 min  Done
+day end   Done

@@ -1,0 +1,3 @@
+SELECT A.* FROM
+(SELECT ticker, expiry, tDateTime, vol FROM `fdata_fut_hist` WHERE timeframe = '1 min' AND DataType = 'TRADES' AND DATE(tDateTime) > '2021-11-01') A INNER JOIN 
+(SELECT ticker, expiry, DATE(tDateTime) AS MaxVolDate, MAX(vol) AS MaxVol FROM `fdata_fut_hist` WHERE timeframe = '1 min' AND DataType = 'TRADES' AND DATE(tDateTime) > '2021-11-01' AND TIME(tDateTime) <= '12:00:00' GROUP BY ticker, expiry, DATE(tDateTime)) B ON A.ticker = B.ticker AND A.expiry = B.expiry AND A.vol = B.MaxVol AND DATE(A.tDateTime) = B.MaxVolDate WHERE A.vol > 100

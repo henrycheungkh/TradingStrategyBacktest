@@ -1,0 +1,174 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Jun 22 09:29:30 2024
+
+@author: Henry Cheung
+"""
+
+import pandas as pd
+import datetime
+pd.set_option('display.max_columns', None)
+
+#from google.colab import drive
+#drive.mount('/content/drive')
+
+price_tag = ['open','high','low','close']
+
+# ticker = 'NQ'
+ticker = 'CL'
+InputFolder = 'G:\Temp\\'
+OutputFolder = 'G:\Temp\\'
+LookBackPeriod = 5
+MinVertexMovementThresholdDict = {'GC':12, 'NQ':120, 'CL':0.48}
+MinVertexMovementThreshold = MinVertexMovementThresholdDict[ticker]
+MaxNumberOfVertex = 10
+
+# FuturesData = pd.read_csv(r'/content/drive/My Drive/prices_NQ_1 min_20230601_20240630_0700-1600.csv')
+FuturesData = pd.read_csv(InputFolder + r'prices_' + ticker + '_1 min_20230601_20240630_0700-1600.csv')
+FuturesData = FuturesData[(FuturesData['TimeInStandardUnit'] >= (9*60+30)) & (FuturesData['TimeInStandardUnit'] <= (16*60))].reset_index(drop=True) 
+
+FuturesData.drop('date id', axis=1, inplace=True)
+
+#print(FuturesData)
+
+DateList = FuturesData[['Date']].drop_duplicates().sort_values(by=['Date'], ascending=False).reset_index(drop=True)
+DateList['date id'] = DateList.index
+
+FuturesData = FuturesData.merge(DateList, how='inner', on='Date')
+
+#Expiries = FuturesData[['date id','Date','expiry']].drop_duplicates()
+#print(Expiries)
+#Expiries.to_csv(r'/content/drive/My Drive/NQ_Expiries.csv')
+#print('After Expiries.to_csv')
+
+df_KL = pd.DataFrame(columns=['ticker', 'date id', 'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + '-DateID',
+                             'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold),
+                             'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + 'Layer',
+                             'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + 'DayBack'])
+
+date_by_date_id = FuturesData[['date id', 'Date']].drop_duplicates()
+
+for date_id in range(FuturesData['date id'].max()):
+#for date_id in range(1):
+#for date_id in range(67):
+# for date_id in range(66,67):
+# for date_id in range(240,FuturesData['date id'].max()):
+
+    if date_id % 10 == 0:
+        df_KL = df_KL.merge(date_by_date_id, how='left', on='date id')
+        if len(df_KL) > 0:
+            df_KL.to_csv(OutputFolder + ticker + r'_KeyLevel_WithExpiryAdj_' + 'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + '_batch' + str(date_id) + '.csv')
+        df_KL.drop(['Date'], axis=1, inplace=True)
+        # df_KL = pd.DataFrame(columns=['ticker', 'date id', 'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + '-DateID',
+        #                      'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold),
+        #                      'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + 'Layer',
+        #                      'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + 'DayBack'])
+
+
+    historical_date_id_range = [date_id+1, date_id+LookBackPeriod]
+    df_lookbackdata = FuturesData[(FuturesData['date id'] >= historical_date_id_range[0]) & (FuturesData['date id'] <= historical_date_id_range[1])].copy()
+
+    df_fulllookbackdata = FuturesData[(FuturesData['date id'] >= historical_date_id_range[0]-1) & (FuturesData['date id'] <= historical_date_id_range[1])]
+    df_fulllookbackdata_expires = df_fulllookbackdata[['expiry']].drop_duplicates()
+    if len(df_fulllookbackdata_expires) > 1:
+
+      df_SpotDayData = FuturesData[(FuturesData['date id'] == historical_date_id_range[0])]
+      df_SpotDayData['ExpiryAdj'] = df_SpotDayData['close'] - df_SpotDayData['close_adj']
+      SpotDayExpiryAdj = df_SpotDayData['ExpiryAdj'].mean()
+      SpotDayExpiry = df_SpotDayData.iloc[0]['expiry']
+      print('ticker is ' + str(ticker) + ' and date_id is ' + str(date_id) + ' and SpotDayExpiryAdj is ' + str(SpotDayExpiryAdj))
+      df_lookbackdata1 = df_lookbackdata[df_lookbackdata['expiry'] == SpotDayExpiry]
+      df_lookbackdata2 = df_lookbackdata[df_lookbackdata['expiry'] != SpotDayExpiry]
+      df_lookbackdata2['close'] = df_lookbackdata2['close_adj'] + SpotDayExpiryAdj
+      df_lookbackdata2['open'] = df_lookbackdata2['open_adj'] + SpotDayExpiryAdj
+      df_lookbackdata2['high'] = df_lookbackdata2['high_adj'] + SpotDayExpiryAdj
+      df_lookbackdata2['low'] = df_lookbackdata2['low_adj'] + SpotDayExpiryAdj
+      df_lookbackdata = pd.concat([df_lookbackdata1,df_lookbackdata2])
+
+    df_lookbackdata = df_lookbackdata.sort_values(by=['tDateTime']).reset_index(drop=True)
+
+
+    max_index = df_lookbackdata['high'].idxmax()
+    min_index = df_lookbackdata['low'].idxmin()
+    look_back_period_vertex_layer = [0,1,1,0]
+    if max_index < min_index:
+        look_back_period_vertex_index = [0, max_index, min_index, len(df_lookbackdata)-1]
+        look_back_period_vertex_price_tag = [0,1,2,3]
+        look_back_period_vertex_day_back = [LookBackPeriod,df_lookbackdata.iloc[max_index]['date id'] - date_id,df_lookbackdata.iloc[min_index]['date id'] - date_id,1]
+    else:
+        look_back_period_vertex_index = [0, min_index, max_index, len(df_lookbackdata)-1]
+        look_back_period_vertex_price_tag = [0,2,1,3]
+        look_back_period_vertex_day_back = [LookBackPeriod,df_lookbackdata.iloc[min_index]['date id'] - date_id,df_lookbackdata.iloc[max_index]['date id'] - date_id,1]
+
+    df_lookbackdata['look back index'] = df_lookbackdata.index
+
+    df_lookbackdata_section = df_lookbackdata.iloc[look_back_period_vertex_index[0]+1:look_back_period_vertex_index[1]]
+#   print(df_Lookbackdata_section)
+
+    LayerCount = 2
+
+    while len(look_back_period_vertex_index) - 2 < MaxNumberOfVertex:
+        MaxMovement = 0
+        MaxMovementStartIndex = -1
+        MaxMovementEndIndex = -1
+        MaxMovementSectionlndex = -1
+
+        for section_index in range(len(look_back_period_vertex_index)-1):
+           if (look_back_period_vertex_price_tag[section_index] == 2) or (look_back_period_vertex_price_tag[section_index+1] == 1):
+               Section_Dir = 1
+               Section_Start_Tag = 1
+               Section_End_Tag = 2
+           else:
+               Section_Dir = -1
+               Section_Start_Tag = 2
+               Section_End_Tag = 1
+           for section_scan_start_index in range(look_back_period_vertex_index[section_index]+1,look_back_period_vertex_index[section_index+1]):
+               if section_scan_start_index % 800 == 0:
+                   print('ticker is ' + str(ticker) + ' and date_id is ' + str(date_id) + ', LayerCount is ' + str(LayerCount) + ', section_scan_start_index is ' + str(section_scan_start_index) + ' at ' + str(datetime.datetime.now()))
+               for section_scan_end_index in range(section_scan_start_index,look_back_period_vertex_index[section_index+1]):
+                   SectionMovement = -1 * Section_Dir * \
+                   (df_lookbackdata.iloc[section_scan_end_index][price_tag[Section_End_Tag]] - df_lookbackdata.iloc[section_scan_start_index][price_tag[Section_Start_Tag]])
+                   if (SectionMovement > MaxMovement) and (SectionMovement > MinVertexMovementThreshold):
+                       MaxMovement = SectionMovement
+                       MaxMovementStartIndex = section_scan_start_index
+                       MaxMovementEndIndex = section_scan_end_index
+                       MaxMovementSectionIndex = section_index
+
+        if MaxMovement <= 0:
+           break
+
+        look_back_period_vertex_index.insert(MaxMovementSectionIndex+1, MaxMovementEndIndex)
+        look_back_period_vertex_index.insert(MaxMovementSectionIndex+1, MaxMovementStartIndex)
+        look_back_period_vertex_layer.insert(MaxMovementSectionIndex+1, LayerCount)
+        look_back_period_vertex_layer.insert(MaxMovementSectionIndex+1, LayerCount)
+        LayerCount = LayerCount + 1
+
+        look_back_period_vertex_day_back.insert(MaxMovementSectionIndex+1, df_lookbackdata.iloc[MaxMovementEndIndex]['date id'] - date_id)
+        look_back_period_vertex_day_back.insert(MaxMovementSectionIndex+1, df_lookbackdata.iloc[MaxMovementStartIndex]['date id'] - date_id)
+
+        if (look_back_period_vertex_price_tag[MaxMovementSectionIndex] == 2) or (look_back_period_vertex_price_tag[MaxMovementSectionIndex+1] == 1):
+           look_back_period_vertex_price_tag.insert(MaxMovementSectionIndex+1, 2)
+           look_back_period_vertex_price_tag.insert(MaxMovementSectionIndex+1, 1)
+        else:
+           look_back_period_vertex_price_tag.insert(MaxMovementSectionIndex+1, 1)
+           look_back_period_vertex_price_tag.insert(MaxMovementSectionIndex+1, 2)
+        # print(Look_bach_period_vertex_price_tag)
+
+    KL = []
+    for i in range(len(look_back_period_vertex_index)):
+        KL.append(df_lookbackdata.iloc[look_back_period_vertex_index[i]][price_tag[look_back_period_vertex_price_tag[i]]])
+
+    df = pd.DataFrame(columns=['ticker', 'date id', 'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + '-DateID',
+                              'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold),
+                              'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + 'Layer',
+                              'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + 'DayBack'])
+    for i in range(len(KL)):
+        df.loc[0] = [ticker, date_id, df_lookbackdata.iloc[look_back_period_vertex_index[i]]['date id'], KL[i], look_back_period_vertex_layer[i],look_back_period_vertex_day_back[i]]
+        df_KL = pd.concat([df_KL,df],ignore_index=True)
+
+df_KL = df_KL.merge(date_by_date_id, how='left', on='date id')
+# print(df_KL)
+# df_KL_Sorted = df_KL.sort_values(by=['ticker', 'date id', 'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold)], inplace=False)
+# print(df_KL_Sorted)
+if len(df_KL) > 0:
+    df_KL.to_csv(OutputFolder + ticker + r'_KeyLevel_WithExpiryAdj_' + 'KL-VT-PD-LB' + str(LookBackPeriod) + '-MinMove' + str(MinVertexMovementThreshold) + '_batch_full.csv')
