@@ -23,7 +23,7 @@ $envVars = @{
     "TradeAnalysis_mysql"                      = "C:\Program Files\MySQL\MySQL Server 8.4\bin\mysql"
     "TradeAnalysis_mysqldump"                  = "C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqldump"
     "TradeAnalysis_ProjectPath"                = "C:\Projects\TradingStrategyBacktest\"
-    "TradeAnalysis_PythonPath"                 = "C:\ProgramData\Anaconda3\python.exe"
+    "TradeAnalysis_PythonPath"                 = "C:\Users\henry\anaconda3\python.exe"
     "TradeAnalysis_USGapperScanEndTime"        = "10:00"
 }
 
