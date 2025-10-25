@@ -2,7 +2,7 @@ title Daily IB Download
 SET PYTHONPATH=%TradeAnalysis_ProjectPath%
 set mydate=%date:~10,4%%date:~4,2%%date:~7,2%
 
-if "%mydate%"=="20251017" (
+if "%mydate%"=="20251018" (
 
 "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadFuturesFromIB.py" "1 min" "2 D" DirectUpload -1 YM 20251014
   set mydate="20251015"
@@ -15,7 +15,7 @@ if "%mydate%"=="20251017" (
 "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadFuturesFromIB.py" "5 secs" "2 D" DirectUpload -1 2YY %mydate%
 "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadFuturesFromIB.py" "5 secs" "2 D" DirectUpload -1 10Y %mydate%
 "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadFuturesFromIB.py" "5 secs" "2 D" DirectUpload -1 CL %mydate%
-  set mydate="20251017"
+  set mydate="20251018"
 
 )  
 
