@@ -67,7 +67,7 @@ if __name__ == "__main__":
                             with engine.connect() as conn:
                                 # result = conn.execute(statement)
                                 conn.execute(statement)
- #                               conn.commit()
+                                conn.commit()
                                 conn.close()
                             
                             # print('sql executed')

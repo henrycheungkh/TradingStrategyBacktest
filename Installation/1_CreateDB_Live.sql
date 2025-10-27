@@ -22,6 +22,10 @@ SET time_zone = "+00:00";
 
 COMMIT;
 
+# ALTER TABLE finance_fdata_master.pending_db_upload_command
+# ADD COLUMN DBSuffix VARCHAR(10) DEFAULT '';
+
+
 CREATE TABLE IF NOT EXISTS finance_fdata_fut_hist.`fdata_fut_hist` (
   `ticker` varchar(10) NOT NULL,
   `instrumenttype` varchar(10) NOT NULL,

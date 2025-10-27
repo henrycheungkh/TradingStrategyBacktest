@@ -66,7 +66,7 @@ engine = DBUtil.GetSQLAlchemyEngine()
 with engine.connect() as conn:
     # result = conn.execute(statement, line)
     conn.execute(statement, line)
-#    conn.commit()
+    conn.commit()
     conn.close()
 
 Tickers.to_sql(name='fdata_ib_download_stock_tickers', con=engine, if_exists = 'append', index=False)
