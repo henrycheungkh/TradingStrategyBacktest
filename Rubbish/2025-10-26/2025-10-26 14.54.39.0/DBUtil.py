@@ -120,7 +120,7 @@ def DBExportDirectUpload(SQLScript, DBTableName, DatabaseName = Config.CONFIG_MY
         with engine.connect() as conn:
             # result = conn.execute(statement, line)
             conn.execute(statement, line)
- #           conn.commit()
+            conn.commit()
             conn.close()
         
         print('Upload command uploaded to DB')
@@ -210,7 +210,7 @@ def DBExportDirectUploadByBatch(DatafilePath, SQLScript, DBTableName, DatabaseNa
         with engine.connect() as conn:
             # result = conn.execute(statement, line)
             conn.execute(statement, line)
-#            conn.commit()
+            conn.commit()
             conn.close()
         
         print('Upload command uploaded to DB')

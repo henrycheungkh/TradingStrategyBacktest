@@ -31,11 +31,14 @@ def WriteDBExportScript(DatafilePath, filepath, DBTableName):
 
 def DownloadFuturesFromIBByLib(BarSize, HistoricalPeriod, today, SingleTicker, DataEndDate, DirectUpload, lastTradeDateOrContractMonths = None):
     if BarSize == '10 secs':
-        DBTableName = Config.CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST_10SECS + '.' + 'fdata_fut_hist'
+#         DBTableName = Config.CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST_10SECS + '.' + 'fdata_fut_hist'
+        DBTableName = 'fdata_fut_hist'
     elif BarSize == '5 secs':
-        DBTableName = Config.CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST_5SECS + '.' + 'fdata_fut_hist'
+#         DBTableName = Config.CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST_5SECS + '.' + 'fdata_fut_hist'
+        DBTableName = 'fdata_fut_hist'
     else:
-        DBTableName = Config.CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST + '.' + 'fdata_fut_hist'
+#         DBTableName = Config.CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST + '.' + 'fdata_fut_hist'
+        DBTableName = 'fdata_fut_hist'
         
     print('BarSize = ' + BarSize + ' and DBTableName = ' + str(DBTableName))
 

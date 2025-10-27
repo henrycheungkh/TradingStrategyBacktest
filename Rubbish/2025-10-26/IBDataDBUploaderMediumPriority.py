@@ -23,11 +23,11 @@ engine = DBUtil.GetSQLAlchemyEngine()
 with engine.connect() as conn:
     # result = conn.execute(statement)
     conn.execute(statement)
- #   conn.commit()
+    conn.commit()
     conn.close()
     
 while True:
-    df = pd.read_sql("SELECT * FROM pending_db_upload_command where Uploaded = False and Priority < 5 ORDER BY Priority DESC",con=DBUtil.GetSQLAlchemyEngine())
+    df = pd.read_sql("SELECT * FROM pending_db_upload_command where Uploaded = False and Priority >= 5 and Priority < 10 ORDER BY Priority DESC",con=DBUtil.GetSQLAlchemyEngine())
     if len(df) == 0:
         if not WaitAlertSent:
             print('No pending upload command, going to wait and check again')
@@ -41,7 +41,7 @@ while True:
         WaitTime = 5
         for index, row in df.iterrows():
             # print('Going to execute upload command ' + row['command'])
-            DBUtil.DBDirectUpload(row['command'], row['DBName'], row['TableName'], DBSuffix = row['DBSuffix'], CountRecordCount = False )
+            DBUtil.DBDirectUpload(row['command'], row['DBName'], row['TableName'], DBSuffix = row['DBSuffix'] )
 
 
     

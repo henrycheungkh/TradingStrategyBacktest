@@ -67,7 +67,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'YahooStockPrice') or
     # print(GetRecentData(sql, Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN))
 
     # sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) as ValueDate, ticker, count(Close) as record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN + ".fdata_price_1min WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market DESC LIMIT 70"
-    sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) as ValueDate, ticker, count(Close) as record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN + ".fdata_price_1min WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market ORDER BY A.ValueDate, B.Market DESC"
+    sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) as ValueDate, ticker, count(Close) as record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN + ".fdata_price_1min WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market DESC"
     print(sql)
     print('Record summary for Stock Price 1min')
     df = GetRecentData(sql, None)
@@ -80,7 +80,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'YahooStockPrice') or
         print(df)
 
 
-    sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) as ValueDate, ticker, count(Close) as record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN_FX + ".fdata_price_1min WHERE ticker like '%=X' AND Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market ORDER BY A.ValueDate, B.Market DESC"
+    sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) as ValueDate, ticker, count(Close) as record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN_FX + ".fdata_price_1min WHERE ticker like '%=X' AND Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market DESC"
     print(sql)
     print('Record summary for FX Price 1min')
     df = GetRecentData(sql, None)
@@ -98,7 +98,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'YahooStockPrice') or
     # print('Record summary for Stock Price dayend')
     # print(GetRecentData(sql, Config.CONFIG_MYSQL_CONNECTION_DATABASE))
 
-    sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) As ValueDate, ticker, count(Close) AS record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_DAYEND + ".`fdata_price_dayend` WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market ORDER BY A.ValueDate, B.Market DESC"
+    sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) As ValueDate, ticker, count(Close) AS record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_DAYEND + ".`fdata_price_dayend` WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market DESC"
     # sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) as ValueDate, ticker, count(Close) as record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN + ".fdata_price_1min WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market DESC"
     print(sql)
     print('Record summary for Stock Price dayend')
@@ -117,7 +117,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'YahooStockPrice') or
     # print('Record summary for Stock Price 30min')
     # print(GetRecentData(sql, Config.CONFIG_MYSQL_CONNECTION_DATABASE))
 
-    sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) As ValueDate, ticker, count(Close) AS record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_30MIN + ".`fdata_price_30min` WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market ORDER BY A.ValueDate, B.Market DESC"
+    sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) As ValueDate, ticker, count(Close) AS record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_30MIN + ".`fdata_price_30min` WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market DESC"
     # sql = "SELECT A.ValueDate, B.Market, sum(A.record_count) AS RecordCount FROM (SELECT DATE(Datetime) as ValueDate, ticker, count(Close) as record_count FROM " + Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN + ".fdata_price_1min WHERE Datetime > '"+ PriorMonthDate.strftime("%Y-%m-%d") + "' GROUP BY DATE(Datetime), ticker) A INNER JOIN " + Config.CONFIG_MYSQL_CONNECTION_DATABASE + ".fdata_tickers B ON A.ticker = B.Ticker GROUP BY A.ValueDate, B.Market DESC"
     print(sql)
     # df = GetRecentData(sql, Config.CONFIG_MYSQL_CONNECTION_DATABASE)
@@ -153,7 +153,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'IBFuturesPrice'):
         with engine.connect() as conn:
             # result = conn.execute(statement)
             conn.execute(statement)
-#            conn.commit()
+            conn.commit()
             conn.close()
     
 
@@ -179,7 +179,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'IBFuturesPrice'):
                 with engine.connect() as conn:
                     # result = conn.execute(statement, line)
                     conn.execute(statement, line)
- #                   conn.commit()
+                    conn.commit()
                     conn.close()
     
 
@@ -207,7 +207,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'IBFuturesPrice'):
                 with engine.connect() as conn:
                     # result = conn.execute(statement, line)
                     conn.execute(statement, line)
- #                   conn.commit()
+                    conn.commit()
                     conn.close()
 
                 print('add upload done')
@@ -234,7 +234,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'IBFuturesPrice'):
                 with engine.connect() as conn:
                     # result = conn.execute(statement, line)
                     conn.execute(statement, line)
- #                   conn.commit()
+                    conn.commit()
                     conn.close()
 
                 print('add upload done')
@@ -260,7 +260,7 @@ if (HealthCheckSection == 'All') or (HealthCheckSection == 'IBFuturesPrice'):
                 with engine.connect() as conn:
                     # result = conn.execute(statement, line)
                     conn.execute(statement, line)
- #                   conn.commit()
+                    conn.commit()
                     conn.close()
 
                 print('add upload done')

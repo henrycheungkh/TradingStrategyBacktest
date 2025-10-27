@@ -102,7 +102,7 @@ CREATE TABLE finance_fdata_price_1min_ib_temp.`fdata_price_1min_ib` (
   `vol` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-ALTER TABLE finance_fdata_price_1min_ib.`fdata_price_1min_ib`
+ALTER TABLE finance_fdata_price_1min_ib_temp.`fdata_price_1min_ib`
   ADD PRIMARY KEY (`ticker`,`DateTime`,`DataType`,`timeframe`) USING BTREE;
 COMMIT;
 
