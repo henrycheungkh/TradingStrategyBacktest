@@ -27,7 +27,8 @@ EngChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D'
 # US_IPO_BaseURL = 'https://stockanalysis.com/ipos/2021/'
 US_IPO_BaseURL = 'https://stockanalysis.com/ipos/' + str(datetime.now().year) + '/'
 
-mydb = mysql.connector.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST,user=Config.CONFIG_MYSQL_CONNECTION_USER,password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD,database=Config.CONFIG_MYSQL_CONNECTION_DATABASE)
+# mydb = mysql.connector.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST,user=Config.CONFIG_MYSQL_CONNECTION_USER,password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD,database=Config.CONFIG_MYSQL_CONNECTION_DATABASE)
+mydb = mysql.connector.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST, user=Config.CONFIG_MYSQL_CONNECTION_USER, password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD, database=Config.CONFIG_MYSQL_CONNECTION_DATABASE, ssl_disabled=True)
 mycursor = mydb.cursor()
 
 def GetRecentData(sql, DatabaseName = Config.CONFIG_MYSQL_CONNECTION_DATABASE):
