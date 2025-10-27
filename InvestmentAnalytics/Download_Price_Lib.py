@@ -9,7 +9,20 @@ Created on Fri Feb 12 02:01:18 2021
 import pymysql
 import pandas as pd
 import yfinance as yf
-from yfinance.exceptions import YFRateLimitError
+# from yfinance.exceptions import YFRateLimitError
+# put this near the top of your module
+try:
+    # Old public API (<= 0.2.37)
+    from yfinance.exceptions import YFRateLimitError          # type: ignore[attr-defined]
+except Exception:
+    try:
+        # Newer versions: the class exists under the `shared` module
+        from yfinance import shared as _yf_shared              # type: ignore
+        YFRateLimitError = _yf_shared._exceptions.YFRateLimitError  # type: ignore[attr-defined]
+    except Exception:
+        # Fallback so the rest of your code can still reference the name
+        class YFRateLimitError(Exception):  # type: ignore[no-redef]
+            pass
 import InvestmentAnalytics.Config as Config
 import os
 from InvestmentAnalytics.DBUtil import AppendDBExportScript
