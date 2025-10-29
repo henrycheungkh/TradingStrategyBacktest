@@ -5,6 +5,12 @@ Trade Analysis Project Installation Guide
 Core
 - XAMPP
   https://www.apachefriends.org/download.html
+- MySQL Community Server
+  - my.ini settings
+    - secure-file-priv=""
+    - set innodb_buffer_pool_size
+    - require_secure_transport=OFF
+
 - Python (usually by Anaconda)
   https://www.anaconda.com/products/individual
 - Python Driver for MySQL
