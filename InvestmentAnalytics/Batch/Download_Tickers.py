@@ -9,7 +9,7 @@ import requests
 import pymysql
 import pandas as pd
 from datetime import datetime, date, timedelta
-import mysql.connector
+# import mysql.connector
 from decimal import Decimal
 import locale
 import InvestmentAnalytics.Config as Config
@@ -28,14 +28,26 @@ EngChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D'
 US_IPO_BaseURL = 'https://stockanalysis.com/ipos/' + str(datetime.now().year) + '/'
 
 # mydb = mysql.connector.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST,user=Config.CONFIG_MYSQL_CONNECTION_USER,password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD,database=Config.CONFIG_MYSQL_CONNECTION_DATABASE)
-mydb = mysql.connector.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST, user=Config.CONFIG_MYSQL_CONNECTION_USER, password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD, database=Config.CONFIG_MYSQL_CONNECTION_DATABASE, ssl_disabled=True)
+# mydb = mysql.connector.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST, user=Config.CONFIG_MYSQL_CONNECTION_USER, \
+#                                password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD, database=Config.CONFIG_MYSQL_CONNECTION_DATABASE, ssl_disabled=True)
+# mycursor = mydb.cursor()
+
+mydb = pymysql.connect(
+    host=Config.CONFIG_MYSQL_CONNECTION_HOST,
+    user=Config.CONFIG_MYSQL_CONNECTION_USER,
+    password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD,
+    database=Config.CONFIG_MYSQL_CONNECTION_DATABASE,
+    ssl_disabled=True
+)
 mycursor = mydb.cursor()
+
 
 def GetRecentData(sql, DatabaseName = Config.CONFIG_MYSQL_CONNECTION_DATABASE):
     if DatabaseName is None:
         dbconnect = pymysql.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST, user=Config.CONFIG_MYSQL_CONNECTION_USER, password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD)
     else:
-        dbconnect = pymysql.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST, user=Config.CONFIG_MYSQL_CONNECTION_USER, password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD, database=DatabaseName)
+        dbconnect = pymysql.connect(host=Config.CONFIG_MYSQL_CONNECTION_HOST, user=Config.CONFIG_MYSQL_CONNECTION_USER, \
+                                    password=Config.CONFIG_MYSQL_CONNECTION_PASSWORD, database=DatabaseName)
     # sql = "SELECT COUNT(*) AS RecordCount FROM `" + DBTableName + "`"
     # print(pd.read_sql_query(sql, dbconnect))
     return pd.read_sql_query(sql, dbconnect)
