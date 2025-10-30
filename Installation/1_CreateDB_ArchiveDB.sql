@@ -103,7 +103,7 @@ CREATE TABLE finance_fdata_price_1min_2020.`fdata_price_1min` (
   `Low` double NOT NULL,
   `Open` double NOT NULL,
   `Volume` double NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_1min_2020.`fdata_price_1min`
   ADD PRIMARY KEY (`ticker`,`Datetime`);
@@ -118,7 +118,7 @@ CREATE TABLE finance_fdata_price_1min_2021_h1.`fdata_price_1min` (
   `Low` double NOT NULL,
   `Open` double NOT NULL,
   `Volume` double NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_1min_2021_h1.`fdata_price_1min`
   ADD PRIMARY KEY (`ticker`,`Datetime`);
