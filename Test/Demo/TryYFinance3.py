@@ -7,7 +7,7 @@ def get_eod(symbol, period="6mo", interval="1d", attempts=3):
     for i in range(attempts):
         try:
             df = yf.download(symbol, period=period, interval=interval,
-                             progress=False, threads=False)  # no session=
+                             progress=False, threads=False, auto_adjust=False)  # no session=
             if not df.empty:
                 return df
         except YFRateLimitError:

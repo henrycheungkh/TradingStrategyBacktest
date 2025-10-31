@@ -83,7 +83,7 @@ DownloadInterval = {"1m": [(today - timedelta(days=6)).strftime("%Y-%m-%d"), tod
 OneDayDownloadInterval = [(today - timedelta(days=15)).strftime("%Y-%m-%d"), today.strftime("%Y-%m-%d"), 'EquityDayEnd_Yahoo_', 'dayend']
 
 DatafilePathSuffix = ""
-
+table_columns = None
 Timeframe = "1min"
 
 if len(sys.argv) > 3:
@@ -136,6 +136,7 @@ if sys.argv[1] == "USOnly":
     DatafilePath = DatafilePath + "USOnly"
 elif sys.argv[1] == "FXOnly":
     DatafilePath = DatafilePath + "FXOnly"
+    table_columns = "(ticker, Datetime, Close, High, Low, Open, Volume)"
 elif sys.argv[1] == "ExcludeUS":
     DatafilePath = DatafilePath + "ExcludeUS"
 elif sys.argv[1] == "HKOnly":
@@ -206,12 +207,25 @@ for market in MarketList:
 
         elif Timeframe == "1min":
             # sql = "SELECT A.Ticker, A.Market, B.C FROM (SELECT * FROM fdata_tickers WHERE Market = '" + market + "') A LEFT JOIN (SELECT ticker, COUNT(ticker) AS C FROM finance_fdata_price_1min.fdata_price_1min WHERE Datetime > '2025-02-13' GROUP BY ticker) B on A.Ticker = B.ticker ORDER BY B.C ASC"
-            sql = "SELECT AA.Ticker, AA.Market, AA.C FROM (SELECT A.Ticker, A.Market, B.C FROM (SELECT * FROM fdata_tickers WHERE Market = '" + market + "') A LEFT JOIN (SELECT ticker, COUNT(ticker) AS C FROM finance_fdata_price_1min.fdata_price_1min WHERE Datetime > '2025-02-13' GROUP BY ticker) B on A.Ticker = B.ticker) AA INNER JOIN (SELECT ticker FROM finance_fdata_price_dayend.fdata_price_dayend WHERE Datetime > '2025-02-13' GROUP BY ticker) BB ON AA.Ticker = BB.ticker ORDER BY AA.C ASC"
+            sql = "SELECT AA.Ticker, AA.Market, AA.C FROM (SELECT A.Ticker, A.Market, B.C FROM \
+                (SELECT * FROM fdata_tickers WHERE Market = '" + market + "') A LEFT JOIN \
+                (SELECT ticker, COUNT(ticker) AS C FROM finance_fdata_price_1min.fdata_price_1min WHERE Datetime > '2025-02-13' GROUP BY ticker) B \
+                on A.Ticker COLLATE utf8mb4_0900_ai_ci = B.ticker COLLATE utf8mb4_0900_ai_ci) AA \
+                INNER JOIN (SELECT ticker FROM finance_fdata_price_dayend.fdata_price_dayend WHERE Datetime > '2025-02-13' GROUP BY ticker) BB \
+                ON AA.Ticker = BB.ticker ORDER BY AA.C ASC"
 
     print(sql)
     # Tickers = pd.read_sql_query(sql, dbcon)
     Tickers = pd.read_sql(sql,con=DBUtil.GetSQLAlchemyEngine(DatabaseName=Config.CONFIG_MYSQL_CONNECTION_DATABASE)).fillna(0)
     
+    print()
+    print('OneDayDownloadInterval is')
+    print(OneDayDownloadInterval)
+
+    print()
+    print('DownloadInterval is')
+    print(DownloadInterval)
+
     if market != 'XUSA':
         Tickers['randNumCol'] = np.random.randint(1, 100, Tickers.shape[0])
         if DownloadMode == 'Random':
@@ -260,12 +274,12 @@ for market in MarketList:
 
 
     if len(OneDayDownloadInterval) > 0:
-       DownloadFinanceDataByBatch(Tickers, TickerPerBatchDayEnd, OneDayDownloadInterval[0], OneDayDownloadInterval[1], "1d", DatafilePath + OneDayDownloadInterval[2] + market, DatafilePath, OneDayDownloadInterval[3])
+       DownloadFinanceDataByBatch(Tickers, TickerPerBatchDayEnd, OneDayDownloadInterval[0], OneDayDownloadInterval[1], "1d", DatafilePath + OneDayDownloadInterval[2] + market, DatafilePath, OneDayDownloadInterval[3], table_columns = table_columns)
 
     if market in MarketListForIntradayDownload:
       if len(DownloadInterval) > 0:
         for download_interval in DownloadInterval:
-            DownloadFinanceDataByBatch(Tickers, TickerPerBatch, DownloadInterval[download_interval][0], DownloadInterval[download_interval][1],download_interval, DatafilePath + DownloadInterval[download_interval][2] + market, DatafilePath, DownloadInterval[download_interval][3] )
+            DownloadFinanceDataByBatch(Tickers, TickerPerBatch, DownloadInterval[download_interval][0], DownloadInterval[download_interval][1],download_interval, DatafilePath + DownloadInterval[download_interval][2] + market, DatafilePath, DownloadInterval[download_interval][3], table_columns = table_columns )
       
     for IndexConstituent in MarketList[market]:
         print("Start downloading for market " + market + " and Index " + IndexConstituent)
@@ -274,7 +288,7 @@ for market in MarketList:
         Tickers = pd.read_sql(sql,con=DBUtil.GetSQLAlchemyEngine(DatabaseName=Config.CONFIG_MYSQL_CONNECTION_DATABASE))
         
         for download_interval in DownloadInterval:
-            DownloadFinanceDataByBatch(Tickers, TickerPerBatch, DownloadInterval[download_interval][0], DownloadInterval[download_interval][1],download_interval, DatafilePath + DownloadInterval[download_interval][2] + market + '_' + IndexConstituent, DatafilePath, DownloadInterval[download_interval][3])
+            DownloadFinanceDataByBatch(Tickers, TickerPerBatch, DownloadInterval[download_interval][0], DownloadInterval[download_interval][1],download_interval, DatafilePath + DownloadInterval[download_interval][2] + market + '_' + IndexConstituent, DatafilePath, DownloadInterval[download_interval][3], table_columns = table_columns)
 
 f = open(DatafilePath + "download_finish.txt", "a")
 f.write("Download Finished")

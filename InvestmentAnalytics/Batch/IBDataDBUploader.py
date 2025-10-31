@@ -23,7 +23,7 @@ engine = DBUtil.GetSQLAlchemyEngine()
 with engine.connect() as conn:
     # result = conn.execute(statement)
     conn.execute(statement)
- #   conn.commit()
+    conn.commit()
     conn.close()
     
 while True:

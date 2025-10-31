@@ -33,17 +33,18 @@ import time
 from curl_cffi import requests
 session = requests.Session(impersonate="chrome")
 
+table_columns = None
 
-def WriteDBExportScript(DatafilePath, filepath, StartDate, EndDate, DBTableSuffix):
-    AppendDBExportScript(DatafilePath, filepath + StartDate + "_" + EndDate + ".csv", "fdata_price_" + DBTableSuffix)
+def WriteDBExportScript(DatafilePath, filepath, StartDate, EndDate, DBTableSuffix, table_columns = None):
+    AppendDBExportScript(DatafilePath, filepath + StartDate + "_" + EndDate + ".csv", "fdata_price_" + DBTableSuffix, table_columns = table_columns)
 
-def DownloadFinanceData(StartDate, EndDate, tickers, time_interval, datastore, filepath, DatafilePath, DBTableSuffix, reformat=True):
+def DownloadFinanceData(StartDate, EndDate, tickers, time_interval, datastore, filepath, DatafilePath, DBTableSuffix, reformat=True, table_columns = None):
     # print('In DownloadFinanceData')
     Success = True
     try:
         # data = yf.download(' '.join(tickers), start=StartDate, end=EndDate, interval = time_interval)
-        # data = yf.download(' '.join(tickers), start=StartDate, end=EndDate, interval = time_interval, session=session)
-        data = yf.download(' '.join(tickers), start=StartDate, end=EndDate, interval = time_interval, session=session, period="1mo")
+        data = yf.download(' '.join(tickers), start=StartDate, end=EndDate, interval = time_interval, session=session, auto_adjust=False)
+        # data = yf.download(' '.join(tickers), start=StartDate, end=EndDate, interval = time_interval, session=session, period="1mo")
         if reformat:
             data[('Datetime', '')] = data.index
             cols = data.columns.tolist()
@@ -105,7 +106,7 @@ def DownloadFinanceData(StartDate, EndDate, tickers, time_interval, datastore, f
             print(db)
         return True
 
-def DownloadFinanceDataByBatch(Tickers, TickerPerBatch, StartDate, EndDate, download_interval, DatafileFullPath, DatafilePath, DBTableSuffix ):
+def DownloadFinanceDataByBatch(Tickers, TickerPerBatch, StartDate, EndDate, download_interval, DatafileFullPath, DatafilePath, DBTableSuffix , table_columns = None):
   # print('In DownloadFinanceDataByBatch')
   # print('Tickers is')
   # print(Tickers)
@@ -119,7 +120,7 @@ def DownloadFinanceDataByBatch(Tickers, TickerPerBatch, StartDate, EndDate, down
   while len(TickersBatch) > 0 and Download_Success:
       # print('In DownloadFinanceDataByBatch, i = ' + str(i))
       TickersBatchList = TickersBatch['Ticker'].tolist()
-      Download_Success = DownloadFinanceData(StartDate, EndDate, TickersBatchList, download_interval, 'csv', DatafileFullPath + '_' + str(j)+ '_', DatafilePath, DBTableSuffix )
+      Download_Success = DownloadFinanceData(StartDate, EndDate, TickersBatchList, download_interval, 'csv', DatafileFullPath + '_' + str(j)+ '_', DatafilePath, DBTableSuffix , table_columns = table_columns)
       i = i + TickerPerBatch
       j = j + 1
       TickersBatch = Tickers.loc[i:i+TickerPerBatch-1]

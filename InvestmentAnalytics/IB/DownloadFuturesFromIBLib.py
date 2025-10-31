@@ -82,7 +82,7 @@ def DownloadFuturesFromIBByLib(BarSize, HistoricalPeriod, today, SingleTicker, D
         
     
     # DatafilePath = Config.CONFIG_BASE_FuturesDatafilePath + today.strftime("%Y%m%d") + '_' + BarSize.replace(" ", "") + '_' + SingleTicker + '_' + HistoricalPeriod.replace(" ", "")
-    DatafilePath = Config.CONFIG_BASE_FuturesDatafilePath + today.strftime("%Y%m%d") + '_' + BarSize.replace(" ", "") + '_' + SingleTicker + '_' + HistoricalPeriod.replace(" ", "") + '_' + BarSize.strip()
+    DatafilePath = Config.CONFIG_BASE_FuturesDatafilePath + today.strftime("%Y%m%d") + '_' + BarSize.replace(" ", "") + '_' + SingleTicker + '_' + HistoricalPeriod.replace(" ", "") + '_' + BarSize.strip().replace(" ", "")
     
     if os.path.exists(DatafilePath):
         i = 1

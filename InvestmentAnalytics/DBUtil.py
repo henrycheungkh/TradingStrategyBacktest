@@ -30,7 +30,6 @@ SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + Config.CONFIG_MYSQL_CONNECTION_US
 # SQLALCHEMY_DATABASE_URI = 'pymysql://' + Config.CONFIG_MYSQL_CONNECTION_USER + Config.CONFIG_MYSQL_CONNECTION_PASSWORD + '@' + Config.CONFIG_MYSQL_CONNECTION_HOST + ':' + str(Config.CONFIG_MYSQL_CONNECTION_PORT) + '/'
 
 def GetSQLAlchemyEngine(DatabaseName=Config.CONFIG_MYSQL_CONNECTION_DATABASE, Override_DBHost = None, Override_DBPort = None, Override_DBUser = None, Override_DBPassword = None):
-    # print('uri is')
     if DatabaseName is None:
         DatabaseName = Config.CONFIG_MYSQL_CONNECTION_DATABASE
     if Override_DBHost is None and Override_DBPort is None and Override_DBUser is None and Override_DBPassword is None:
@@ -45,7 +44,8 @@ def GetSQLAlchemyEngine(DatabaseName=Config.CONFIG_MYSQL_CONNECTION_DATABASE, Ov
         if Override_DBPassword is None:
             Override_DBPassword = Config.CONFIG_MYSQL_CONNECTION_PASSWORD
         uri = 'mysql+pymysql://' + Override_DBUser + ':' + Override_DBPassword + '@' + Override_DBHost + ':' + str(Override_DBPort) + '/' + DatabaseName
-    # print(uri)
+#    print('uri is')
+#    print(uri)
     # db_uri = environ.get(uri)
     return create_engine(uri, echo=True)
 
@@ -120,10 +120,13 @@ def DBExportDirectUpload(SQLScript, DBTableName, DatabaseName = Config.CONFIG_MY
         with engine.connect() as conn:
             # result = conn.execute(statement, line)
             conn.execute(statement, line)
- #           conn.commit()
+#            print('In DBExportDirectUpload, after calling conn.execute')
+#            print(statement)
+#            print(line)
+            conn.commit()
             conn.close()
         
-        print('Upload command uploaded to DB')
+#        print('Upload command uploaded to DB by DBExportDirectUpload')
 
 
 def DBExportDirectUploadByBatchThread(DatafilePath, SQLScript, DBTableName, DatabaseName = Config.CONFIG_MYSQL_CONNECTION_DATABASE):
@@ -172,7 +175,7 @@ def DBDirectUpload(command_without_quote, DatabaseName, DBTableName, DBSuffix = 
     with engine.connect() as conn:
         # result = conn.execute(statement, line)
         conn.execute(statement, line)
-#        conn.commit()
+        conn.commit()
         conn.close()
     
     print('DB Upload command executed: ' + command_without_quote + ' at ' + str(datetime.now()))
@@ -210,12 +213,17 @@ def DBExportDirectUploadByBatch(DatafilePath, SQLScript, DBTableName, DatabaseNa
         with engine.connect() as conn:
             # result = conn.execute(statement, line)
             conn.execute(statement, line)
-#            conn.commit()
+#            print('In DBExportDirectUploadByBatch, after calling conn.execute')
+#            print(statement)
+#            print(line)
+            conn.commit()
+#            print('In DBExportDirectUploadByBatch, after calling conn.commit')
             conn.close()
+#            print('In DBExportDirectUploadByBatch, after calling conn.close')
         
-        print('Upload command uploaded to DB')
+#        print('Upload command uploaded to DB by DBExportDirectUploadByBatch')
 
-def AppendDBExportScript(DatafilePath, filepath, DBTableName):
+def AppendDBExportScript(DatafilePath, filepath, DBTableName, table_columns = None):
     print('In AppendDBExportScript, DBTableName = ' + DBTableName)
     with open(DatafilePath + 'UploadScript.sql', 'a') as the_file:
         filepath = filepath.replace("\\", "/")
@@ -225,3 +233,9 @@ def AppendDBExportScript(DatafilePath, filepath, DBTableName):
         the_file.write("FIELDS TERMINATED BY ',' \n")
         the_file.write("LINES TERMINATED BY '\\r\\n'\n")
         the_file.write("IGNORE 1 LINES;\n\n")
+#        if table_columns is None:
+#           the_file.write("IGNORE 1 LINES;\n\n")
+#        else:
+#            the_file.write("IGNORE 1 LINES\n\n")
+#            the_file.write(table_columns + ";\n\n")
+

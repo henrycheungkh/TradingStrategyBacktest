@@ -20,7 +20,7 @@ import math
 import csv
 from pytz import timezone
 import pymysql
-import mysql.connector
+# import mysql.connector
 
 class IBapiFuturesHistoricalDataReader2(IBapiDataReader):
     RequestIDRange = [10, 12]
