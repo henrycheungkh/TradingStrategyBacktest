@@ -231,6 +231,7 @@ def AppendDBExportScript(DatafilePath, filepath, DBTableName, table_columns = No
         the_file.write("LOAD DATA INFILE '" + filepath + "' REPLACE \n")
         the_file.write("INTO TABLE " + DBTableName + "\n")
         the_file.write("FIELDS TERMINATED BY ',' \n")
+        the_file.write("OPTIONALLY ENCLOSED BY '\"'")
         the_file.write("LINES TERMINATED BY '\\r\\n'\n")
         the_file.write("IGNORE 1 LINES;\n\n")
 #        if table_columns is None:

@@ -1,6 +1,9 @@
 title Daily IB Download
 SET PYTHONPATH=%TradeAnalysis_ProjectPath%
-set mydate=%date:~10,4%%date:~4,2%%date:~7,2%
+rem set mydate=%date:~10,4%%date:~4,2%%date:~7,2%
+
+set mydate="20251031"
+
 
 if "%mydate%"=="20251018" (
 
