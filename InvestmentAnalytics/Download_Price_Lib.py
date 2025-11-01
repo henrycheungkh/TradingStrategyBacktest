@@ -75,7 +75,7 @@ def DownloadFinanceData(StartDate, EndDate, tickers, time_interval, datastore, f
                 data = ticker.history(period="1d")
                 print(data)
             except YFRateLimitError:
-                print('YFRateLimitError - wait for 10 minutes')
+                print('YFRateLimitError - wait for 10 minutes at ' + str(datetime.datetime.now()))
                 time.sleep(10*60)
                 DownloadFinanceData(StartDate, EndDate, tickers, time_interval, datastore, filepath, DatafilePath, DBTableSuffix, reformat=reformat)
                 Success = False
