@@ -4,7 +4,8 @@ Created on Tue Feb  6 10:31:24 2024
 
 @author: Henry Cheung
 """
-
+import random
+import string
 
 import InvestmentAnalytics.Config as Config
 import InvestmentAnalytics.DBUtil as DBUtil
@@ -80,9 +81,10 @@ def DownloadFuturesFromIBByLib(BarSize, HistoricalPeriod, today, SingleTicker, D
     # else:
     #     SingleTicker = ''
         
-    
+    random_str = ''.join(random.choices(string.ascii_letters, k=4))
+
     # DatafilePath = Config.CONFIG_BASE_FuturesDatafilePath + today.strftime("%Y%m%d") + '_' + BarSize.replace(" ", "") + '_' + SingleTicker + '_' + HistoricalPeriod.replace(" ", "")
-    DatafilePath = Config.CONFIG_BASE_FuturesDatafilePath + today.strftime("%Y%m%d") + '_' + BarSize.replace(" ", "") + '_' + SingleTicker + '_' + HistoricalPeriod.replace(" ", "") + '_' + BarSize.strip().replace(" ", "")
+    DatafilePath = Config.CONFIG_BASE_FuturesDatafilePath + today.strftime("%Y%m%d") + '_' + BarSize.replace(" ", "") + '_' + SingleTicker + '_' + HistoricalPeriod.replace(" ", "") + '_' + BarSize.strip().replace(" ", "") + '_' + random_str
     
     if os.path.exists(DatafilePath):
         i = 1
