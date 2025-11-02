@@ -3,9 +3,8 @@ Trade Analysis Project Installation Guide
 
 1. Application to be installed
 Core
-- XAMPP
-  https://www.apachefriends.org/download.html
-- MySQL Community Server
+
+- MySQL Community Server LTS
   - my.ini settings
     - secure-file-priv=""
     - set innodb_buffer_pool_size
