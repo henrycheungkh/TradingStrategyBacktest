@@ -38,6 +38,7 @@ Core
 
 pip install pymysql
 pip install yfinance
+pip install ibapi
 pip install yahoo_fin
 pip install yahoo_earnings_calendar
 pip install requests_html
