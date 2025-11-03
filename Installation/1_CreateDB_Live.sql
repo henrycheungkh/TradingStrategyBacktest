@@ -96,7 +96,7 @@ CREATE TABLE finance_fdata_price_30min_ib.`fdata_price_30min_ib` (
   `open` double NOT NULL,
   `close` double NOT NULL,
   `vol` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_30min_ib.`fdata_price_30min_ib`
   ADD PRIMARY KEY (`ticker`,`DateTime`,`DataType`,`timeframe`) USING BTREE;
@@ -112,7 +112,7 @@ CREATE TABLE finance_fdata_price_1min_ib.`fdata_price_1min_ib` (
   `open` double NOT NULL,
   `close` double NOT NULL,
   `vol` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_1min_ib.`fdata_price_1min_ib`
   ADD PRIMARY KEY (`ticker`,`DateTime`,`DataType`,`timeframe`) USING BTREE;
@@ -128,7 +128,7 @@ CREATE TABLE finance_fdata_price_dayend_ib.`fdata_price_dayend_ib` (
   `open` double NOT NULL,
   `close` double NOT NULL,
   `vol` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_dayend_ib.`fdata_price_dayend_ib`
   ADD PRIMARY KEY (`ticker`,`DateTime`,`DataType`,`timeframe`) USING BTREE;
@@ -144,7 +144,7 @@ CREATE TABLE finance_fdata_price_dayend_ib.`fdata_price_dayend_ib_adjusted` (
   `open` double NOT NULL,
   `close` double NOT NULL,
   `vol` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_dayend_ib.`fdata_price_dayend_ib_adjusted`
   ADD PRIMARY KEY (`ticker`,`DateTime`,`DataType`,`timeframe`) USING BTREE;
@@ -160,7 +160,7 @@ CREATE TABLE finance_fdata_price_1min_fx.`fdata_price_1min` (
   `Low` double NOT NULL,
   `Open` double NOT NULL,
   `Volume` double NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_1min_fx.`fdata_price_1min`
   ADD PRIMARY KEY (`ticker`,`Datetime`);
@@ -177,7 +177,7 @@ CREATE TABLE finance_fdata_price_1min.`fdata_price_1min` (
   `Low` double NOT NULL,
   `Open` double NOT NULL,
   `Volume` double NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_1min.`fdata_price_1min`
   ADD PRIMARY KEY (`ticker`,`Datetime`);
@@ -192,7 +192,7 @@ CREATE TABLE finance_fdata_price_30min.`fdata_price_30min` (
   `Low` double NOT NULL,
   `Open` double NOT NULL,
   `Volume` double NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_30min.`fdata_price_30min`
   ADD PRIMARY KEY (`ticker`,`Datetime`);
@@ -209,7 +209,7 @@ CREATE TABLE finance_fdata_price_dayend.`fdata_price_dayend` (
   `Low` double NOT NULL,
   `Open` double NOT NULL,
   `Volume` double NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 ALTER TABLE finance_fdata_price_dayend.`fdata_price_dayend`
   ADD PRIMARY KEY (`ticker`,`Datetime`);
@@ -227,7 +227,7 @@ CREATE TABLE finance_fdata_crypto_binance.`fdata_crypto_hist` (
   `open` double NOT NULL,
   `close` double NOT NULL,
   `vol` double NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 
 
 ALTER TABLE finance_fdata_crypto_binance.`fdata_crypto_hist`
