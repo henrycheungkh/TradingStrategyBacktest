@@ -1,4 +1,4 @@
-set DateString=20251029
+set DateString=20251102
 
 SET /P AREYOUSURE=It will overwrite data as of %DateString%, are you sure (Y/[N])?
 IF /I "%AREYOUSURE%" NEQ "Y" GOTO END

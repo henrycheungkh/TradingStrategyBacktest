@@ -26,6 +26,14 @@ COMMIT;
 # ADD COLUMN DBSuffix VARCHAR(10) DEFAULT '';
 
 
+# Convert an entire table
+# ALTER TABLE fdata_tickers CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
+# Or just the column (preserve the right length)
+# ALTER TABLE fdata_tickers
+  MODIFY ticker VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
+
 CREATE TABLE IF NOT EXISTS finance_fdata_fut_hist.`fdata_fut_hist` (
   `ticker` varchar(10) NOT NULL,
   `instrumenttype` varchar(10) NOT NULL,
