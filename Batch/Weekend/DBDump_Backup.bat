@@ -8,22 +8,24 @@ if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-lock
 
 if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_price_dayend > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_dayend_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_price_dayend > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_dayend_%mydate%.sql")
 
-if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_price_30min > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_30min_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_price_30min > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_30min_%mydate%.sql")
-
 if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_price_1min_fx > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_1min_fx_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_price_1min_fx > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_1min_fx_%mydate%.sql")
 
 if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_fut_hist > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_fut_hist > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_%mydate%.sql")
-
-if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_fut_hist_10secs > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_10secs_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_fut_hist_10secs > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_10secs_%mydate%.sql")
-
-if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_fut_hist_5secs > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_5secs_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_fut_hist_5secs > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_5secs_%mydate%.sql")
-
 
 if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_price_30min_ib > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_30min_ib_%mydate%_ib.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_price_30min_ib > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_30min_ib_%mydate%_ib.sql")
 
 if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_price_1min_ib > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_1min_ib_%mydate%_ib.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_price_1min_ib > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_1min_ib_%mydate%_ib.sql")
 
 if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_price_dayend_ib > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_dayend_ib_%mydate%_ib.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_price_dayend_ib > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_dayend_ib_%mydate%_ib.sql")
+
+
+if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_fut_hist_10secs > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_10secs_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_fut_hist_10secs > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_10secs_%mydate%.sql")
+
+if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_fut_hist_5secs > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_5secs_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_fut_hist_5secs > "%TradeAnalysis_DBDumpPath%DBDump_fdata_fut_hist_5secs_%mydate%.sql")
+
+if %TradeAnalysis_DBPassword%==None ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root finance_fdata_price_30min > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_30min_%mydate%.sql") else ("%TradeAnalysis_mysqldump%" --skip-add-locks --insert-ignore --skip-add-drop-table --no-create-info -u root -p%TradeAnalysis_DBPassword% finance_fdata_price_30min > "%TradeAnalysis_DBDumpPath%DBDump_fdata_price_30min_%mydate%.sql")
+
+
 
 move "%TradeAnalysis_DBDumpZipPath%latest_DBDumpZip\*.*" "%TradeAnalysis_DBDumpZipPath%"
 
