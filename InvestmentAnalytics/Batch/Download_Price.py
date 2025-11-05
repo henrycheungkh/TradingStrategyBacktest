@@ -101,7 +101,7 @@ if len(sys.argv) > 3:
     if sys.argv[3] == "1min":
         Timeframe = "1min"
         DatafilePathSuffix = "_1min"
-        DownloadInterval = {"1m": [(today - timedelta(days=6)).strftime("%Y-%m-%d"), today.strftime("%Y-%m-%d"), 'EquityIntraDay_Yahoo_', '1min']}
+        DownloadInterval = {"1m": [(today - timedelta(days=8)).strftime("%Y-%m-%d"), today.strftime("%Y-%m-%d"), 'EquityIntraDay_Yahoo_', '1min']}
         OneDayDownloadInterval = []
     if sys.argv[3] == "5min":
         Timeframe = "5min"
@@ -169,7 +169,7 @@ DownloadMode = 'OldTickers'
 # StartDateOfLackingDataText = '2025-03-14'
 # StartDateOfRecentFullDataText = '2025-03-10'
 
-StartDateOfLackingDataText = (today - timedelta(days=8)).strftime("%Y-%m-%d")
+StartDateOfLackingDataText = (today - timedelta(days=16)).strftime("%Y-%m-%d")
 StartDateOfRecentFullDataText = (today - timedelta(days=30)).strftime("%Y-%m-%d")
 
 
