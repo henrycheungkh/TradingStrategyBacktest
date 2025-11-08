@@ -1,10 +1,10 @@
-title Daily IB Download
+title IB Futures 5secs Download
 SET PYTHONPATH=%TradeAnalysis_ProjectPath%
 
 rem "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadFuturesFromIB.py" "5 secs" "2 D" DirectUpload -1 NQ 20251027
 rem "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadFuturesFromIB.py" "5 secs" "2 D" DirectUpload -1 NQ 20251028
 
-set CaptureDate=20251027
+set CaptureDate=20251107
 
 "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadFuturesFromIB.py" "5 secs" "2 D" DirectUpload -1 RTY %CaptureDate%
 

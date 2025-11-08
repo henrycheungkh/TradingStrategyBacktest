@@ -20,11 +20,20 @@ from datetime import datetime
 import pandas as pd
 
 
-IB_API_hostname = os.getenv('TradeAnalysis_IB_API_hostname')
-IB_API_port = int(os.getenv('TradeAnalysis_IB_API_port'))
-IB_API_clientId = int(os.getenv('TradeAnalysis_IB_API_clientId'))
+# IB_API_hostname = os.getenv('TradeAnalysis_IB_API_hostname')
+# IB_API_port = int(os.getenv('TradeAnalysis_IB_API_port'))
+# IB_API_clientId = int(os.getenv('TradeAnalysis_IB_API_clientId'))
 
+IB_API_hostname = Config.CONFIG_IB_CONNECTION_HOST
+IB_API_port = Config.CONFIG_IB_CONNECTION_PORT
+IB_API_clientId = Config.CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID 
 
+print('IB_API_hostname = ' + IB_API_hostname)
+print('IB_API_port = ')
+print(IB_API_port)
+print('IB_API_clientId = ')
+print(IB_API_clientId)
+time.sleep(10)
 
 ErrorCodeIgnored = [1100, 1102, 2104, 2106, 2108, 2158]
 Request_ID = 2000
@@ -80,8 +89,8 @@ def RunIBApiProcessHub(IBApiProcessList):
     print('Start of RunIBApiProcessHub')
     global app, IBprocess
     app = IBapi(IBApiProcessList)
-    app.connect('127.0.0.1', 7496, 123)
-    # app.connect(IB_API_hostname, IB_API_port, IB_API_clientId)
+    # app.connect('127.0.0.1', 7496, 123)
+    app.connect(IB_API_hostname, IB_API_port, IB_API_clientId)
     
     #Start the socket in a thread
     api_thread = threading.Thread(target=run_loop, daemon=True)

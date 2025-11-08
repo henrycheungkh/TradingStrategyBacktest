@@ -10,6 +10,8 @@ CREATE DATABASE IF NOT EXISTS finance_fdata_price_dayend_ib;
 
 CREATE DATABASE IF NOT EXISTS finance_fdata_price_1min_fx;
 CREATE DATABASE IF NOT EXISTS finance_fdata_price_1min;
+CREATE DATABASE IF NOT EXISTS finance_fdata_price_2min_fx;
+CREATE DATABASE IF NOT EXISTS finance_fdata_price_2min;
 CREATE DATABASE IF NOT EXISTS finance_fdata_price_30min;
 CREATE DATABASE IF NOT EXISTS finance_fdata_price_dayend;
 
@@ -190,6 +192,41 @@ CREATE TABLE finance_fdata_price_1min.`fdata_price_1min` (
 ALTER TABLE finance_fdata_price_1min.`fdata_price_1min`
   ADD PRIMARY KEY (`ticker`,`Datetime`);
 COMMIT;
+
+
+
+CREATE TABLE finance_fdata_price_2min_fx.`fdata_price_2min` (
+  `ticker` varchar(20) NOT NULL,
+  `Datetime` datetime NOT NULL,
+  `Adj Close` double NOT NULL,
+  `Close` double NOT NULL,
+  `High` double NOT NULL,
+  `Low` double NOT NULL,
+  `Open` double NOT NULL,
+  `Volume` double NOT NULL
+) ENGINE=MyISAM DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
+ALTER TABLE finance_fdata_price_2min_fx.`fdata_price_2min`
+  ADD PRIMARY KEY (`ticker`,`Datetime`);
+COMMIT;
+
+
+
+CREATE TABLE finance_fdata_price_2min.`fdata_price_2min` (
+  `ticker` varchar(20) NOT NULL,
+  `Datetime` datetime NOT NULL,
+  `Adj Close` double NOT NULL,
+  `Close` double NOT NULL,
+  `High` double NOT NULL,
+  `Low` double NOT NULL,
+  `Open` double NOT NULL,
+  `Volume` double NOT NULL
+) ENGINE=MyISAM DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
+ALTER TABLE finance_fdata_price_2min.`fdata_price_2min`
+  ADD PRIMARY KEY (`ticker`,`Datetime`);
+COMMIT;
+
 
 CREATE TABLE finance_fdata_price_30min.`fdata_price_30min` (
   `ticker` varchar(20) NOT NULL,
