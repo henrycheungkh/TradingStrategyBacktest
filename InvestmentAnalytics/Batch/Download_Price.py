@@ -101,7 +101,7 @@ if len(sys.argv) > 3:
     if sys.argv[3] == "1min":
         Timeframe = "1min"
         DatafilePathSuffix = "_1min"
-        DownloadInterval = {"1m": [(today - timedelta(days=8)).strftime("%Y-%m-%d"), today.strftime("%Y-%m-%d"), 'EquityIntraDay_Yahoo_', '1min']}
+        DownloadInterval = {"1m": [(today - timedelta(days=4)).strftime("%Y-%m-%d"), today.strftime("%Y-%m-%d"), 'EquityIntraDay_Yahoo_', '1min']}
         OneDayDownloadInterval = []
     if sys.argv[3] == "5min":
         Timeframe = "5min"
@@ -205,7 +205,7 @@ for market in MarketList:
 
             # sql = "SELECT A.Ticker FROM (SELECT DISTINCT BB.Ticker FROM (SELECT DISTINCT ticker FROM finance_fdata_price_30min.fdata_price_30min WHERE DATE(Datetime) = '2025-03-07') AA INNER JOIN (SELECT * FROM fdata_tickers WHERE Market = '" + market + "') BB ON AA.ticker = BB.Ticker) A LEFT JOIN (SELECT DISTINCT ticker AS Now_ticker FROM finance_fdata_price_30min.fdata_price_30min WHERE DATE(Datetime) = '2025-03-07') B ON A.ticker = B.Now_ticker WHERE B.Now_ticker IS NULL"
 
-        elif Timeframe == "1min":
+        elif Timeframe == "1min" or Timeframe == "2min":
             # sql = "SELECT A.Ticker, A.Market, B.C FROM (SELECT * FROM fdata_tickers WHERE Market = '" + market + "') A LEFT JOIN (SELECT ticker, COUNT(ticker) AS C FROM finance_fdata_price_1min.fdata_price_1min WHERE Datetime > '2025-02-13' GROUP BY ticker) B on A.Ticker = B.ticker ORDER BY B.C ASC"
             sql = "SELECT AA.Ticker, AA.Market, AA.C FROM (SELECT A.Ticker, A.Market, B.C FROM \
                 (SELECT * FROM fdata_tickers WHERE Market = '" + market + "') A LEFT JOIN \
@@ -252,9 +252,11 @@ for market in MarketList:
     # ThreeDaysString = (today - timedelta(days=3)).strftime("%Y-%m-%d")
     ThreeDaysString = (today - timedelta(days=10)).strftime("%Y-%m-%d")
     TableName = {"1min":"fdata_price_1min", "2min":"fdata_price_2min", "5min":"fdata_price_5min", "30min":"fdata_price_30min", "dayend":"fdata_price_dayend"}
-    DatabaseName = {"1min":Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN , "30min":Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_30MIN, "dayend":Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_DAYEND}
+    DatabaseName = {"1min":Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN , "2min":Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_2MIN , "30min":Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_30MIN, "dayend":Config.CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_DAYEND}
+    
     sql = "SELECT ticker as Ticker, count(Close) as ShortTermCloseCount FROM " + DatabaseName[Timeframe] + "." + TableName[Timeframe] + " WHERE DateTime  > '" + ThreeDaysString + "'   GROUP BY ticker ORDER BY count(Close)"
     # TickerCloseCount = pd.read_sql_query(sql, dbcon)
+    print(sql)
     TickerCloseCount = pd.read_sql(sql,con=DBUtil.GetSQLAlchemyEngine(DatabaseName=Config.CONFIG_MYSQL_CONNECTION_DATABASE))
     
     # Tickers = Tickers.merge(TickerCloseCount, on='Ticker', how='left').fillna(0).sort_values(by='ShortTermCloseCount', ascending=True).reset_index(drop=True)[['Ticker']]

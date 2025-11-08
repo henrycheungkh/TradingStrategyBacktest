@@ -14,6 +14,11 @@ CONFIG_LOCAL_TIMEZONE = os.getenv('TradeAnalysis_LocalTimezone')
 # CONFIG_MYSQL_CONNECTION_USER = "root"
 # CONFIG_MYSQL_CONNECTION_PASSWORD = ""
 
+CONFIG_IB_CONNECTION_HOST = os.getenv('TradeAnalysis_IB_API_hostname')
+CONFIG_IB_CONNECTION_PORT = int(os.getenv('TradeAnalysis_IB_API_port'))
+CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID = int(os.getenv('TradeAnalysis_IB_API_clientId'))
+
+
 CONFIG_MYSQL_CONNECTION_HOST = os.getenv('TradeAnalysis_DBHost')
 CONFIG_MYSQL_CONNECTION_USER = os.getenv('TradeAnalysis_DBUser')
 CONFIG_MYSQL_CONNECTION_PORT = int(os.getenv('TradeAnalysis_DBPort'))
@@ -30,6 +35,7 @@ CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST = "finance_fdata_fut_hist"
 CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST_10SECS = "finance_fdata_fut_hist_10secs"
 CONFIG_MYSQL_CONNECTION_DATABASE_FUT_HIST_5SECS = "finance_fdata_fut_hist_5secs"
 CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_1MIN = "finance_fdata_price_1min"
+CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_2MIN = "finance_fdata_price_2min"
 CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_DAYEND = "finance_fdata_price_dayend"
 CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_30MIN = "finance_fdata_price_30min"
 CONFIG_MYSQL_CONNECTION_DATABASE_PRICE_30MIN_IB = "finance_fdata_price_30min_ib"
