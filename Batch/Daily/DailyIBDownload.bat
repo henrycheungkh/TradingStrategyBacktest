@@ -1,7 +1,7 @@
 title Daily IB Download
 SET PYTHONPATH=%TradeAnalysis_ProjectPath%
-rem set mydate=%date:~10,4%%date:~4,2%%date:~7,2%
-set mydate=20251106
+set mydate=%date:~10,4%%date:~4,2%%date:~7,2%
+rem set mydate=20251106
 
 if "%mydate%"=="20251106" (
   rem "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadUSStockPriceFromIB.py" "1 min" 2000 0 "TRADES" "2 D" DirectUpload 20251104

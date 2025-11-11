@@ -169,7 +169,7 @@ CREATE TABLE finance_fdata_price_dayend_ib.`fdata_finsummary_dividend` (
   `declarationDate` date NOT NULL,
   `value` double NOT NULL,
   PRIMARY KEY (`ticker`,`type`,`exDate`,`recordDate`,`payDate`,`declarationDate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE finance_fdata_price_dayend_ib.`fdata_finsummary_divpershare` (
@@ -179,7 +179,7 @@ CREATE TABLE finance_fdata_price_dayend_ib.`fdata_finsummary_divpershare` (
   `period` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `value` double NOT NULL,
   PRIMARY KEY (`ticker`,`asofDate`,`reportType`,`period`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE finance_fdata_price_1min_fx.`fdata_price_1min` (
   `ticker` varchar(20) NOT NULL,
