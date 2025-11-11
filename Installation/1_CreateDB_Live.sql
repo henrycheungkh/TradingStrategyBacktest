@@ -160,6 +160,26 @@ ALTER TABLE finance_fdata_price_dayend_ib.`fdata_price_dayend_ib_adjusted`
   ADD PRIMARY KEY (`ticker`,`DateTime`,`DataType`,`timeframe`) USING BTREE;
 COMMIT;
 
+CREATE TABLE finance_fdata_price_dayend_ib.`fdata_finsummary_dividend` (
+  `ticker` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `exDate` date NOT NULL,
+  `recordDate` date NOT NULL,
+  `payDate` date NOT NULL,
+  `declarationDate` date NOT NULL,
+  `value` double NOT NULL,
+  PRIMARY KEY (`ticker`,`type`,`exDate`,`recordDate`,`payDate`,`declarationDate`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE finance_fdata_price_dayend_ib.`fdata_finsummary_divpershare` (
+  `ticker` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `asofDate` date NOT NULL,
+  `reportType` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `period` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `value` double NOT NULL,
+  PRIMARY KEY (`ticker`,`asofDate`,`reportType`,`period`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE finance_fdata_price_1min_fx.`fdata_price_1min` (
   `ticker` varchar(20) NOT NULL,
