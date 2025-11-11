@@ -17,6 +17,7 @@ $envVars = @{
     "TradeAnalysis_DownloadFileBuffer"         = "J:\TradeAnalysisProject\TAHistoricalData\"
     "TradeAnalysis_DownloadFuturesFileBuffer"  = "J:\TradeAnalysisProject\FuturesHistoricalData\"
     "TradeAnalysis_IB_API_clientId"            = "123"
+    "TradeAnalysis_IB_API_Futures_clientId"    = "200"
     "TradeAnalysis_IB_API_hostname"            = "127.0.0.1"
     "TradeAnalysis_IB_API_port"                = "7496"
     "TradeAnalysis_LocalTimezone"              = "Europe/London"
