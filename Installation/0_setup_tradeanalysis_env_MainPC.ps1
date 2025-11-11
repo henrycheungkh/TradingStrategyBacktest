@@ -20,10 +20,10 @@ $envVars = @{
     "TradeAnalysis_IB_API_hostname"            = "127.0.0.1"
     "TradeAnalysis_IB_API_port"                = "7496"
     "TradeAnalysis_LocalTimezone"              = "Europe/London"
-    "TradeAnalysis_mysql"                      = "D:\Program Files\MySQL\MySQL Server 8.4\bin\mysql"
-    "TradeAnalysis_mysqldump"                  = "D:\Program Files\MySQL\MySQL Server 8.4\bin\mysqldump"
-    "TradeAnalysis_ProjectPath"                = "D:\PythonProjects\TradeAnalysis\"
-    "TradeAnalysis_PythonPath"                 = "D:\ProgramData\Anaconda3\python.exe"
+    "TradeAnalysis_mysql"                      = "C:\Program Files\MySQL\MySQL Server 8.4\bin\mysql"
+    "TradeAnalysis_mysqldump"                  = "C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqldump"
+    "TradeAnalysis_ProjectPath"                = "C:\Projects\TradingStrategyBacktest\"
+    "TradeAnalysis_PythonPath"                 = "C:\Users\henry\anaconda3\python.exe"
     "TradeAnalysis_USGapperScanEndTime"        = "10:00"
 }
 
