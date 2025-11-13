@@ -255,34 +255,37 @@ class IBapiUSStocksHistoricalDataReader(IBapiDataReader):
         # print("HistoricalDataEnd. ReqId:", reqId, "from", start, "to", end, " for ", self.Request_Data_Item)
 
     def error(self, reqId: TickerId, errorCode: int, errorString: str):
-        super().error(reqId, errorCode, errorString)
-        print("Error. Id:", reqId, "Code:", errorCode, "Msg:", errorString)
-        # if ("The contract description specified for " + self.TickerDict[reqId] + " is ambiguous" in errorString):
-        if ("ambiguous" in errorString):
-            ErrorTickerDetail = self.TickerList.loc[self.TickerList['symbol'] == self.TickerDict[reqId]]
+        try:
+            super().error(reqId, errorCode, errorString)
+            print("Error. Id:", reqId, "Code:", errorCode, "Msg:", errorString)
+            # if ("The contract description specified for " + self.TickerDict[reqId] + " is ambiguous" in errorString):
+            if ("ambiguous" in errorString):
+                ErrorTickerDetail = self.TickerList.loc[self.TickerList['symbol'] == self.TickerDict[reqId]]
 
-            if (ErrorTickerDetail['primaryExchange'].iloc[0] == 'NONE') and (ErrorTickerDetail['symbol'].iloc[0] not in self.TickersTryingOtherExchange):
-                
-                contract = Contract()
-                contract.symbol = ErrorTickerDetail['symbol'].iloc[0]
-                contract.secType = ErrorTickerDetail['secType'].iloc[0]
-                contract.exchange = ErrorTickerDetail['exchange'].iloc[0]
-                contract.currency = ErrorTickerDetail['currency'].iloc[0]
-                contract.primaryExchange = "ISLAND"
-                # if not np.isnull(row['primaryExchange']):
-                    # contract.primaryExchange = row['primaryExchange']
-    
-                self.IBProcessHub.reqHistoricalData(reqId, contract, self.DataEndTime, self.HistoricalPeriod, self.BarSize, self.Request_Data_Item, 0, 1, False, [])
-                print("Trying to download " + ErrorTickerDetail['symbol'].iloc[0] + " again with different exchange setting")
-                self.TickersTryingOtherExchange.append(ErrorTickerDetail['symbol'].iloc[0])
+                if (ErrorTickerDetail['primaryExchange'].iloc[0] == 'NONE') and (ErrorTickerDetail['symbol'].iloc[0] not in self.TickersTryingOtherExchange):
+                    
+                    contract = Contract()
+                    contract.symbol = ErrorTickerDetail['symbol'].iloc[0]
+                    contract.secType = ErrorTickerDetail['secType'].iloc[0]
+                    contract.exchange = ErrorTickerDetail['exchange'].iloc[0]
+                    contract.currency = ErrorTickerDetail['currency'].iloc[0]
+                    contract.primaryExchange = "ISLAND"
+                    # if not np.isnull(row['primaryExchange']):
+                        # contract.primaryExchange = row['primaryExchange']
+        
+                    self.IBProcessHub.reqHistoricalData(reqId, contract, self.DataEndTime, self.HistoricalPeriod, self.BarSize, self.Request_Data_Item, 0, 1, False, [])
+                    print("Trying to download " + ErrorTickerDetail['symbol'].iloc[0] + " again with different exchange setting")
+                    self.TickersTryingOtherExchange.append(ErrorTickerDetail['symbol'].iloc[0])
+                else:
+                    if not self.TickerDict[reqId] in self.TickersWithErrorInThisIteration:
+                        self.TickersWithErrorInThisIteration.append(self.TickerDict[reqId])
+                        self.TickerDownloadCompleteCount = self.TickerDownloadCompleteCount + 1
             else:
                 if not self.TickerDict[reqId] in self.TickersWithErrorInThisIteration:
                     self.TickersWithErrorInThisIteration.append(self.TickerDict[reqId])
                     self.TickerDownloadCompleteCount = self.TickerDownloadCompleteCount + 1
-        else:
-            if not self.TickerDict[reqId] in self.TickersWithErrorInThisIteration:
-                self.TickersWithErrorInThisIteration.append(self.TickerDict[reqId])
-                self.TickerDownloadCompleteCount = self.TickerDownloadCompleteCount + 1
+        except Exception:
+            print("Exception in error()")
             
         # self.DownloadError = True        
 
