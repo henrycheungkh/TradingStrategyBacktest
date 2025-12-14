@@ -16,6 +16,19 @@ import nest_asyncio
 nest_asyncio.apply()
 
 
+IB_API_hostname = Config.CONFIG_IB_CONNECTION_HOST
+IB_API_port = Config.CONFIG_IB_CONNECTION_PORT
+IB_API_clientId = Config.CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID 
+
+print('In DownloadUSStockDividendFromIB.py')
+print('IB_API_hostname = ' + IB_API_hostname)
+print('IB_API_port = ')
+print(IB_API_port)
+print('IB_API_clientId = ')
+print(IB_API_clientId)
+time.sleep(10)
+
+
 def fetch_dividend_data(ib, ticker):
     contract = Stock(ticker, exchange='SMART', currency='USD')
     details = ib.reqFundamentalData(contract, 'ReportsFinSummary')
@@ -36,7 +49,8 @@ if __name__ == "__main__":
 
     # Create an IB instance and connect
     ib = IB()
-    ib.connect('127.0.0.1', 7496, clientId=1)  # 7497 is the default port for TWS paper trading
+#     ib.connect('127.0.0.1', 7496, clientId=1)  # 7497 is the default port for TWS paper trading
+    ib.connect(IB_API_hostname, IB_API_port, clientId=IB_API_clientId)  # 7497 is the default port for TWS paper trading
     
     for index, row in Tickers.iterrows():
         # print('Download for ' + row['ticker'] + ' (' + str(TickersCount) + '/' + str(TickersTotalCount) + ')')
