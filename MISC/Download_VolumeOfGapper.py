@@ -4,7 +4,9 @@ Created on Sat Apr 24 04:06:25 2021
 
 @author: Henry Cheung
 """
-import Config
+# import Config
+import InvestmentAnalytics.Config as Config
+
 
 from ibapi.client import EClient
 from ibapi.wrapper import EWrapper
@@ -20,6 +22,20 @@ import numpy as np
 import mysql.connector
 from pandas.api.types import is_datetime64_any_dtype as is_datetime
 import sys
+
+
+IB_API_hostname = Config.CONFIG_IB_CONNECTION_HOST
+IB_API_port = Config.CONFIG_IB_CONNECTION_PORT
+IB_API_clientId = Config.CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID 
+
+print('In Download_VolumeOfGapper.py')
+print('IB_API_hostname = ' + IB_API_hostname)
+print('IB_API_port = ')
+print(IB_API_port)
+print('IB_API_clientId = ')
+print(IB_API_clientId)
+time.sleep(10)
+
 
 class IBapi(EWrapper, EClient):
 	def __init__(self):
@@ -85,7 +101,8 @@ Request_ID = 1000
 
 
 app = IBapi()
-app.connect('127.0.0.1', 7496, 123)
+# app.connect('127.0.0.1', 7496, 123)
+app.connect(IB_API_hostname, IB_API_port, IB_API_clientId)
 
 #Start the socket in a thread
 api_thread = threading.Thread(target=run_loop, daemon=True)
