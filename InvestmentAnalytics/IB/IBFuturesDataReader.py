@@ -23,6 +23,11 @@ Request_ID = 2000
 Request_Data_Item = 'TRADES'
 DownloadError = False
 
+IB_API_hostname = Config.CONFIG_IB_CONNECTION_HOST
+IB_API_port = Config.CONFIG_IB_CONNECTION_PORT
+IB_API_clientId = Config.CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID 
+IB_API_Futures_clientId = Config.CONFIG_IB_CONNECTION_FUTURES_CLIENT_ID 
+
 class IBapi(EWrapper, EClient):
 	def __init__(self):
 		EClient.__init__(self, self)
@@ -62,7 +67,11 @@ def run_loop():
 	app.run()
 
 app = IBapi()
-app.connect('127.0.0.1', 7496, 123)
+# app.connect('127.0.0.1', 7496, 123)
+print(f"In IBFuturesDataReader, going to connect to client ID {IB_API_clientId}")
+app.connect(IB_API_hostname, IB_API_port, IB_API_clientId)
+
+
 # app2 = IBapi()
 # app2.connect('127.0.0.1', 7496, 123)
 # app.connect('127.0.0.1', 7497, 123)
