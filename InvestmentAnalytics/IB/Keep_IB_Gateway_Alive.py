@@ -4,6 +4,7 @@ Created on Sat Apr 24 04:06:25 2021
 
 @author: Henry Cheung
 """
+import InvestmentAnalytics.Config as Config
 
 
 from ibapi.client import EClient
@@ -16,6 +17,12 @@ import threading
 import time
 import datetime
 import pandas as pd
+
+IB_API_hostname = Config.CONFIG_IB_CONNECTION_HOST
+IB_API_port = Config.CONFIG_IB_CONNECTION_PORT
+IB_API_KeepAlive_clientId = Config.CONFIG_IB_CONNECTION_KEEPALIVE_CLIENT_ID
+
+ 
 
 class IBapi(EWrapper, EClient):
 	def __init__(self):
@@ -62,7 +69,7 @@ def run_loop():
 	app.run()
 
 app = IBapi()
-app.connect('127.0.0.1', 7496, 100)
+app.connect(IB_API_hostname, IB_API_port, IB_API_KeepAlive_clientId)
 
 #Start the socket in a thread
 api_thread = threading.Thread(target=run_loop, daemon=True)
