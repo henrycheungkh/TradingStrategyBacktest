@@ -17,9 +17,9 @@ from email.utils import COMMASPACE, formatdate
 
 def SendEmail(to, subject, HTMLbody, files=None, gmail_user = None, gmail_password = None):
     if gmail_user is None:
-        gmail_user = 'lostintokyo99@gmail.com'
+        gmail_user = 'xxxxxxxxxxx@gmail.com'
     if gmail_password is None:
-        gmail_password = 'cajlaenspxzgxvwv'
+        gmail_password = 'xxxxxxxxxxx'
    
         
     sent_from = gmail_user

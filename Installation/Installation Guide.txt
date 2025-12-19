@@ -21,14 +21,10 @@ Core
     from ibapi.client import EClient
 
 Optional
-- Mega Upload (For file synchronisation, or else if you have concern, I can send you updated file from time to time)
-  https://mega.nz/
-  Login: henry.cheungkh@gmail.com
-  Password: Trade1Analysis2For3Real4
+
 - 7Zip
   https://www.7-zip.org/download.html
-- Proton VPN (or any other VPN, for more stable Yahoo prices download)
-  https://protonvpn.com/download
+
 
 
 2. Python Package installation

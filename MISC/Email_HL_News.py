@@ -103,5 +103,5 @@ if __name__ == "__main__":
         AccumulatedNewsText = AccumulatedNewsText + news[0] + "<BR>" + "<BR>"
     
     if not UploadToDB:
-        SendEmail(['henry.cheungkh@gmail.com', 'victor.ys.cheung@gmail.com'], 'London Stock News ' + date.today().strftime("%B %d, %Y"), AccumulatedNewsText)
+        SendEmail(['henry.cheungkh@gmail.com'], 'London Stock News ' + date.today().strftime("%B %d, %Y"), AccumulatedNewsText)
         # SendEmail(['henry.cheungkh@gmail.com'], 'London Stock News ' + date.today().strftime("%B %d, %Y"), AccumulatedNewsText)
