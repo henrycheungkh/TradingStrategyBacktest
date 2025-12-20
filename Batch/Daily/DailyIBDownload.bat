@@ -1,8 +1,26 @@
 title Daily IB Download
 SET PYTHONPATH=%TradeAnalysis_ProjectPath%
-set mydate=%date:~10,4%%date:~4,2%%date:~7,2%
+rem set mydate=%date:~10,4%%date:~4,2%%date:~7,2%
 rem set mydate=20251208
 
+
+@echo off
+:: Get the current hour (24-hour format)
+for /f "tokens=1 delims=:" %%a in ("%time%") do set hour=%%a
+
+:: Remove leading zero (if any)
+if "%hour:~0,1%"=="0" set hour=%hour:~1%
+
+:: Check if it's morning or afternoon
+if %hour% lss 12 (
+    echo Good morning!
+    for /f %%a in ('powershell -NoProfile -Command "(Get-Date).AddDays(-1).ToString(\"yyyyMMdd\")"') do set YESTERDAY=%%a
+
+    set mydate=%YESTERDAY%
+) else (
+    echo Good afternoon!
+    set mydate=%date:~10,4%%date:~4,2%%date:~7,2%
+)
 
 if "%mydate%"=="20251112" (
   rem "%TradeAnalysis_PythonPath%" "%TradeAnalysis_ProjectPath%InvestmentAnalytics\Batch\DownloadUSStockPriceFromIB.py" "1 min" 2000 0 "TRADES" "2 D" DirectUpload 20251104

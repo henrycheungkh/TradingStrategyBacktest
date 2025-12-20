@@ -1,1 +1,0 @@
-INSERT IGNORE INTO finance_frec_fut_hist.fdata_fut_hist SELECT * FROM finance_fdata_fut_hist.fdata_fut_hist

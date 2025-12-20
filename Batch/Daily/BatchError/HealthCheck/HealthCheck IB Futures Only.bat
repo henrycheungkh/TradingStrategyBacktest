@@ -1,3 +1,0 @@
-%TradeAnalysis_PythonPath% %TradeAnalysis_ProjectPath%DownloadHealthCheck.py IBFuturesPrice
-%TradeAnalysis_PythonPath% %TradeAnalysis_ProjectPath%DownloadHealthCheck.py IBFuturesPriceByTicker
-pause
