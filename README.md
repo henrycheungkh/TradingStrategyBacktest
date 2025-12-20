@@ -14,8 +14,14 @@ Core
 
 - Python (usually by Anaconda)
   https://www.anaconda.com/products/individual
+
 - Python Driver for MySQL
   https://www.mysql.com/products/connector/
+
+- IB Application
+  Recommended IB Gateway, on top of the usual trading workstation platform you use
+  
+
 - IB Python API
   For example, but refer to official release by IB
     https://interactivebrokers.github.io/
