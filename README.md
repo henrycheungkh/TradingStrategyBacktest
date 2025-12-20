@@ -19,6 +19,7 @@ Core
   https://www.mysql.com/products/connector/
 
 - IB Application
+  
   Recommended IB Gateway, on top of the usual trading workstation platform you use
   
 
