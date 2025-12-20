@@ -1,0 +1,12 @@
+pymysql
+ibapi
+requests_html
+yfinance
+yahoo_fin
+yahoo_earnings_calendar
+
+GoogleNews
+newspaper3k
+
+tensorflow
+pycuda
