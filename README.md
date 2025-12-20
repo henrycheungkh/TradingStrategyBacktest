@@ -80,6 +80,11 @@ Use the SQL script 1_CreateDB_Live.sql in the Installation folder, to create the
 
 5. Batches for running 
 
+Batch\Daily\Download_Tickers.bat
+
+The batch to download/reap stock tickers from the web.
+Recommend to schedule and run it daily.
+
 Batch\Daily\ADailyIBDataDBUploader.bat
 Batch\Daily\ADailyIBDataDBUploaderHighPriority.bat
 Batch\Daily\ADailyIBDataDBUploaderMediumPriority.bat
