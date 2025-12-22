@@ -128,3 +128,12 @@ The batch to dump/export the whole MySQL server data.  Recommend to dump and arc
 Batch\DBDump\DBDump_Backup_Zip.bat
 
 The batch to zip the MySQL dumped/exported data.
+
+Batch\HealthCheck\HealthCheck.bat
+Batch\HealthCheck\HealthCheck IB Futures Only.bat
+Batch\HealthCheck\HealthCheck IB Stock Only.bat
+Batch\HealthCheck\HealthCheck IB Stock 1 min Only.bat
+
+These batches are for checking how many count of prices have been downloaded from IB per recent dates (and per tickers for Futures).  They can be used after running of DailyIBDownload.bat, to see how healthy/complete the download was.
+
+
