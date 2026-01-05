@@ -16,9 +16,20 @@ CONFIG_LOCAL_TIMEZONE = os.getenv('TradeAnalysis_LocalTimezone')
 
 CONFIG_IB_CONNECTION_HOST = os.getenv('TradeAnalysis_IB_API_hostname')
 CONFIG_IB_CONNECTION_PORT = int(os.getenv('TradeAnalysis_IB_API_port'))
-CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID = int(os.getenv('TradeAnalysis_IB_API_clientId'))
-CONFIG_IB_CONNECTION_FUTURES_CLIENT_ID = int(os.getenv('TradeAnalysis_IB_API_Futures_clientId'))
-CONFIG_IB_CONNECTION_KEEPALIVE_CLIENT_ID = int(os.getenv('TradeAnalysis_IB_API_KeepAlive_clientId'))
+try:
+    CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID = int(os.getenv('TradeAnalysis_IB_API_clientId'))
+except:
+    CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID = 123
+
+try:
+    CONFIG_IB_CONNECTION_FUTURES_CLIENT_ID = int(os.getenv('TradeAnalysis_IB_API_Futures_clientId'))
+except:
+    CONFIG_IB_CONNECTION_FUTURES_CLIENT_ID = 123
+
+try:
+    CONFIG_IB_CONNECTION_KEEPALIVE_CLIENT_ID = int(os.getenv('TradeAnalysis_IB_API_KeepAlive_clientId'))
+except:
+    CONFIG_IB_CONNECTION_KEEPALIVE_CLIENT_ID = 100
 
 
 CONFIG_MYSQL_CONNECTION_HOST = os.getenv('TradeAnalysis_DBHost')
