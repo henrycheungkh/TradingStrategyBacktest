@@ -21,6 +21,7 @@ try:
 except:
     CONFIG_IB_CONNECTION_DEFAULT_CLIENT_ID = 123
 
+
 try:
     CONFIG_IB_CONNECTION_FUTURES_CLIENT_ID = int(os.getenv('TradeAnalysis_IB_API_Futures_clientId'))
 except:
