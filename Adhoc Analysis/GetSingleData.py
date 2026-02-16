@@ -16,35 +16,45 @@ from InvestmentAnalytics.MarketDataReader import IBFuturesPriceReader, FuturesPr
 
 pd.set_option('display.max_columns', None) 
         
-
+print('-- a')
 FileNameSuffix = ''
 
-StartDate = datetime(2022,1,1)
+StartDate = datetime(2025,1,1)
 # EndDate = datetime(2024,6,30)
-EndDate = datetime(2025,4,24)
+EndDate = datetime(2025,12,31)
 
 
 # TimeFrame = "1 day"
-TimeFrame = "5 mins"
-# TimeFrame = "1 min"
+# TimeFrame = "5 mins"
+TimeFrame = "1 min"
 # TimeFrame = "10 secs"
 
-# TickerFilter = ['NQ']
+TickerFilter = ['NQ']
 # TickerFilter = ['RTY']
 # TickerFilter = ['GC']
 # TickerFilter = ['CL']
 # TickerFilter = ['NQ', 'CL']
-TickerFilter = ['GC', 'SI', 'ES', 'NQ', 'YM', 'CL', 'NG']
+# TickerFilter = ['GC', 'SI', 'ES', 'NQ', 'YM', 'CL', 'NG']
+
+print('-- b')
 
 # FileFolder = "e:\\temp\\"
-FileFolder = "j:\\temp\\"
+FileFolder = "C:\\Data\\"
 TickerInString = '_'.join(TickerFilter)
+
+print('-- c')
+
+
+print('Before FuturesPriceAnalysisContext, TimeFrame = ' + str(TimeFrame))
 
 if TimeFrame == "1 min":
     AnalysisContext = FuturesPriceAnalysisContext(StartDate, EndDate, TimeFrame, TickerFilter = TickerFilter)
 else:
 # For non 1min bar
     AnalysisContext = FuturesPriceAnalysisContext(StartDate, EndDate, TimeFrame, TickerFilter = TickerFilter, PerformContangoAdjustment = False)
+
+print('After FuturesPriceAnalysisContext')
+
 
 print(AnalysisContext.FuturesData.TickerIDMapping)
 
@@ -85,9 +95,11 @@ df = AnalysisContext.FuturesData.ActiveContractPrices.copy()
 
 df.sort_values(by=['ticker', 'tDateTime'], ascending=False, inplace=True)
 
+print('Sorted ActiveContractPrices is')
 print(df)
 
 FileName = 'prices_' + TickerInString + '_' + TimeFrame + '_' + StartDate.strftime("%Y%m%d") + '_' + EndDate.strftime("%Y%m%d") + FileNameSuffix
+print('Writing file ' + FileFolder + FileName + '.csv')
 df.to_csv(FileFolder + FileName + '.csv', index=False)
 
 if TimeFrame == "10 secs":

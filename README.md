@@ -47,8 +47,9 @@ pip install ibapi
 pip install yahoo_fin
 pip install yahoo_earnings_calendar
 pip install requests_html
+pip install pycuda
 
-pip install pymysql yfinance ibapi yahoo_fin yahoo_earnings_calendar requests_html
+pip install pymysql yfinance ibapi yahoo_fin yahoo_earnings_calendar requests_html pycuda
 
 
 

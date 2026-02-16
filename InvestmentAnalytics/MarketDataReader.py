@@ -10,6 +10,7 @@ import InvestmentAnalytics.DBUtil as DBUtil
 import pandas as pd
 import numpy as np
 from datetime import date, datetime, timedelta
+
 from InvestmentAnalytics.CUDA.MarketDataReaderCUDALib import CUDAGetTickerIDWithSufficientData, CUDAFillModifiedFollowing, CUDAFillByOverride
 
 class DailySpotPriceAnalysisContext:
@@ -36,6 +37,7 @@ class PriceReader:
         pass
         
     def FillDataMatrix(self, df_data, x_matrix_column_name, y_matrix_row_names, data_sheet_names, MissingValueFilling = "Fill Zero", ModifyBackwardAsLastResort = False, data_sheet_override_mapping = None, FullIDGrid = None):
+        print('-- Started FillDataMatrix')
         for key in data_sheet_names:
             if isinstance(data_sheet_names, dict):
                 sheet_name = data_sheet_names[key]
@@ -55,12 +57,14 @@ class PriceReader:
             price_matrix = PriceReader.to_numpy(df, x_matrix_column_name, y_matrix_row_names, key)
             price_matrix = price_matrix.copy(order="C")
             
+            print('-- In FillDataMatrix, before MissingValueFilling = ' + str(MissingValueFilling))
             if MissingValueFilling == "Modified Following":
                 self.DataMatrix[sheet_name] = CUDAFillModifiedFollowing(price_matrix, ModifyBackwardAsLastResort = ModifyBackwardAsLastResort).copy(order="C")
             elif(MissingValueFilling == "Data Sheet Override"):
                 self.DataMatrix[sheet_name] = CUDAFillByOverride(price_matrix, self.DataMatrix[data_sheet_override_mapping[key]], block_cutting_dimension = "Time Dimension").copy(order="C")
             else:
                 self.DataMatrix[sheet_name] = price_matrix
+            print('-- In FillDataMatrix, after MissingValueFilling = ' + str(MissingValueFilling))
 
     def to_numpy(df, x_matrix_column_name, y_matrix_row_names, value_column, FillNaNWith=0):
         df = df.fillna(FillNaNWith)
@@ -139,7 +143,7 @@ class IntradayPriceAnalysisContext:
 
 class FuturesPriceAnalysisContext(IntradayPriceAnalysisContext):
     def __init__(self, StartDate, EndDate, TimeFrame, PreFilterDataByTime = False, PreFilterDataStartTimeInStdUnit = None, PreFilterDataEndTimeInStdUnit = None, TickerFilter = [], GPUMode = True, KeepDataframeData = False, PerformContangoAdjustment = True, RandomNoiseTickerStdev = None, FillEveryTimeSlot = False, ActiveContractPircesTrimmedColumns = None, KeepOnlyWeekdays = False, DataTimeLowerBound = None, DataTimeUpperBound = None, MarketTimeSectionTimeList = None, DebugFilepath = None):
-        print('Start loading futures price data at ' + str(datetime.now()))
+        print('In FuturesPriceAnalysisContext.init, start loading futures price data at ' + str(datetime.now()) + ', PerformContangoAdjustment = ' + str(PerformContangoAdjustment))
         self.FuturesData = IBFuturesPriceReader(StartDate, EndDate, TimeFrame, PreFilterDataByTime = PreFilterDataByTime, PreFilterDataStartTimeInStdUnit = PreFilterDataStartTimeInStdUnit, PreFilterDataEndTimeInStdUnit = PreFilterDataEndTimeInStdUnit, TickerFilter = TickerFilter, GPUMode = GPUMode, KeepDataframeData = KeepDataframeData, PerformContangoAdjustment = PerformContangoAdjustment, RandomNoiseTickerStdev = RandomNoiseTickerStdev, FillEveryTimeSlot = FillEveryTimeSlot, ActiveContractPircesTrimmedColumns = ActiveContractPircesTrimmedColumns, KeepOnlyWeekdays = KeepOnlyWeekdays, DataTimeLowerBound = DataTimeLowerBound, DataTimeUpperBound = DataTimeUpperBound, MarketTimeSectionTimeList = MarketTimeSectionTimeList, DebugFilepath = DebugFilepath)
         super().__init__(StartDate, EndDate, TimeFrame, self.FuturesData, GPUMode = True, KeepDataframeData = False)
 
@@ -172,6 +176,7 @@ class FuturesPriceReader(SpotPriceReader):
         self.DateIDMapping = None
         self.TimeFrame = TimeFrame
         self.KeepDataframeData = KeepDataframeData
+        print('-- d')
         try:
             if MarketTimeSectionTimeList is None:
                 self.MarketTimeSection = FuturesPriceReader.DefaultMarketTimeSection[self.TimeFrame]
@@ -185,6 +190,7 @@ class FuturesPriceReader(SpotPriceReader):
         print('self.LoadBidAskPrices is ' + str(self.LoadBidAskPrices))
         self.DebugFilepath = DebugFilepath
         self.PerformContangoAdjustment = PerformContangoAdjustment
+        print('In FuturesPriceReader.init, self.PerformContangoAdjustment = ' + str(self.PerformContangoAdjustment))
         if TickerFilter is None:
             self.TickerFilter = []
         else:
@@ -198,9 +204,11 @@ class FuturesPriceReader(SpotPriceReader):
         self.KeepOnlyWeekdays = KeepOnlyWeekdays
         self.DataTimeLowerBound = DataTimeLowerBound
         self.DataTimeUpperBound = DataTimeUpperBound
+        print('-- e')
         self.LoadRawData()
         self.AverageVolPerMarketTimeSection = None
         # self.CheckMaxVolumeHalfHourSection()
+        print('-- f')
         
     def getAverageVolPerMarketTimeSection(self):
         if self.AverageVolPerMarketTimeSection is None:
@@ -327,8 +335,8 @@ class FuturesPriceReader(SpotPriceReader):
         print('PreFilterDataEndTimeInStdUnit is ' + str(self.PreFilterDataEndTimeInStdUnit))
 
         Prices_df = self.GetDataframeFromDB(self.TickerFilter)
-        # print('Data from GetDataframeFromDB is')
-        # print(Prices_df)
+        print('Data from GetDataframeFromDB is')
+        print(Prices_df.head())
         
         if self.FillEveryTimeSlot:
             # Prices_df = Prices_df.append(self.GetContantPriceTicker())
@@ -337,7 +345,7 @@ class FuturesPriceReader(SpotPriceReader):
         Prices_df['Date'] = pd.to_datetime(Prices_df['tDateTime']).dt.date
         Volume_df = Prices_df[Prices_df['DataType'] == 'TRADES'][['ticker', 'expiry','Date', 'tDateTime', 'vol']]
         Volume_df = pd.pivot_table(Volume_df, values='vol', index=['ticker', 'Date', 'expiry'], aggfunc=np.sum).reset_index()
-        # Volume_df.to_csv(r'G:\TradeAnalysisProject\temp\Volume_df_original.csv')
+        Volume_df.to_csv(r'c:\Data\Volume_df_original.csv')
 
 
         if self.KeepOnlyWeekdays:
@@ -356,7 +364,9 @@ class FuturesPriceReader(SpotPriceReader):
         if self.PreFilterDataByTime:
             Prices_df = Prices_df.loc[(Prices_df['TimeInStandardUnit'] >= self.PreFilterDataStartTimeInStdUnit) & (Prices_df['TimeInStandardUnit'] <= self.PreFilterDataEndTimeInStdUnit)]
             
+        print('-- Before setActiveContractPrice')
         self.setActiveContractPrice(Prices_df)
+        print('-- After setActiveContractPrice')
         
         self.ActiveContractPrices['high_adj'] = self.ActiveContractPrices['high']
         self.ActiveContractPrices['low_adj'] = self.ActiveContractPrices['low']
@@ -365,15 +375,18 @@ class FuturesPriceReader(SpotPriceReader):
         self.ActiveContractPrices['expiry_adj'] = self.ActiveContractPrices['expiry']
         
         
+        print('-- PerformContangoAdjustment is ' + str(self.PerformContangoAdjustment))
         
         if self.PerformContangoAdjustment:
             # self.ActiveContractPrices = IBFuturesPriceReader.ContangoAdjustment(self.ActiveContractPrices, RolloverDate_df)
             # self.ActiveContractPrices, self.RolloverDate = IBFuturesPriceReader.ContangoAdjustment(self.ActiveContractPrices, self.RolloverDate)
+            print('-- Before FuturesPriceReader.ContangoAdjustment')
             self.ActiveContractPrices, self.RolloverDate = FuturesPriceReader.ContangoAdjustment(self.ActiveContractPrices, self.RolloverDate)
             # self.ActiveContractPrices.to_csv(r'd:\temp\ActiveContractPricesAfterContangoAdj.csv')
             
         # self.ActiveContractPrices = IBFuturesPriceReader.AttachMarketTimeSectionID(self.ActiveContractPrices)
         # self.ActiveContractPrices = FuturesPriceReader.AttachMarketTimeSectionID(self.ActiveContractPrices)
+        print('-- Before AttachMarketTimeSectionID(self.ActiveContractPrices)')
         self.ActiveContractPrices = self.AttachMarketTimeSectionID(self.ActiveContractPrices)
         
         
@@ -400,6 +413,7 @@ class FuturesPriceReader(SpotPriceReader):
             self.TimeIDMapping['TimeInStandardUnit'] = self.TimeIDMapping['TimeInStandardUnit'].astype(int)
             # self.TimeIDMapping['TimeInStandardUnit'] = (int) (self.TimeIDMapping['Hour'] * 60 + self.TimeIDMapping['Minute']) * 6 + self.TimeIDMapping['Second'] / 10
         # self.TimeIDMapping = IBFuturesPriceReader.AttachMarketTimeSectionID(self.TimeIDMapping)
+        print('-- Before AttachMarketTimeSectionID(self.TimeIDMapping)')
         self.TimeIDMapping = self.AttachMarketTimeSectionID(self.TimeIDMapping)
         
         # TimeInStandardUnitToMarketTimeSectioIDMapping = self.TimeIDMapping[['TimeInStandardUnit', 'MarketTimeSectionID']].drop_duplicates().sort_values(by=['TimeInStandardUnit'])
@@ -472,6 +486,8 @@ class FuturesPriceReader(SpotPriceReader):
                 NoiseTickerIndex = NoiseTickerIndex + 1
                 
         self.ActiveContractPrices = self.ActiveContractPrices.loc[self.ActiveContractPrices['ticker'] != 'CONSTANT']
+
+        print('-- Before PriceReader.AddAutoincrementalID')
                 
         self.ActiveContractPrices, self.TickerIDMapping = PriceReader.AddAutoincrementalID(self.ActiveContractPrices, ['ticker'], 'ticker id')
         # print('TickerIDMapping is')
@@ -498,6 +514,7 @@ class FuturesPriceReader(SpotPriceReader):
         # FullIDGrid.to_csv(r'd:\temp\FullIDGrid.csv')
         
 
+        print('-- Before GPUMode Checking, self.GPUMode = ' + str(self.GPUMode))
         if self.GPUMode:
 
             
@@ -525,7 +542,9 @@ class FuturesPriceReader(SpotPriceReader):
             if self.DebugFilepath is not None:
                 ActiveContractPrices_TRADES.to_csv(self.DebugFilepath + r'\ActiveContractPrices_TRADESWithTimeID.csv', index=False)
                 
+            print('-- Before self.FillDataMatrix for close')
             self.FillDataMatrix(ActiveContractPrices_TRADES, 'time id', ['ticker id'], {'close_adj': 'TRADES_close_adj', 'MarketTimeSectionID': 'MarketTimeSectionID'},MissingValueFilling = "Modified Following", ModifyBackwardAsLastResort = True, FullIDGrid = FullIDGrid)
+            print('-- After self.FillDataMatrix for close')
 
             if self.DebugFilepath is not None:
                 close_price_matrix = self.DataMatrix['TRADES_close_adj'].T.copy(order="C")
@@ -545,8 +564,11 @@ class FuturesPriceReader(SpotPriceReader):
             self.PrintDataMatrixDetail('TRADES_close_adj')
             self.PrintDataMatrixDetail('MarketTimeSectionID')
             self.PrintDataMatrixDetail('TimeInStandardUnit')
+
+            print('-- Before self.FillDataMatrix for high, low, open')
             
             self.FillDataMatrix(ActiveContractPrices_TRADES, 'time id', ['ticker id'], {'high_adj': 'TRADES_high_adj', 'low_adj': 'TRADES_low_adj', 'open_adj': 'TRADES_open_adj'},MissingValueFilling = "Data Sheet Override", data_sheet_override_mapping = {'high_adj': 'TRADES_close_adj', 'low_adj': 'TRADES_close_adj', 'open_adj': 'TRADES_close_adj'}, FullIDGrid = FullIDGrid)
+            print('-- After self.FillDataMatrix for high, low, open')
 
             if self.DebugFilepath is not None:
                 try:
@@ -562,7 +584,11 @@ class FuturesPriceReader(SpotPriceReader):
             self.PrintDataMatrixDetail('TRADES_high_adj')
             self.PrintDataMatrixDetail('TRADES_low_adj')
             self.PrintDataMatrixDetail('TRADES_open_adj')
+
+            print('-- Before self.FillDataMatrix for vol')
             self.FillDataMatrix(ActiveContractPrices_TRADES, 'time id', ['ticker id'], ['vol'], FullIDGrid = FullIDGrid)
+            print('-- After self.FillDataMatrix for vol')
+
             self.PrintDataMatrixDetail('vol')
             
             if self.LoadBidAskPrices:
@@ -585,6 +611,7 @@ class FuturesPriceReader(SpotPriceReader):
                 self.PrintDataMatrixDetail('ASK_low_adj')
                 self.PrintDataMatrixDetail('ASK_open_adj')
 
+            print('-- LoadBidAskPrices')
         # if self.KeepDataframeData:
         #     self.Prices = Prices_df
             
